@@ -1,0 +1,19 @@
+{
+  "name": "kuche",
+  "version": "1.0.0",
+  "description": "Your Go-To Kitchen App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KucheApp/Kuche.git"
+  },
+  "author": "Brian Patrick, Chelsey Dolan, and Kai Wells",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/KucheApp/Kuche/issues"
+  },
+  "homepage": "https://github.com/KucheApp/Kuche#readme"
+}
