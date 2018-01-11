@@ -113,7 +113,7 @@
 }
 
 .footer .footer-logo{
-    background-image:url(../images/preload-logo.png);
+    background-image:url(../images/preload-K-logo.png);
     background-size:80px 80px;
     width:80px;
     height:80px;
@@ -135,7 +135,7 @@
     width:255px;
     margin-left:auto;
     margin-right:auto;
-    margin-bottom:30px;
+    /* margin-bottom:30px; */
 }
 
 .footer-socials a{
@@ -177,7 +177,7 @@
 
 .header-logo{
     position:absolute;
-    background-image:url(../images/preload-logo.png);
+    background-image:url(../images/preload-K-logo.png);
     background-size:30px 30px;
     width:30px;
     height:30px;
@@ -404,7 +404,7 @@
 }
 
 .sidebar-header-background{
-    background-image:url(../images/pictures/bg.jpg);
+    background-image:url(../images/pictures/1t.jpg);
     background-size:cover;
     height:150px;
 }
