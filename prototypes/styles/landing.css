@@ -4,7 +4,7 @@ body, html {
 
 body {
   background-color: #05302C;
-  background-image: url("../imgs/pattern.png");
+  background-image: url("../images/pattern.png");
   background-repeat: repeat;
   background-size: 300px auto;
   background-position: center 30px;
@@ -19,7 +19,7 @@ only screen and (min-device-pixel-ratio: 2),
 only screen and (min-resolution: 192dpi),
 only screen and (min-resolution: 2dppx) {
   body {
-    background-image: url("../imgs/pattern@2x.png");
+    background-image: url("../images/pattern@2x.png");
   }
 }
 
