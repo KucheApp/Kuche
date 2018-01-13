@@ -6,7 +6,9 @@ import API from "../api";
 class Kitchen extends Component {
   render() {
     return (
-      <div />
+      <div>
+        
+      </div>
     );
   }
 }
