@@ -1,0 +1,40 @@
+body {
+  background-color: #05302C;
+  background-image: url("../imgs/pattern.png");
+  background-repeat: repeat;
+  background-size: 300px auto;
+  background-position: center 30px;
+  background-origin: 50px 0px;
+  text-align: center;
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min--moz-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi),
+only screen and (min-resolution: 2dppx) {
+  body {
+    background-image: url("../imgs/pattern@2x.png");
+  }
+}
+
+.Landing-Logo {
+  max-height: 138px;
+  max-width: 80%;
+  margin-top: 2rem;
+  display: inline-block;
+}
+
+.pageapp-login {
+  margin-top: 2rem;
+  padding: 1rem 2rem 2rem;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.landing-login-button {
+  text-align: center;
+  margin-top: 2rem;
+  color: white;
+}
