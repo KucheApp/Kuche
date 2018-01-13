@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="styles/framework.css">
 <link rel="stylesheet" type="text/css" href="styles/font-awesome.css">
 <link rel="icon" href="./images/favicon.ico" type="image/icon">
-    
+
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
@@ -28,58 +28,48 @@
     <div class="loader loader-frames"><i></i><i></i><i></i><i></i></div>
 </div>
     
-<div class="header header-dark">
+<div class="header header-dark header-full">
     <a href="#" class="header-icon header-icon-1 open-left-sidebar"><i class="fa fa-navicon"></i></a>
     <a href="index.html" class="header-logo scale-hover"></a>
-    <a href="#" class="header-icon header-icon-4 open-right-sidebar"><i class="fa fa-shopping-cart"></i></a>
+    <a href="#" class="header-icon header-icon-4 open-right-sidebar"><i class="fa fa-envelope-o"></i></a>
 </div>
             
-<div id="page-content" class="header-clear">
-    <div id="page-content-scroll"><!--Enables this element to be scrolled --> 
+<div id="page-content" class="page-content header-clear-full">
+    <div id="page-content-scroll">
         
-        <div class="heading-strip bg-3">
-            <h4 class="center-text">[Username]'s Counter</h4>
-            <!-- <p class="center-text">Click on the category to add food</p> -->
+        <div class="heading-strip bg-1">
+            <h3>{Username]'s Grocery list</h3>
+            <!-- <p>A handle checklist for your grocery shopping</p> -->
+            <i class="fa fa-check-circle"></i>
             <div class="overlay dark-overlay"></div>
         </div>
-
         <div class="decoration decoration-margins"></div>
-               
-        <div class="content material-no-top">
-            <div class="accordion-item accordion-ghost">
-                <a href="#" class="accordion-toggle">Counter Item 1 <i class="fa fa-plus"></i></a>
-                <div class="accordion-content ">
-                    <p>Date purchased: </p>
-                    <p>Date expires: </p>
-                    <p>Brand: </p>
-                    <p>Ingredients: </p>
-                    <p>Recipes: </p>
-                </div>
-            </div>            
-            <div class="accordion-item accordion-ghost">
-                <a href="#" class="accordion-toggle">Counter Item 2 <i class="fa fa-plus"></i></a>
-                <div class="accordion-content ">
-                    <p>Date purchased: </p>
-                    <p>Date expires: </p>
-                    <p>Brand: </p>
-                    <p>Ingredients: </p>
-                    <p>Recipes: </p>
-                </div>
-            </div>            
-            <div class="accordion-item accordion-ghost last-accordion-item">
-                <a href="#" class="accordion-toggle">Counter Item 3 <i class="fa fa-plus"></i></a>
-                <div class="accordion-content ">
-                    <p>Date purchased: </p>
-                    <p>Date expires: </p>
-                    <p>Brand: </p>
-                    <p>Ingredients: </p>
-                    <p>Recipes: </p>
-                </div>
+
+        <!-- <<<<<< CHECKLIST >>>>>> -->
+        <div class="content material-no-top material-no-bottom">
+            <div class="checklist">
+                <a href="#" class="checklist-item checklist-item-complete responsive">
+                    <i class="fa fa-circle-o"></i>
+                    <i class="fa fa-check color-green-dark"></i>
+                    <em>01 Jan<br><span>2023</span></em>
+                    <strong>Green Check</strong>
+                </a>  
+                <div class="clear"></div>    
             </div>
-        </div>  
+            <div class="checklist">  
+                <a href="#" class="checklist-item responsive">
+                    <i class="fa fa-circle-o"></i>
+                    <i class="fa fa-times color-red-dark"></i>
+                    <em>02 Feb<br><span>2023</span></em>
+                    <strong>Red Cross</strong>
+                </a>   
+                <div class="clear"></div>             
+            </div>      
+                <!-- <div class="clear"></div> -->
+            
+        </div>
         
         <div class="decoration decoration-margins"></div>
-
         
         <div class="footer footer-dark">
             <!-- <a href="#" class="footer-logo scale-hover"></a> -->
@@ -97,7 +87,7 @@
         
     </div>  
 </div>
-
+    
 <!-- <<<<<< SIDEBAR >>>>>> -->
 <div class="sidebar-left sidebar-dark">
     <div class="sidebar-scroll">
@@ -152,51 +142,54 @@
         </div>    
         <div class="sidebar-divider no-bottom">Copyright <span id="copyright-year-sidebar"></span>. All rights Reserved</div>
     </div>
-</div> 
+</div>   
     
 <!-- <div class="page-menu dark-footer-menu">
     <div class="footer-menu-wrapper remove-menu">
         <div class="footer-menu-scroll">
             <div class="footer-menu">
-                <a href="features-detection.html" class="footer-menu-item">
-                    <em>Device Detection</em><i class="scale-hover bg-yellow-light fa fa-eye"></i>
+                <a href="pageapp-map.html" class="footer-menu-item">
+                    <em>Fullscreen Map</em><i class="scale-hover bg-orange-dark fa fa-map-marker"></i>
                 </a>
-                <a href="features-inputs.html" class="footer-menu-item">
-                    <em>Input Elements</em><i class="scale-hover bg-orange-dark fa fa-code"></i>
+                <a href="pageapp-users.html" class="footer-menu-item">
+                    <em>Userlist</em><i class="scale-hover bg-orange-light fa fa-user"></i>
                 </a>
-                <a href="features-buttons.html" class="footer-menu-item">
-                    <em>Buttons & Icons</em><i class="scale-hover bg-red-dark fa fa-hand-pointer-o"></i>
+                <a href="pageapp-coverpage.html" class="footer-menu-item">
+                    <em>Coverpage</em><i class="scale-hover bg-red-light fa fa-image"></i>
                 </a>
-                <a href="features-dividers.html" class="footer-menu-item">
-                    <em>Deco & Dividers</em><i class="scale-hover bg-red-light fa fa-star-o"></i>
+                <a href="pageapp-calendar.html" class="footer-menu-item">
+                    <em>Calendar</em><i class="scale-hover bg-red-dark fa fa-calendar-o"></i>
                 </a>
-                <a href="features-notifications.html" class="footer-menu-item">
-                    <em>Notifications</em><i class="scale-hover bg-magenta-dark fa fa-exclamation"></i>
+                <a href="pageapp-interests.html" class="footer-menu-item">
+                    <em>Interests</em><i class="scale-hover bg-magenta-light fa fa-question"></i>
                 </a>
-                <a href="features-menu-bars.html" class="footer-menu-item">
-                    <em>Menu Bars</em><i class="scale-hover bg-night-dark fa fa-navicon"></i>
+                <a href="pageapp-checklist.html" class="footer-menu-item active-menu">
+                    <em>Checklist</em><i class="scale-hover bg-magenta-dark fa fa-check"></i>
                 </a>
-                <a href="features-typography.html" class="footer-menu-item">
-                    <em>Typography</em><i class="scale-hover bg-night-light fa fa-bold"></i>
+                <a href="pageapp-tasklist.html" class="footer-menu-item">
+                    <em>Tasklist</em><i class="scale-hover bg-night-dark fa fa-check"></i>
                 </a>
-                <a href="features-accordion.html" class="footer-menu-item active-menu">
-                    <em>Accordions</em><i class="scale-hover bg-blue-light fa fa-server"></i>
+                <a href="pageapp-register.html" class="footer-menu-item">
+                    <em>Register</em><i class="scale-hover bg-night-light fa fa-code"></i>
                 </a>
-                <a href="features-dropdown.html" class="footer-menu-item">
-                    <em>Dropdown</em><i class="scale-hover bg-blue-dark fa fa-chevron-down"></i>
+                <a href="pageapp-login.html" class="footer-menu-item">
+                    <em>Login</em><i class="scale-hover bg-blue-light fa fa-lock"></i>
                 </a>
-                <a href="features-toggles.html" class="footer-menu-item">
-                    <em>Toggles</em><i class="scale-hover bg-green-dark fa fa-toggle-off"></i>
+                <a href="pageapp-soon.html" class="footer-menu-item">
+                    <em>Soon</em><i class="scale-hover bg-blue-dark fa fa-clock-o"></i>
+                </a>
+                <a href="pageapp-error.html" class="footer-menu-item">
+                    <em>Error</em><i class="scale-hover bg-green-dark fa fa-warning"></i>
                 </a>                
-                <a href="features-tabs.html" class="footer-menu-item">
-                    <em>Tabs</em><i class="scale-hover bg-green-light fa fa-tasks"></i>
+                <a href="pageapp-chat.html" class="footer-menu-item">
+                    <em>Chat</em><i class="scale-hover bg-green-light fa fa-comment-o"></i>
                 </a>
             </div>            
         </div>
     </div>
-</div>    
+</div> 
 <div class="footer-menu-controls light-footer-menu">
-    <a href="#" class="footer-menu-open"><i class="fa fa-cog  bg-magenta-dark"></i></a>
+    <a href="#" class="footer-menu-open"><i class="fa fa-mobile bg-red-dark"></i></a>
     <a href="#" class="footer-menu-close remove-menu"><i class="fa fa-times bg-red-dark"></i><em>Close</em></a>
 </div> -->
 <div class="footer-menu-tap-close remove-menu"></div>
