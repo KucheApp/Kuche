@@ -19,3 +19,22 @@ only screen and (min-resolution: 2dppx) {
     background-image: url("../imgs/pattern@2x.png");
   }
 }
+
+.Landing-Logo {
+  max-height: 138px;
+  max-width: 80%;
+  margin-top: 2rem;
+  display: inline-block;
+}
+
+.pageapp-login {
+  margin-top: 2rem;
+  padding: 1rem 2rem 2rem;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.landing-login-button {
+  text-align: center;
+  margin-top: 2rem;
+  color: white;
+}
