@@ -81,13 +81,13 @@ class Landing extends Component {
                 />
                 <LoginInput
                   name="registerDisplayName" placeholder="Display Name"
-                  icon="envelope" type="text"
+                  icon="user" type="text"
                   value={this.state.registerDisplayName}
                   onChange={this.handleInputChange}
                 />
                 <LoginInput
                   name="registerPassword" placeholder="Password"
-                  icon="envelope" type="password"
+                  icon="lock" type="password"
                   value={this.state.registerPassword}
                   onChange={this.handleInputChange}
                 />
