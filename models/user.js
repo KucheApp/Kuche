@@ -5,7 +5,7 @@ const Item = require("./item");
 const Session = require("./session");
 
 const userSchema = new Schema({
-  username: String,
+  username: {type: String, unique: true},
   salt: String,
   hashedPassword: String,
   displayName: String,

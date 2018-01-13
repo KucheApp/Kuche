@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+
+import API from "../api";
 
 import "./Landing.css";
-
 import logo from "../imgs/kuche-white.png";
 
 class Landing extends Component {
@@ -11,7 +13,8 @@ class Landing extends Component {
     registerOpen: false,
     registerUsername: "",
     registerDisplayName: "",
-    registerPassword: ""
+    registerPassword: "",
+    goToApp: false
   };
 
   handleInputChange = event => {
@@ -27,13 +30,27 @@ class Landing extends Component {
         registerOpen: false
       });
     } else {
-      // do API call
+      this.setState({goToApp: true});
+      this.props.enterApp(this.state.username, this.state.password);
     }
   };
 
   handleRegister = () => {
     if (this.state.registerOpen) {
-      // do API call
+      let rUsername = this.state.registerUsername;
+      let rDisplayName = this.state.registerDisplayName;
+      let rPassword = this.state.registerPassword;
+      if (rUsername.length > 0 &&
+          rDisplayName.length > 0 &&
+          rPassword.length >= 8) {
+            API.registerUser(this.state)
+            .then(token => {
+              if (token === "token") {
+                this.setState({goToApp: true});
+                this.props.enterApp(rUsername, rPassword);
+              }
+            })
+          }
     } else {
       this.setState({
         registerOpen: true
@@ -42,6 +59,9 @@ class Landing extends Component {
   };
 
   render() {
+    if (this.state.goToApp) {
+      return (<Redirect to="/kitchen" />);
+    }
     let logInBtn = <LoginButton text="Log In" onClick={this.handleLogin} />;
     let registerBtn = <LoginButton text="Register" onClick={this.handleRegister} />;
     return (
