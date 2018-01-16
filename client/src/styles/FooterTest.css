@@ -1,0 +1,4 @@
+.test:hover {
+  fill: lightgreen;
+  transition: 1s;
+}
