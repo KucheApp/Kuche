@@ -3,7 +3,7 @@ import { BrowswerRouter as Router, Route, Switch } from "react-router-dom";
 
 import API from "../api";
 
-class GroceryList extends Component {
+class Grocery extends Component {
    render() {
       return (
         <div id="page-content" className="page-content header-clear-full">
@@ -46,4 +46,4 @@ class GroceryList extends Component {
    }
 }
 
-export default GroceryList
+export default Grocery
