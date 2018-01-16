@@ -54,11 +54,10 @@ class ControlledExpansionPanels extends Component {
     const { expanded } = this.state;
 
     return (
-      
-
+    
     <div className={classes.root}>
         <Grid container spacing={24}>
-            <Grid item sm={6}>
+            <Grid item xs={12} sm={6}>
                 <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography className={classes.heading}>General settings</Typography>
@@ -72,7 +71,7 @@ class ControlledExpansionPanels extends Component {
                 </ExpansionPanelDetails>
                 </ExpansionPanel>
             </Grid>
-            <Grid item sm={6}>
+            <Grid item xs={12} sm={6}>
                 <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChange('panel2')}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography className={classes.heading}>Users</Typography>
@@ -88,7 +87,7 @@ class ControlledExpansionPanels extends Component {
                 </ExpansionPanelDetails>
                 </ExpansionPanel>
             </Grid>
-            <Grid item sm={6}>
+            <Grid item xs={12} sm={6}>
                 <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handleChange('panel3')}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography className={classes.heading}>Advanced settings</Typography>
