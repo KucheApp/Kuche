@@ -8,6 +8,7 @@ import Kitchen from "./pages/Kitchen";
 import NoMatch from "./pages/NoMatch";
 import Counter from "./pages/Counter";
 import ResponsiveDrawer from "./components/Nav";
+import Footer from "./pages/FooterTest";
 
 class App extends Component {
    
@@ -43,6 +44,7 @@ class App extends Component {
           <Route exact path="/" component={landing} />
           <Route path="/kitchen" component={kitchen} />
           <Route path="/counter" component={counter} />
+          <Route path="/footer" component={Footer} />
         
           <Route path="*" component={NoMatch} />
         </Switch>
