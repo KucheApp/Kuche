@@ -9,6 +9,7 @@ import NoMatch from "./pages/NoMatch";
 import Counter from "./pages/Counter";
 import ResponsiveDrawer from "./components/Nav";
 import Footer from "./pages/FooterTest";
+import Drawer from './pages/Drawer';
 
 class App extends Component {
    
@@ -38,6 +39,7 @@ class App extends Component {
     const kitchen = () => (<Kitchen state={this.state} exitApp={this.exitApp} />);
     const counter = () => (<Counter state={this.state} exitApp={this.exitApp} />);
     const footer = () =>  (<Footer state={this.state} exitApp={this.exitApp} />)
+    const drawer = () =>  (<Drawer state={this.state} exitApp={this.exitApp}/>);
 
     return (
       <Router className="router">
@@ -46,6 +48,7 @@ class App extends Component {
           <Route path="/kitchen" component={kitchen} />
           <Route path="/counter" component={counter} />
           <Route path="/footer" component={Footer} />
+          <Route path="/drawer" component={Drawer} />
         
           <Route path="*" component={NoMatch} />
         </Switch>
