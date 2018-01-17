@@ -36,6 +36,7 @@ class App extends Component {
     const landing = () => (<Landing enterApp={this.enterApp} />);
     const kitchen = () => (<Kitchen state={this.state} exitApp={this.exitApp} />);
     const counter = () => (<Counter state={this.state} exitApp={this.exitApp} />);
+    const nav = () => (<ResponsiveDrawer state={this.state} exitApp={this.exitApp} />);
 
     return (
       <Router className="router">
@@ -43,6 +44,7 @@ class App extends Component {
           <Route exact path="/" component={landing} />
           <Route path="/kitchen" component={kitchen} />
           <Route path="/counter" component={counter} />
+          <Route path="/nav" component={nav} />
         
           <Route path="*" component={NoMatch} />
         </Switch>

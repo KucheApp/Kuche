@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { BrowswerRouter as Router, Route, Switch } from "react-router-dom";
+// import { BrowswerRouter as Router, Route, Switch } from "react-router-dom";
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import ExpansionPanel, {
   ExpansionPanelDetails,
@@ -13,6 +13,8 @@ import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 
 import API from "../api";
+
+import ButtonAppBar from "../components/Nav";
 
 const styles = theme => ({
   root: {
@@ -56,52 +58,67 @@ class ControlledExpansionPanels extends Component {
     return (
     
     <div className={classes.root}>
+    <ButtonAppBar />
+
         <Grid container spacing={24}>
-            <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
+            <h1>Counter</h1>
+            <p>Where your fruit ripens and commonly used items find their home</p>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={24}>
+            <Grid item xs={1} sm={1} md={1} lg={3}></Grid>
+            <Grid item xs={10} sm={10} md={10} lg={6}>
                 <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography className={classes.heading}>General settings</Typography>
-                    <Typography className={classes.secondaryHeading}>I am an expansion panel</Typography>
+                    <Typography className={classes.heading}>Bananas</Typography>
+                    <Typography className={classes.secondaryHeading}>I am a banana</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Typography>
-                    Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat. Aliquam eget
-                    maximus est, id dignissim quam.
+                    Info about bananas here!
                     </Typography>
                 </ExpansionPanelDetails>
                 </ExpansionPanel>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={1} sm={1} md={1} lg={3}></Grid>
+
+            <Grid item xs={1} sm={1} md={1} lg={3}></Grid>
+            <Grid item xs={10} sm={10} md={10} lg={6}>
                 <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChange('panel2')}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography className={classes.heading}>Users</Typography>
+                    <Typography className={classes.heading}>Oranges</Typography>
                     <Typography className={classes.secondaryHeading}>
-                    You are currently not an owner
+                    We are orange.
                     </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Typography>
-                    Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar
-                    diam eros in elit. Pellentesque convallis laoreet laoreet.
+                    Oranges are sweet cuz they are from Florida ;)
                     </Typography>
                 </ExpansionPanelDetails>
                 </ExpansionPanel>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={1} sm={1} md={1} lg={3}></Grid>
+
+            <Grid item xs={1} sm={1} md={1} lg={3}></Grid>
+            <Grid item xs={10} sm={10} md={10} lg={6}>
                 <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handleChange('panel3')}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography className={classes.heading}>Advanced settings</Typography>
+                    <Typography className={classes.heading}>Onions</Typography>
                     <Typography className={classes.secondaryHeading}>
-                    Filtering has been entirely disabled for whole web server
+                    Ogres are like onions...
                     </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Typography>
-                    Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas
-                    eros, vitae egestas augue. Duis vel est augue.
+                    ...cuz they have layers!
                     </Typography>
                 </ExpansionPanelDetails>
                 </ExpansionPanel>
+            </Grid>
+            <Grid item xs={1} sm={1} md={1} lg={3}>
             </Grid>
         </Grid>
       </div>
@@ -109,8 +126,8 @@ class ControlledExpansionPanels extends Component {
   }
 }
 
-ControlledExpansionPanels.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+// ControlledExpansionPanels.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
 export default withStyles(styles)(ControlledExpansionPanels);
