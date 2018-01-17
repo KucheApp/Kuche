@@ -37,6 +37,7 @@ class App extends Component {
     const landing = () => (<Landing enterApp={this.enterApp} />);
     const kitchen = () => (<Kitchen state={this.state} exitApp={this.exitApp} />);
     const counter = () => (<Counter state={this.state} exitApp={this.exitApp} />);
+    const footer = () =>  (<Footer state={this.state} exitApp={this.exitApp} />)
 
     return (
       <Router className="router">
