@@ -46,7 +46,8 @@ function SimpleMediaCard(props) {
   );
 }
 
-// SimpleMediaCard.propTypes = {
+// SimpleMediaCard.pro
+pTypes = {
 //   classes: PropTypes.object.isRequired,
 // };
 
