@@ -20,7 +20,9 @@ const styles = {
     marginRight: 20,
   },
   toolbar: {
-    backgroundColor: "black"
+    backgroundColor: "black",
+    color: "white",
+    opacity: '0.5'
   }
 };
 
