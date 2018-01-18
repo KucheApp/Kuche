@@ -9,6 +9,7 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import DrawerLeft from './Drawer';
 import Categories from './Categories';
+import MyGridList from './GridList';
 
 const styles = {
   root: {
@@ -41,7 +42,8 @@ class ButtonAppBar extends Component {
               <Button color="contrast">Login</Button>
           </Toolbar>
         </AppBar>
-        <Categories />
+        {/* <Categories /> */}
+        <MyGridList />
 
       </div>
     );

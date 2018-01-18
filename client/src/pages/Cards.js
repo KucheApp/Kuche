@@ -7,6 +7,7 @@ import Typography from 'material-ui/Typography';
 const styles = {
   card: {
     maxWidth: 345,
+    maxHeight: 345,
   },
   media: {
     height: 300,
@@ -23,7 +24,7 @@ class Cards extends Component {
           <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image="../imgs/freezer1.png"
+              image={null}
               title="Contemplative Reptile"
             />
             <CardContent>
