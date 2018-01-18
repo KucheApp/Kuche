@@ -23,7 +23,7 @@ class Cards extends Component {
           <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              src="../imgs/freezer1.png"
+              image="../imgs/freezer1.png"
               title="Contemplative Reptile"
             />
             <CardContent>
