@@ -10,6 +10,7 @@ import Counter from "./pages/Counter";
 import ResponsiveDrawer from "./components/Nav";
 import Footer from "./pages/FooterTest";
 import Drawer from './pages/Drawer';
+import SimpleMediaCard from "./pages/MediaCard";
 
 class App extends Component {
    
@@ -40,6 +41,7 @@ class App extends Component {
     const counter = () => (<Counter state={this.state} exitApp={this.exitApp} />);
     const footer = () =>  (<Footer state={this.state} exitApp={this.exitApp} />)
     const drawer = () =>  (<Drawer state={this.state} exitApp={this.exitApp}/>);
+    const media = () =>  (<SimpleMediaCard state={this.state} exitApp={this.exitApp}/>);
 
     return (
       <Router className="router">
@@ -49,6 +51,7 @@ class App extends Component {
           <Route path="/counter" component={counter} />
           <Route path="/footer" component={Footer} />
           <Route path="/drawer" component={Drawer} />
+          <Route path="/media" component={SimpleMediaCard} />
         
           <Route path="*" component={NoMatch} />
         </Switch>
