@@ -12,6 +12,7 @@
     "bootstrap": "^4.0.0-beta.3",
     "material-ui": "^1.0.0-beta.29",
     "material-ui-icons": "^1.0.0-beta.17",
+    "mdbreact": "^4.1.0",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.0",
     "react-bootstrap-sidebar": "0.0.1",
