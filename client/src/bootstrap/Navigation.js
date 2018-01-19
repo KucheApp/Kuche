@@ -17,6 +17,7 @@ class Navigation extends Component {
       return (
         <div>
           <nav style={styles.navigation} class="navbar navbar-dark">
+            
           </nav>
         </div>
       );
