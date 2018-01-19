@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "kuche",
+    "password": "kuche",
+    "database": "kuche",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "kuche",
+    "password": "kuche",
+    "database": "kuche",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "kuche",
+    "password": "kuche",
+    "database": "kuche",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "use_env_variable": "DATABASE_URL"
+}

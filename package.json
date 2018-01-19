@@ -26,12 +26,14 @@
     "nodemon": "^1.13.3"
   },
   "dependencies": {
+    "basic-auth": "^2.0.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "jwt-simple": "^0.5.1",
     "moment": "^2.20.1",
-    "mongoose": "^4.13.7",
+    "pg": "^7.4.1",
     "request": "^2.83.0",
+    "sequelize": "^4.31.2",
     "shortid": "^2.2.8"
   }
 }

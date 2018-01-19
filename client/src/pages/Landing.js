@@ -6,6 +6,7 @@ import API from "../api";
 import "./Landing.css";
 import logo from "../imgs/kuche-white.png";
 
+
 class Landing extends Component {
   state = {
     username: "",
@@ -64,8 +65,10 @@ class Landing extends Component {
     }
     let logInBtn = <LoginButton text="Log In" onClick={this.handleLogin} />;
     let registerBtn = <LoginButton text="Register" onClick={this.handleRegister} />;
-    return (
+    return (     
+      
       <div className="Landing">
+        
         <header className="Landing-Header">
           <img src={logo} className="Landing-Logo" alt="Kuche Logo" />
         </header>
