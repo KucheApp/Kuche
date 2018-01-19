@@ -173,9 +173,9 @@ export default {
   GetUsername,
   UpdateAccount,
   DeleteAccount,
-  GetFood: (id) => Get("/food/" + id),
-  GetFoodIn: (location) => Get("/food/in/" + location),
-  PostFood: (food) => Post("/food", food),
+  GetFood:    (id) => Get("/food/" + id),
+  GetFoodIn:  (location) => Get("/food/in/" + location),
+  PostFood:   (food) => Post("/food", food),
   UpdateFood: (food) => Put("/food/" + food.id, food),
   DeleteFood: (food) => Delete("/food/" + food.id),
 }
