@@ -16,7 +16,7 @@ var randomSecret = cu.hashSync(Date.now().toString());
 app.set("jwtSecret", process.env.JWT_SECRET || randomSecret);
 
 var db_options = {};
-if (true){//process.env.NODE_DB_ENV === "overwrite") {
+if (process.env.NODE_DB_ENV === "overwrite") {
   console.log("OVERWRITING DATABASE ON RELOAD");
   db_options.force = true;
 }
