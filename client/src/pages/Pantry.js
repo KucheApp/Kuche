@@ -1,64 +1,46 @@
-import React, { Component } from "react";
-import { BrowswerRouter as Router, Route, Switch } from "react-router-dom";
+import React, { Component } from 'react';
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+import Footer from '../bootstrap/Footer';
+import Navbar from '../bootstrap/Navbar';
+import Accordion from "./Accordion";
 
-import API from "../api";
+const styles = {
+  h1: {
+    color: "white",
+  }
+}
 
 class Pantry extends Component {
-    render() {
-      return (
-        <div id="page-transitions">
-                       
-        <div id="page-content" className="header-clear">
-            <div id="page-content-scroll">
-                
-                <div className="heading-strip bg-3">
-                    <h4 className="center-text">Username's Pantry</h4>
-                    <div className="overlay dark-overlay"></div>
-                </div>
 
-                <div className="decoration decoration-margins"></div>
-                    
-                <div className="content material-no-top">
-                    <div className="accordion-item accordion-ghost">
-                        <a href="#" className="accordion-toggle">Pantry Item 1 <i className="fa fa-plus"></i></a>
-                        <div className="accordion-content ">
-                            <p>Date purchased: </p>
-                            <p>Date expires: </p>
-                            <p>Brand: </p>
-                            <p>Ingredients: </p>
-                            <p>Recipes: </p>
-                        </div>
-                    </div>            
-                    <div className="accordion-item accordion-ghost">
-                        <a href="#" className="accordion-toggle">Pantry Item 2 <i className="fa fa-plus"></i></a>
-                        <div className="accordion-content ">
-                            <p>Date purchased: </p>
-                            <p>Date expires: </p>
-                            <p>Brand: </p>
-                            <p>Ingredients: </p>
-                            <p>Recipes: </p>
-                        </div>
-                    </div>            
-                    <div className="accordion-item accordion-ghost last-accordion-item">
-                        <a href="#" className="accordion-toggle">Pantry Item 3 <i className="fa fa-plus"></i></a>
-                        <div className="accordion-content ">
-                            <p>Date purchased: </p>
-                            <p>Date expires: </p>
-                            <p>Brand: </p>
-                            <p>Ingredients: </p>
-                            <p>Recipes: </p>
-                        </div>
-                    </div>
-                </div>  
-                
-                <div className="decoration decoration-margins"></div>
-
-            </div>  
+  render() {
+    return (
+    <div>
+      <div className="container">
+        <div className="row">
+          <div className="col-3">
+            <Navbar />
+          </div>
         </div>
+      </div>
 
+      <div className="container">
+        <div className="row">
+          <div className="col-2"></div>
+          <div className="col-8">
+            <h1 style={styles.h1}>Pantry</h1>
+            <p>Your storage for dry goods and spices</p>
+          </div>
+          <div className="col-2"></div>
         </div>
-      );
-    }
+      </div>
+        <Accordion />
+        <Footer />
+
+    </div>  
+   
+    );
   }
+}
 
-export default Pantry
+export default Pantry;
