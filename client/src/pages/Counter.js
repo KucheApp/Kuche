@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import Footer from '../bootstrap/Footer';
-import Navbar from '../bootstrap/Navbar';
+import Navigation from '../bootstrap/Navigation';
 import Accordion from "./Accordion";
 
 const styles = {
@@ -19,7 +19,7 @@ class Counter extends Component {
       <div className="container">
         <div className="row">
           <div className="col-3">
-            <Navbar />
+            <Navigation />
           </div>
         </div>
       </div>

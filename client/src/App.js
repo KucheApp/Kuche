@@ -10,6 +10,7 @@ import Counter from "./pages/Counter";
 import Fridge from "./pages/Fridge";
 import Freezer from "./pages/Freezer";
 import Pantry from "./pages/Pantry";
+import GroceryList from "./pages/GroceryList";
 import Drawer from './pages/Drawer';
 import Main from './bootstrap/Jumbotron';
 import Navigation from './bootstrap/Navigation';
@@ -45,6 +46,8 @@ class App extends Component {
     const fridge = () => (<Fridge state={this.state} exitApp={this.exitApp} />);
     const freezer = () => (<Freezer state={this.state} exitApp={this.exitApp} />);
     const pantry = () => (<Pantry state={this.state} exitApp={this.exitApp} />);
+    const grocerylist = () => (<GroceryList state={this.state} exitApp={this.exitApp} />);
+
     const drawer = () =>  (<Drawer state={this.state} exitApp={this.exitApp}/>);
     const jumbotron = () => (<Main state={this.state} exitApp={this.exitApp}/>);
     
@@ -58,6 +61,7 @@ class App extends Component {
           <Route path="/freezer" component={Freezer} />
           <Route path="/pantry" component={Pantry} />
           <Route path="/drawer" component={Drawer} />
+          <Route path="/grocerylist" component={GroceryList} />
           <Route path="/jumbotron" component={Main} />
         
           <Route path="*" component={NoMatch} />
