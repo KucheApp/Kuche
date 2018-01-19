@@ -153,7 +153,7 @@ module.exports = function(app) {
   /* Food Items */
 
   function FoodItemPublic(fi) {
-    fi.UserId = "";
+    delete fi["UserId"];
     return fi;
   }
 

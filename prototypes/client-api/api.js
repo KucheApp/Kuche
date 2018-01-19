@@ -34,10 +34,7 @@ let RegisterNewUser = (email, password, username) => {
   SaveEmail(email);
   return axios.post("/api/signup", {email, password, username})
   .then(RejectIfErr)
-  .then(data => {
-    SaveToken(data.session.token);
-    return data;
-  });
+  .then(data => SaveToken(data.session.token));
 };
 
 let ResetToken = (username, password) => {
@@ -47,10 +44,7 @@ let ResetToken = (username, password) => {
     auth: { username, password }
   })
   .then(RejectIfErr)
-  .then(data => {
-    SaveToken(data.token);
-    return data.token;
-  });
+  .then(data => SaveToken(data.token));
 };
 
 let UpdateAccount = (email, password, username) => {
@@ -66,7 +60,9 @@ let DeleteAccount = (email, password, username) => {
     password: password
   };
   let method = "delete";
-  let data = { username };
+  data = {
+    username
+  }
   return axios({ url, auth, data })
   .then(RejectIfErr)
   .then(() => {

@@ -30,8 +30,15 @@ class Landing extends Component {
         registerOpen: false
       });
     } else {
-      this.setState({goToApp: true});
-      this.props.enterApp(this.state.username, this.state.password);
+      API.ResetToken(this.state.username, this.state.password)
+      .then(token => {
+        this.setState({goToApp: true});
+        this.props.enterApp({
+          username: this.state.username,
+          password: this.state.password,
+          token: token
+        });
+      })
     }
   };
 
@@ -40,15 +47,20 @@ class Landing extends Component {
       let rUsername = this.state.registerUsername;
       let rDisplayName = this.state.registerDisplayName;
       let rPassword = this.state.registerPassword;
-      if (rUsername.length > 0 &&
-          rDisplayName.length > 0 &&
-          rPassword.length >= 8) {
-            API.registerUser(this.state)
+      if (
+        rUsername.length    >  0 &&
+        rDisplayName.length >  0 &&
+        rPassword.length    >= 8
+      ) {
+            API.RegisterNewUser(rUsername, rPassword, rDisplayName)
             .then(token => {
-              if (token === "token") {
-                this.setState({goToApp: true});
-                this.props.enterApp(rUsername, rPassword);
-              }
+              this.setState({goToApp: true});
+              this.props.enterApp({
+                username: rUsername,
+                password: rPassword,
+                username: rDisplayName,
+                token: token
+              });
             })
           }
     } else {
@@ -75,7 +87,7 @@ class Landing extends Component {
               // Log In Form
               <div>
                 <LoginInput
-                  name="username" placeholder="Username"
+                  name="username" placeholder="Email"
                   icon="envelope" type="text"
                   value={this.state.username}
                   onChange={this.handleInputChange}
