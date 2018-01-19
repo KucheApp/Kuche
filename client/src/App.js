@@ -8,8 +8,8 @@ import Kitchen from "./pages/Kitchen";
 import NoMatch from "./pages/NoMatch";
 import Counter from "./pages/Counter";
 import Drawer from './pages/Drawer';
-import Jumbotron from './bootstrap/Jumbotron';
-import Navbar from './bootstrap/Navbar';
+import Main from './bootstrap/Jumbotron';
+import Navigation from './bootstrap/Navigation';
 
 class App extends Component {
    
@@ -39,8 +39,7 @@ class App extends Component {
     const kitchen = () => (<Kitchen state={this.state} exitApp={this.exitApp} />);
     const counter = () => (<Counter state={this.state} exitApp={this.exitApp} />);
     const drawer = () =>  (<Drawer state={this.state} exitApp={this.exitApp}/>);
-    const jumbotron = () => (<Jumbotron state={this.state} exitApp={this.exitApp}/>);
-    const navbar = () => (<Navbar state={this.state} exitApp={this.exitApp} />)
+    const jumbotron = () => (<Main state={this.state} exitApp={this.exitApp}/>);
     
     return (
       <Router className="router">
@@ -49,8 +48,7 @@ class App extends Component {
           <Route path="/kitchen" component={kitchen} />
           <Route path="/counter" component={counter} />
           <Route path="/drawer" component={Drawer} />
-          <Route path="/jumbotron" component={Jumbotron} />
-          <Route path="/sidenav" component={Navbar} />
+          <Route path="/jumbotron" component={Main} />
         
           <Route path="*" component={NoMatch} />
         </Switch>
