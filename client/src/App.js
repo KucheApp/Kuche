@@ -11,8 +11,8 @@ import Fridge from "./pages/Fridge";
 import Freezer from "./pages/Freezer";
 import Pantry from "./pages/Pantry";
 import Drawer from './pages/Drawer';
-import Jumbotron from './bootstrap/Jumbotron';
-import Navbar from './bootstrap/Navbar';
+import Main from './bootstrap/Jumbotron';
+import Navigation from './bootstrap/Navigation';
 
 
 class App extends Component {
@@ -46,8 +46,7 @@ class App extends Component {
     const freezer = () => (<Freezer state={this.state} exitApp={this.exitApp} />);
     const pantry = () => (<Pantry state={this.state} exitApp={this.exitApp} />);
     const drawer = () =>  (<Drawer state={this.state} exitApp={this.exitApp}/>);
-    const jumbotron = () => (<Jumbotron state={this.state} exitApp={this.exitApp}/>);
-    const navbar = () => (<Navbar state={this.state} exitApp={this.exitApp} />)
+    const jumbotron = () => (<Main state={this.state} exitApp={this.exitApp}/>);
     
     return (
       <Router className="router">
@@ -59,9 +58,7 @@ class App extends Component {
           <Route path="/freezer" component={Freezer} />
           <Route path="/pantry" component={Pantry} />
           <Route path="/drawer" component={Drawer} />
-          <Route path="/jumbotron" component={Jumbotron} />
-          <Route path="/sidenav" component={Navbar} />
-
+          <Route path="/jumbotron" component={Main} />
         
           <Route path="*" component={NoMatch} />
         </Switch>
