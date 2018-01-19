@@ -1,24 +1,27 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = function(sequelize, DataTypes) {
+  var User = sequelize.define("User", {
+    email: {
+      type: DataTypes.STRING(64),
+      validate: {is: /^[a-f0-9]{64}$/i},
+    },
+    salt: {
+      type: DataTypes.STRING(64),
+      validate: {is: /^[a-f0-9]{64}$/i},
+    },
+    password: {
+      type: DataTypes.STRING(512),
+      validate: {is: /^[a-f0-9]{512}$/i},
+    },
+    username: {
+      type: DataTypes.STRING
+    }
+  });
 
-const Item = require("./item");
-const Session = require("./session");
+  User.associate = function(models) {
+    User.hasMany(models.FoodItem, {
+      onDelete: "cascade"
+    });
+  };
 
-const userSchema = new Schema({
-  username: {type: String, unique: true},
-  salt: String,
-  hashedPassword: String,
-  displayName: String,
-  items: [{type: mongoose.Schema.Types.ObjectId, ref: "Item"}],
-  session: {type: mongoose.Schema.Types.ObjectId, ref: "Session"}
-});
-
-userSchema.pre("remove", function(next) {
-  Item.remove({owner: this._id}).exec();
-  Session.remove({user: this._id}).exec();
-  next();
-});
-
-const User = mongoose.model("User", userSchema);
-
-module.exports = User;
+  return User;
+}
