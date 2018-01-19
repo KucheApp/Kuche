@@ -36,7 +36,7 @@ let RegisterNewUser = (email, password, username) => {
   .then(RejectIfErr)
   .then(data => {
     SaveToken(data.session.token);
-    return data;
+    return data.session.token;
   });
 };
 
