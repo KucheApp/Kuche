@@ -15,7 +15,7 @@ class Navbar extends Component {
   render() {
       return (
         <div>
-          <div className="pos-f-t w-25 mw-25">
+          <div className="pos-f-t w-100 mw-100">
           <div className="collapse" id="navbarToggleExternalContent">
             <div className="bg-dark p-4">
               <h4 className="text-white">Collapsed content</h4>

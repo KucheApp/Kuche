@@ -6,20 +6,26 @@ import Carousel from './Carousel';
 
 const styles = {
   jumbotron: {
-    maxHeight: '25%',
+    height: '1px',
+  },
+  row: {
+    height: '50%',
+  },
+  container: {
+    height: '600px',
   }
 }
 
 const Example = (props) => {
   return (
     <div>
-    <div className="jumbotron bg-secondary">
+    <div className="jumbotron bg-secondary mb-0" style={styles.jumbotron}>
       <div className="container-fluid">
         <h2 className="text-black text-center">Kitchen</h2>
       </div>
    </div>
-   <div className="container">
-    <div className="row">
+   <div className="container-fluid" style={styles.container}>
+    <div className="row" style={styles.row}>
       <div className="col-3">
         <Navbar />
       </div>
