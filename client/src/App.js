@@ -19,22 +19,19 @@ import Navigation from './bootstrap/Navigation';
 class App extends Component {
    
   state = {
-    username: "",
+    email: "",
     password: "",
+    username: "",
     token: ""
   }
 
-  enterApp = (username, password) => {
-    this.setState({
-      username: username,
-      password: password
-    });
-  }
+  enterApp = (state) => this.setState(state);
 
   exitApp = () => {
     this.setState({
-      username: "",
+      email: "",
       password: "",
+      username: "",
       token: ""
     });
   }

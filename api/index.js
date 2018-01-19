@@ -157,7 +157,31 @@ module.exports = function(app) {
     return fi;
   }
 
-  router.get("/food/:location",
+  router.get("/food/:id",
+    jwtauth,
+    forbiddenIfNoUser,
+    function(req, res) {
+      let query = {where: {UserId: req.user.dataValues.id}};
+      query.where.id = req.params.id;
+
+      FoodItem.findOne(query)
+      .then(fooditem => {
+        fooditem = FoodItemPublic(fooditem);
+        res.json({
+          error: false,
+          fooditems: fooditem
+        });
+      })
+      .catch(err => {
+        res.json({
+          error: true,
+          errorMsg: err.message
+        })
+      })
+    }
+  );
+
+  router.get("/food/in/:location",
     jwtauth,
     forbiddenIfNoUser,
     function(req, res) {
@@ -190,7 +214,8 @@ module.exports = function(app) {
       if (fooditem.purchased === undefined) {
         fooditem.purchased = Date.now();
       }
-      return FoodItem.create(fooditem)
+
+      FoodItem.create(fooditem)
       .then(fi => {
         fi = FoodItemPublic(fi);
         res.json({
@@ -198,25 +223,71 @@ module.exports = function(app) {
           fooditem: fi
         })
       })
+      .catch(err => {
+        res.json({
+          error: true,
+          errorMsg: err.message
+        })
+      })
     }
   );
 
-  /* Grocery List */
-
-  router.get("/groceries",
+  router.put("/food/:id",
     jwtauth,
     forbiddenIfNoUser,
     function(req, res) {
-      let query = {where: {UserId: req.user.dataValues.id}};
-      query.where.location = "groceries";
+      let fooditem = req.body;
+      fooditem.UserId = req.user.id;
 
-      FoodItem.findAll(query)
-      .then(fooditems => {
-        fooditems = fooditems.map(FoodItemPublic)
+      FoodItem.update(fooditem, {
+        where: {
+          UserId: req.user.id,
+          id: req.params.id
+        }
+      })
+      .then(updateCount => {
+        updateCount = updateCount[0];
+        if (updateCount === 1) {
+          res.json({
+            error: false
+          });
+        } else {
+          res.json({
+            error: true,
+            errorMsg: `expected to update 1 row, updated ${updateCount}`
+          });
+        }
+      })
+      .catch(err => {
         res.json({
-          error: false,
-          fooditems: fooditems
-        });
+          error: true,
+          errorMsg: err.message
+        })
+      })
+    }
+  );
+
+  router.delete("/food/:id",
+    jwtauth,
+    forbiddenIfNoUser,
+    function(req, res) {
+      return FoodItem.destroy({
+        where: {
+          UserId: req.user.id,
+          id: req.params.id
+        }
+      })
+      .then(deleteCount => {
+        if (deleteCount === 1) {
+          res.json({
+            error: false
+          });
+        } else {
+          res.json({
+            error: true,
+            errorMsg: `expected to delete 1 row, deleted ${deleteCount}`
+          });
+        }
       })
       .catch(err => {
         res.json({
