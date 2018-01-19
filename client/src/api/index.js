@@ -28,7 +28,7 @@ let RejectIfErr = (response) => {
     delete data["error"];
     return resolve(data);
   });
-}
+};
 
 let RegisterNewUser = (email, password, username) => {
   SaveEmail(email);
@@ -53,10 +53,27 @@ let ResetToken = (username, password) => {
   });
 };
 
-let UpdateAccount = (email, password, username) => {
-  return axios.put("/api/account", {email, password, username})
+let UpdateAccount = (oldEmail, oldPassword, oldUsername, newEmail, newPassword, newUsername) => {
+  let url = "/api/account";
+  let auth = {
+    username: oldEmail,
+    password: oldPassword
+  };
+  let token = GetToken();
+  if (token === null) {
+    // logout
+    return Promise.reject();
+  }
+  let headers = { "x-access-token": token };
+  let method = "put";
+  let data = {
+    email: newEmail,
+    password: newPassword,
+    username: newUsername
+  };
+  return axios({ url, method, auth, headers, data })
   .then(RejectIfErr)
-  .then(() => SaveEmail(email));
+  .then(() => SaveEmail(newEmail));
 };
 
 let DeleteAccount = (email, password, username) => {
@@ -65,15 +82,38 @@ let DeleteAccount = (email, password, username) => {
     username: email,
     password: password
   };
+  let token = GetToken();
+  if (token === null) {
+    // logout
+    return Promise.reject();
+  }
+  let headers = { "x-access-token": token };
   let method = "delete";
   let data = { username };
-  return axios({ url, auth, data })
+  return axios({ url, method, auth, headers, data })
   .then(RejectIfErr)
   .then(() => {
     SaveEmail("");
     SaveToken("");
   })
 };
+
+let GetUsername = (email, password) => {
+  let url = "/api/username";
+  let auth = {
+    username: email,
+    password: password
+  };
+  let token = GetToken();
+  if (token === null) {
+    // logout
+    return Promise.reject();
+  }
+  let headers = { "x-access-token": token };
+  return axios({ url, auth, headers })
+  .then(RejectIfErr)
+  .then(data => data.username);
+}
 
 let Get = (url) => {
   url = "/api" + url;
@@ -130,6 +170,7 @@ export default {
   RegisterNewUser,
   ResetToken,
   GetEmail,
+  GetUsername,
   UpdateAccount,
   DeleteAccount,
   GetFood: (id) => Get("/food/" + id),

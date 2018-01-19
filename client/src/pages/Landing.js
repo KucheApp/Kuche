@@ -32,12 +32,16 @@ class Landing extends Component {
     } else {
       API.ResetToken(this.state.username, this.state.password)
       .then(token => {
-        this.setState({goToApp: true});
-        this.props.enterApp({
-          username: this.state.username,
-          password: this.state.password,
-          token: token
-        });
+        API.GetUsername(this.state.username, this.state.password)
+        .then(username => {
+          this.setState({goToApp: true});
+          this.props.enterApp({
+            email: this.state.username,
+            password: this.state.password,
+            username: username,
+            token: token
+          });
+        })
       })
     }
   };
@@ -56,7 +60,7 @@ class Landing extends Component {
             .then(token => {
               this.setState({goToApp: true});
               this.props.enterApp({
-                username: rUsername,
+                email: rUsername,
                 password: rPassword,
                 username: rDisplayName,
                 token: token
