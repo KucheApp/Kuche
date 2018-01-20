@@ -39,22 +39,22 @@ class Navigation extends Component {
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/Kitchen">Home <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Counter</a>
+                    <a class="nav-link" href="/Counter">Counter</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Fridge</a>
+                    <a class="nav-link" href="/Fridge">Fridge</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Freezer</a>
+                    <a class="nav-link" href="/Freezer">Freezer</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Pantry</a>
+                    <a class="nav-link" href="/Pantry">Pantry</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Grocery List</a>
+                    <a class="nav-link" href="/GroceryList">Grocery List</a>
                   </li>
                 </ul>
               </div>
