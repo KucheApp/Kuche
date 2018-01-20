@@ -166,6 +166,14 @@ let Delete = (url) => {
   .then(RejectIfErr);
 };
 
+let SearchFood = (query) => {
+  let heroku_name = "fathomless-chamber-12891"
+  let escaped_query = encodeURIComponent(query);
+  let url = `https://${heroku_name}.herokuapp.com/search?food=${escaped_query}`;
+  return axios.get(url)
+  .then(response => response.data);
+}
+
 /*
 fooditem schema:
 id: number [REQUIRED]
@@ -189,4 +197,5 @@ export default {
   PostFood:   (food) => Post("/food", food), // food is a fooditem object
   UpdateFood: (food) => Put("/food/" + food.id, food), // food is a fooditem object
   DeleteFood: (food) => Delete("/food/" + food.id), // food is a fooditem object
+  SearchFood,
 }
