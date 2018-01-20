@@ -19,7 +19,7 @@ class Footer extends Component {
       <div>
         <Navigation />
       <footer style={styles.footer} className="container-fluid w-100 bg-secondary text-black">
-        Kuche: Created by Brian Patrick, Chelsey Dolan, and Kai Wells, but mostly Kai
+        &copy; 2018 | Kuche: Created by <a href="https://github.com/SuperBerny">Brian Patrick</a>, <a href="https://github.com/chelseymarie6"> Chelsey Dolan</a>, and <a href="https://github.com/quells">Kai Wells</a>
       </footer>
       </div>
     );
