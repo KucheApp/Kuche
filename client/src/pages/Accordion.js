@@ -16,14 +16,14 @@ class Accordion extends Component {
         <div className="row" id={this.id}>
           <div className="col-2"></div>
           <div className="col-8">
-            <div className="accordion" role="tablist" aria-multiselectable="true">
+            <div className="accordion" id="{this.state.id}" role="tablist" aria-multiselectable="true">
               <div className="card">
                 <div className="card-header" role="tab">
                   <button type="button" className="close" aria-label="Close" position="right">
-                    <span aria-hidden="true" >&times;</span>
+                    <span aria-hidden="true" onClick={() => this.props.removeItem(this.props.name)}>&times;</span>
                   </button>
                   <h5 className="mb-0">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <a data-toggle="collapse" data-parent={"#" + String(this.state.id)} href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                       {this.props.name}
                     </a>
                   </h5>

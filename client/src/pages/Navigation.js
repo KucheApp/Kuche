@@ -30,31 +30,31 @@ class Navigation extends Component {
         <div>
             <nav style={styles.navigation} className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
               </button>
               <a className="navbar-brand" href="#">Kuche
                 <img src="./imgs/2.jpg" style={styles.img} alt="" />
               </a>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                  <li className="nav-item active">
+                    <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Counter</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Counter</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Fridge</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Fridge</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Freezer</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Freezer</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Pantry</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Pantry</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Grocery List</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Grocery List</a>
                   </li>
                 </ul>
               </div>
