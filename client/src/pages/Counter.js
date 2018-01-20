@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
-import Footer from '../bootstrap/Footer';
-import Navigation from '../bootstrap/Navigation';
+import Footer from './Footer';
+import Navigation from './Navigation';
 import Accordion from "./Accordion";
 
 const styles = {

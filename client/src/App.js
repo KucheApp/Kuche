@@ -11,8 +11,8 @@ import Fridge from "./pages/Fridge";
 import Freezer from "./pages/Freezer";
 import Pantry from "./pages/Pantry";
 import GroceryList from "./pages/GroceryList";
-import Main from './bootstrap/Jumbotron';
-import Navigation from './bootstrap/Navigation';
+import Main from './pages/Jumbotron';
+import Navigation from './pages/Navigation';
 
 
 class App extends Component {
