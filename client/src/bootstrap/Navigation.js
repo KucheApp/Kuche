@@ -23,13 +23,13 @@ class Navigation extends Component {
   render() {
       return (
         <div>
-          <nav style={styles.navigation} class="navbar navbar-light bg-light justify-content-center">
-            <form style={styles.form} class="form-inline justify-content-center">
-              <button style={styles.button} class="btn btn-sm btn-outline-secondary " type="button">Button</button>
-              <button style={styles.button} class="btn btn-sm btn-outline-secondary " type="button">Button</button>
-              <button style={styles.button} class="btn btn-sm btn-outline-secondary " type="button">Button</button>
-              <button style={styles.button} class="btn btn-sm btn-outline-secondary " type="button">Button</button>
-              <button style={styles.button} class="btn btn-sm btn-outline-secondary " type="button">Button</button>
+          <nav style={styles.navigation} className="navbar navbar-expand{-sm|-md|-lg|-xl}">
+            <form style={styles.form} className="form-inline justify-content-center">
+              {/* <button style={styles.button} className="btn btn-sm btn-outline-secondary " type="button">Button</button>
+              <button style={styles.button} className="btn btn-sm btn-outline-secondary " type="button">Button</button>
+              <button style={styles.button} className="btn btn-sm btn-outline-secondary " type="button">Button</button>
+              <button style={styles.button} className="btn btn-sm btn-outline-secondary " type="button">Button</button>
+              <button style={styles.button} className="btn btn-sm btn-outline-secondary " type="button">Button</button> */}
             </form>
           </nav>
         </div>
@@ -38,3 +38,5 @@ class Navigation extends Component {
   }
 
 export default Navigation;
+
+// justify-content-center  navbar-light bg-light
