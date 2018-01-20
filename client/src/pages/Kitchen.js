@@ -23,22 +23,22 @@ class Kitchen extends Component {
                   <div className="row m-0 p-1 justify-content-center">
                      <div style={styles.column} className="col-4 p-2">
                         <div className="card">
-                           <a href="#"><img className="card-img-top" src={Fridge} alt="Fridge" /></a>
+                           <a href="./Fridge"><img className="card-img-top" src={Fridge} alt="Fridge" /></a>
                         </div>
                      </div>
                      <div style={styles.column} className="col-4 p-2">
                         <div className="card">
-                           <a href="#"><img className="card-img-top" src={Freezer} alt="Freezer" /></a>
+                           <a href="./Freezer"><img className="card-img-top" src={Freezer} alt="Freezer" /></a>
                         </div>
                      </div>
                      <div style={styles.column} className="col-4 p-2">
                         <div className="card">
-                           <a href="#"><img className="card-img-top" src={Pantry} alt="Pantry" /></a>
+                           <a href="./Pantry"><img className="card-img-top" src={Pantry} alt="Pantry" /></a>
                         </div>
                      </div>
                      <div style={styles.column} className="col-4 p-2">
                         <div className="card">
-                           <a href="#"><img className="card-img-top" src={Counter} alt="Counter" /></a>
+                           <a href="./Counter"><img className="card-img-top" src={Counter} alt="Counter" /></a>
                         </div>
                      </div>
                   </div>

@@ -15,6 +15,7 @@ import Main from './pages/Main';
 import Navigation from './pages/Navigation';
 
 
+
 class App extends Component {
    
   state = {
@@ -52,7 +53,7 @@ class App extends Component {
     const grocerylist = () => (<GroceryList state={this.state} exitApp={this.exitApp} />);
 
     const main = () => (<Main state={this.state} exitApp={this.exitApp}/>);
-    
+
     return (
       <Router className="router">
         <Switch>
@@ -64,7 +65,6 @@ class App extends Component {
           <Route path="/pantry" component={Pantry} />
           <Route path="/grocerylist" component={GroceryList} />
           <Route path="/kitchen" component={Main} />
-        
           <Route path="*" component={NoMatch} />
         </Switch>
       </Router>
