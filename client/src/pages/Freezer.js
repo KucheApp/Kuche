@@ -11,9 +11,9 @@ const styles = {
   }
 }
 
-class Freezer extends Component {
+const Freezer = (props) => {
+    const freezerItems = props.items.filter(item => item.location === 'freezer');
 
-  render() {
     return (
     <div>
       <div className="container">
@@ -34,13 +34,17 @@ class Freezer extends Component {
           <div className="col-2"></div>
         </div>
       </div>
-        <Accordion />
+        {/* <Accordion /> */}
+        {freezerItems.map(item => {
+          return (
+            <Accordion removeItem={props.removeItem} name={item.name} />
+          )
+        })}
         <Footer />
 
     </div>  
    
     );
-  }
 }
 
 export default Freezer;
