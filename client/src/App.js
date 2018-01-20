@@ -14,6 +14,7 @@ import Pantry from "./pages/Pantry";
 import GroceryList from "./pages/GroceryList";
 import Main from './pages/Main';
 import Navigation from './pages/Navigation';
+import APITest from "./pages/Ajax";
 
 
 
@@ -67,6 +68,7 @@ class App extends Component {
           <Route path="/pantry" component={PantryWithProps} />
           <Route path="/grocerylist" component={GroceryListWithProps} />
           <Route path="/kitchen" component={Main} />
+          <Route path="/ajax" component={APITest} />
           <Route path="*" component={NoMatch} />
         </Switch>
       </Router>
