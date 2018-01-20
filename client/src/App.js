@@ -14,8 +14,6 @@ import GroceryList from "./pages/GroceryList";
 import Main from './pages/Main';
 import Navigation from './pages/Navigation';
 
-
-
 class App extends Component {
    
   state = {
