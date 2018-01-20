@@ -166,6 +166,17 @@ let Delete = (url) => {
   .then(RejectIfErr);
 };
 
+/*
+fooditem schema:
+id: number [REQUIRED]
+name: string [REQUIRED]
+location: string ("counter", "fridge", "groceries", etc) [REQUIRED]
+quantity: number [REQUIRED]
+quanityUnits: string ("lbs", "cans", "boxes") [OPTIONAL]
+purchased: date [OPTIONAL]
+expires: date [OPTIONAL]
+*/
+
 export default {
   RegisterNewUser,
   ResetToken,
@@ -173,9 +184,9 @@ export default {
   GetUsername,
   UpdateAccount,
   DeleteAccount,
-  GetFood:    (id) => Get("/food/" + id),
-  GetFoodIn:  (location) => Get("/food/in/" + location),
-  PostFood:   (food) => Post("/food", food),
-  UpdateFood: (food) => Put("/food/" + food.id, food),
-  DeleteFood: (food) => Delete("/food/" + food.id),
+  GetFood:    (id) => Get("/food/" + id), // id is a number
+  GetFoodIn:  (location) => Get("/food/in/" + location), // location is a string
+  PostFood:   (food) => Post("/food", food), // food is a fooditem object
+  UpdateFood: (food) => Put("/food/" + food.id, food), // food is a fooditem object
+  DeleteFood: (food) => Delete("/food/" + food.id), // food is a fooditem object
 }
