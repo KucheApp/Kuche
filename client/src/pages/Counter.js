@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Footer from './Footer';
 import Navigation from './Navigation';
 import Accordion from "./Accordion";
+import AddFood from './AddFood';
 
 const styles = {
   h1: {
@@ -34,6 +35,7 @@ class Counter extends Component {
           <div className="col-2"></div>
         </div>
       </div>
+      <AddFood />
       <Accordion />
         
       <Footer />

@@ -11,7 +11,7 @@ import Fridge from "./pages/Fridge";
 import Freezer from "./pages/Freezer";
 import Pantry from "./pages/Pantry";
 import GroceryList from "./pages/GroceryList";
-import Main from './pages/Jumbotron';
+import Main from './pages/Main';
 import Navigation from './pages/Navigation';
 
 
@@ -44,7 +44,7 @@ class App extends Component {
     const pantry = () => (<Pantry state={this.state} exitApp={this.exitApp} />);
     const grocerylist = () => (<GroceryList state={this.state} exitApp={this.exitApp} />);
 
-    const jumbotron = () => (<Main state={this.state} exitApp={this.exitApp}/>);
+    const main = () => (<Main state={this.state} exitApp={this.exitApp}/>);
     
     return (
       <Router className="router">
@@ -56,7 +56,7 @@ class App extends Component {
           <Route path="/freezer" component={Freezer} />
           <Route path="/pantry" component={Pantry} />
           <Route path="/grocerylist" component={GroceryList} />
-          <Route path="/jumbotron" component={Main} />
+          <Route path="/kitchen" component={Main} />
         
           <Route path="*" component={NoMatch} />
         </Switch>
