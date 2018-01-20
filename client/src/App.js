@@ -11,7 +11,6 @@ import Fridge from "./pages/Fridge";
 import Freezer from "./pages/Freezer";
 import Pantry from "./pages/Pantry";
 import GroceryList from "./pages/GroceryList";
-import Drawer from './pages/Drawer';
 import Main from './bootstrap/Jumbotron';
 import Navigation from './bootstrap/Navigation';
 
@@ -48,7 +47,6 @@ class App extends Component {
     const pantry = () => (<Pantry state={this.state} exitApp={this.exitApp} />);
     const grocerylist = () => (<GroceryList state={this.state} exitApp={this.exitApp} />);
 
-    const drawer = () =>  (<Drawer state={this.state} exitApp={this.exitApp}/>);
     const jumbotron = () => (<Main state={this.state} exitApp={this.exitApp}/>);
     
     return (
@@ -60,7 +58,6 @@ class App extends Component {
           <Route path="/fridge" component={Fridge} />
           <Route path="/freezer" component={Freezer} />
           <Route path="/pantry" component={Pantry} />
-          <Route path="/drawer" component={Drawer} />
           <Route path="/grocerylist" component={GroceryList} />
           <Route path="/jumbotron" component={Main} />
         

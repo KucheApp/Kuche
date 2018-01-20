@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 
 const styles = {
   navigation: {
@@ -26,7 +26,7 @@ class Navigation extends Component {
         <div>
           <nav style={styles.navigation} class="navbar navbar-light bg-light justify-content-center">
             <form style={styles.form} class="form-inline justify-content-center">
-              <button style={styles.button} class="btn btn-sm btn-outline-secondary " type="button">Button</button>
+             <NavLink to="/"><button style={styles.button} class="btn btn-sm btn-outline-success" type="button">Button</button> </NavLink>
               <button style={styles.button} class="btn btn-sm btn-outline-secondary " type="button">Button</button>
               <button style={styles.button} class="btn btn-sm btn-outline-secondary " type="button">Button</button>
               <button style={styles.button} class="btn btn-sm btn-outline-secondary " type="button">Button</button>
