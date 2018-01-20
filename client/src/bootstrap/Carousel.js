@@ -18,16 +18,16 @@ class Carousel extends Component {
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img className="d-block w-100 mh-25" src={Freezer} alt="First slide"/>
+            <img className="d-block" src={Freezer} alt="First slide"/>
           </div>
           <div className="carousel-item">
-            <img className="d-block w-100 mh-25" src={Fridge} alt="Second slide"/>
+            <img className="d-block" src={Fridge} alt="Second slide"/>
           </div>
           <div className="carousel-item">
-            <img className="d-block w-100 mh-25" src={Pantry} alt="Third slide"/>
+            <img className="d-block" src={Pantry} alt="Third slide"/>
           </div>
           <div className="carousel-item">
-            <img className="d-block w-100 mh-25" src={Counter} alt="Fourth slide"/>
+            <img className="d-block" src={Counter} alt="Fourth slide"/>
           </div>
         </div>
         <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
