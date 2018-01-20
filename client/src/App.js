@@ -22,7 +22,14 @@ class App extends Component {
     email: "",
     password: "",
     username: "",
-    token: ""
+    token: "",
+    items: [{location: 'freezer', name: 'pizza'}, {location: 'freezer', name: 'Chocolate Chips'}, {location: 'pantry', name: 'Peanut Butter'}]
+  }
+
+  removeItem = (name) => {
+    this.setState({
+      items: this.state.items.filter((item) => item.name !== name)
+    })
   }
 
   enterApp = (state) => this.setState(state);
@@ -41,7 +48,7 @@ class App extends Component {
     
     const counter = () => (<Counter state={this.state} exitApp={this.exitApp} />);
     const fridge = () => (<Fridge state={this.state} exitApp={this.exitApp} />);
-    const freezer = () => (<Freezer state={this.state} exitApp={this.exitApp} />);
+    const FreezerWithProps = () => <Freezer items={this.state.items} removeItem={this.removeitem} exitApp={this.exitApp} />;
     const pantry = () => (<Pantry state={this.state} exitApp={this.exitApp} />);
     const grocerylist = () => (<GroceryList state={this.state} exitApp={this.exitApp} />);
 
@@ -54,7 +61,7 @@ class App extends Component {
         
           <Route path="/counter" component={Counter} />
           <Route path="/fridge" component={Fridge} />
-          <Route path="/freezer" component={Freezer} />
+          <Route path="/freezer" component={FreezerWithProps} />
           <Route path="/pantry" component={Pantry} />
           <Route path="/grocerylist" component={GroceryList} />
           <Route path="/kitchen" component={Main} />
