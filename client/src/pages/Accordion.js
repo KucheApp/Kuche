@@ -23,7 +23,7 @@ class Accordion extends Component {
                   </h5>
                 </div>
 
-                <div id="collapseOne" className="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                <div id="collapseOne" className="collapse hide" role="tabpanel" aria-labelledby="headingOne">
                   <div className="card-block">
                     (Info will go here!)
                   </div>

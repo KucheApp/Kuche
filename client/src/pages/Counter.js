@@ -20,7 +20,7 @@ class Counter extends Component {
       <div className="container">
         <div className="row">
           <div className="col-3">
-            <Navigation />
+            {/* <Navigation /> */}
           </div>
         </div>
       </div>
@@ -46,3 +46,5 @@ class Counter extends Component {
 }
 
 export default Counter;
+
+
