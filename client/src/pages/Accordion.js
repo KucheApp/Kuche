@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
+import shortid from 'shortid';
 
 class Accordion extends Component {
+
+  state= {
+    id: shortid()
+  }
+
 
     render() {
 
       return (
-      <div className="container">
-        s<div className="row">
+        <div className="row" id={this.id}>
           <div className="col-2"></div>
           <div className="col-8">
-            <div id="accordion" role="tablist" aria-multiselectable="true">
+            <div className="accordion" role="tablist" aria-multiselectable="true">
               <div className="card">
-                <div className="card-header" role="tab" id="headingOne">
+                <div className="card-header" role="tab">
                   <button type="button" className="close" aria-label="Close" position="right">
-                    <span aria-hidden="true" onCLick={() => this.removeItem}>&times;</span>
+                    <span aria-hidden="true" >&times;</span>
                   </button>
                   <h5 className="mb-0">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -26,14 +31,12 @@ class Accordion extends Component {
 
                 <div id="collapseOne" className="collapse hide" role="tabpanel" aria-labelledby="headingOne">
                   <div className="card-block">
-                    (Info will go here!)
+                  {this.props.location}
                   </div>
                 </div>
               </div>
               </div>
             </div>
-          <div classNameName="col-2"></div>
-        </div>
        
       </div>
       )
@@ -41,3 +44,6 @@ class Accordion extends Component {
 }
 
 export default Accordion;
+
+
+// onCLick={() => this.props.removeItem}
