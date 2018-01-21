@@ -37,7 +37,7 @@ const Freezer = (props) => {
         {/* <Accordion /> */}
         {freezerItems.map(item => {
           return (
-            <Accordion removeItem={props.removeItem} name={item.name} />
+            <Accordion id={this.id} removeItem={props.removeItem} name={item.name} location={item.location}/>
           )
         })}
         <Footer />

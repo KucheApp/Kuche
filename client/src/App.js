@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import shortid from 'shortid';
 
 // import "./App.css";
 
@@ -13,6 +14,7 @@ import Pantry from "./pages/Pantry";
 import GroceryList from "./pages/GroceryList";
 import Main from './pages/Main';
 import Navigation from './pages/Navigation';
+import APITest from "./pages/Ajax";
 
 class App extends Component {
    
@@ -21,7 +23,8 @@ class App extends Component {
     password: "",
     username: "",
     token: "",
-    items: [{location: 'freezer', name: 'pizza'}, {location: 'freezer', name: 'Chocolate Chips'}, {location: 'pantry', name: 'Peanut Butter'}]
+    items: [{location: 'freezer', name: 'pizza'}, {location: 'freezer', name: 'Chocolate Chips'}, {location: 'pantry', name: 'Peanut Butter'}, {location: "freezer", name: "ice cream"}],
+    id: shortid()
   }
 
   removeItem = (name) => {
@@ -44,11 +47,11 @@ class App extends Component {
   render() {
     const landing = () => (<Landing enterApp={this.enterApp} />);
     
-    const counter = () => (<Counter state={this.state} exitApp={this.exitApp} />);
-    const fridge = () => (<Fridge state={this.state} exitApp={this.exitApp} />);
-    const FreezerWithProps = () => <Freezer items={this.state.items} removeItem={this.removeitem} exitApp={this.exitApp} />;
-    const pantry = () => (<Pantry state={this.state} exitApp={this.exitApp} />);
-    const grocerylist = () => (<GroceryList state={this.state} exitApp={this.exitApp} />);
+    const CounterWithProps = () => (<Counter state={this.state} removeItem={this.removeItem} exitApp={this.exitApp} />);
+    const FridgeWithProps = () => (<Fridge state={this.state} removeItem={this.removeItem} exitApp={this.exitApp} />);
+    const FreezerWithProps = () => <Freezer items={this.state.items} removeItem={this.removeItem} exitApp={this.exitApp} />;
+    const PantryWithProps = () => (<Pantry state={this.state} removeItems={this.removeItem} exitApp={this.exitApp} />);
+    const GroceryListWithProps = () => (<GroceryList state={this.state} removeItems={this.removeItem} exitApp={this.exitApp} />);
 
     const main = () => (<Main state={this.state} exitApp={this.exitApp}/>);
 
@@ -57,12 +60,13 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={landing} />
         
-          <Route path="/counter" component={Counter} />
-          <Route path="/fridge" component={Fridge} />
+          <Route path="/counter" component={CounterWithProps} />
+          <Route path="/fridge" component={FridgeWithProps} />
           <Route path="/freezer" component={FreezerWithProps} />
-          <Route path="/pantry" component={Pantry} />
-          <Route path="/grocerylist" component={GroceryList} />
+          <Route path="/pantry" component={PantryWithProps} />
+          <Route path="/grocerylist" component={GroceryListWithProps} />
           <Route path="/kitchen" component={Main} />
+          <Route path="/ajax" component={APITest} />
           <Route path="*" component={NoMatch} />
         </Switch>
       </Router>

@@ -30,12 +30,13 @@ class Navigation extends Component {
         <div>
             <nav style={styles.navigation} className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
               </button>
               <a className="navbar-brand" href="#">Kuche
                 <img src="./imgs/2.jpg" style={styles.img} alt="" />
               </a>
+<<<<<<< HEAD
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
@@ -55,6 +56,27 @@ class Navigation extends Component {
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/GroceryList">Grocery List</a>
+=======
+              <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                  <li className="nav-item active">
+                    <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Counter</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Fridge</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Freezer</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Pantry</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">Grocery List</a>
+>>>>>>> 9d15dd720e7f548eb50c00233ce11bea062fdff4
                   </li>
                 </ul>
               </div>
