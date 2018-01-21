@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Footer from './Footer';
 import Navigation from './Navigation';
 import Accordion from "./Accordion";
+import shortid from "shortid";
 
 const styles = {
   h1: {
@@ -34,16 +35,16 @@ const Freezer = (props) => {
           <div className="col-2"></div>
         </div>
       </div>
-        {/* <Accordion /> */}
-        {freezerItems.map(item => {
-          return (
-            <Accordion id={this.id} removeItem={props.removeItem} name={item.name} location={item.location}/>
-          )
-        })}
-        <Footer />
-
-    </div>  
-   
+      <div>
+        {
+          freezerItems.map(item => {
+            return (
+              <Accordion key={shortid()} id={shortid()} removeItem={props.removeItem} name={item.name} location={item.location}/>
+            )
+          })
+        }
+      </div>
+    </div>
     );
 }
 
