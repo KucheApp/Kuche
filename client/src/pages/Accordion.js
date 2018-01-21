@@ -9,7 +9,6 @@ class Accordion extends Component {
     id: shortid()
   }
 
-
     render() {
 
       return (

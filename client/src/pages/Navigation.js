@@ -36,27 +36,6 @@ class Navigation extends Component {
               <a className="navbar-brand" href="#">Kuche
                 <img src="./imgs/2.jpg" style={styles.img} alt="" />
               </a>
-<<<<<<< HEAD
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="/Kitchen">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Counter">Counter</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Fridge">Fridge</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Freezer">Freezer</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Pantry">Pantry</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/GroceryList">Grocery List</a>
-=======
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                   <li className="nav-item active">
@@ -76,7 +55,6 @@ class Navigation extends Component {
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#">Grocery List</a>
->>>>>>> 9d15dd720e7f548eb50c00233ce11bea062fdff4
                   </li>
                 </ul>
               </div>

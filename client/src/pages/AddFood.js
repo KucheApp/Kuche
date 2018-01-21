@@ -1,27 +1,8 @@
 import React, { Component } from 'react';
-import { array } from '../../../../AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/prop-types';
-
-// class AddFood extends Component {
-
-//    render() {
-//       return(
-//          <div className="container">
-
-//             <form>
-//                <div className="form-group row">
-//                   <label for="input" className="col-sm-2 col-form-label">Text</label>
-//                   <div className="col-sm-10">
-//                      <input type="text" className="form-control" id="input" placeholder="Add food" />
-//                      <button type="submit" className="btn-primary">Add</button>
-//                   </div>
-//                </div>
-//             </form>
-         
-//          </div>
-//       );
-//    }
-// }
-
+// import { array } from '../../../../AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/prop-types';
+import axios from 'axios';
+import API from "../api";
+import Accordion from './Accordion';
 
 
 
@@ -39,7 +20,6 @@ const AddFood = (props) => (
       </form>
    </div>
 );
-
 
 
 export default AddFood;
