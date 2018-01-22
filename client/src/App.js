@@ -18,7 +18,7 @@ import APITest from "./pages/Ajax";
 import Push from './pages/Push';
 
 class App extends Component {
-   
+
   state = {
     email: "",
     password: "",
@@ -58,8 +58,7 @@ class App extends Component {
 
   render() {
     const landing = () => (<Landing enterApp={this.enterApp} />);
-    
-    const CounterWithProps = () => (<Counter state={this.state.items} removeItem={this.removeItem} exitApp={this.exitApp} />);
+    const CounterWithProps = () => (<Counter state={this.state} removeItem={this.removeItem} exitApp={this.exitApp} />);
     const FridgeWithProps = () => (<Fridge state={this.state} removeItem={this.removeItem} exitApp={this.exitApp} />);
     const FreezerWithProps = () => <Freezer items={this.state.items} removeItem={this.removeItem} exitApp={this.exitApp} />;
     const PantryWithProps = () => (<Pantry state={this.state} removeItems={this.removeItem} exitApp={this.exitApp} />);
@@ -72,7 +71,7 @@ class App extends Component {
       <Router className="router">
         <Switch>
           <Route exact path="/" component={landing} />
-        
+
           <Route path="/counter" component={CounterWithProps} />
           <Route path="/fridge" component={FridgeWithProps} />
           <Route path="/freezer" component={FreezerWithProps} />
