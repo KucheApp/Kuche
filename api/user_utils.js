@@ -49,46 +49,8 @@ module.exports = {
         var newSalt = cu.newSaltSync(values.email);
         var makePassword = cu.hashPassword(values.password, newSalt);
         var encryptUsername = cu.encrypt(values.username, newSalt);
-        var reEncryptImages = Garment.findAll({where: {UserId: user.id}})
-          .then(function(garments) {
-            var decrypts = [];
-            var ids = [];
-            for (var i = 0; i < garments.length; i++) {
-              var g = garments[i];
-              decrypts.push(cu.decrypt(g.dataValues.image, oldSalt));
-              ids.push(g.id);
-            }
-            return Promise.all(decrypts)
-              .then(function(plaintexts) {
-                var pairs = [];
-                for (var i = 0; i < plaintexts.length; i++) {
-                  pairs.push({
-                    image: plaintexts[i],
-                    garmentId: ids[i]
-                  })
-                }
-                return pairs
-              })
-          })
-          .then(function(plaintextPairs) {
-            var encrypts = [];
-            var ids = [];
-            for (var i = 0; i < plaintextPairs.length; i++) {
-              var p = plaintextPairs[i];
-              encrypts.push(cu.encrypt(p.image, newSalt))
-              ids.push(p.garmentId)
-            }
-            return Promise.all(encrypts)
-              .then(function(ciphertexts) {
-                var updateGarments = [];
-                for (var i = 0; i < ciphertexts.length; i++) {
-                  var payload = {image: ciphertexts[i]};
-                  updateGarments.push(Garment.update(payload, {where: {id: ids[i]}}))
-                }
-                return Promise.all(updateGarments);
-              })
-          })
-        var promises = [hashEmail, newSalt, makePassword, encryptUsername, reEncryptImages];
+
+        var promises = [hashEmail, newSalt, makePassword, encryptUsername];
         return Promise.all(promises)
           .then(function(values) {
             return user.update({

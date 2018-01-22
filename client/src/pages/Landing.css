@@ -38,3 +38,12 @@ only screen and (min-resolution: 2dppx) {
   margin-top: 2rem;
   color: white;
 }
+
+.footer-text {
+  color: white;
+}
+
+.footer-text a {
+  color: white;
+  text-decoration: underline;
+}

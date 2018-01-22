@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import API from "../api";
+
 const styles = {
   navigation: {
     // position: 'fixed',
@@ -55,6 +57,9 @@ class Navigation extends Component {
                   </li>
                   <li className="nav-item">
                     <NavLink to="/grocerylist"><a className="nav-link" href="#">Grocery List</a></NavLink>
+                  </li>
+                  <li className="nav-item right">
+                    <a href="javascript:undefined" className="nav-link" onClick={() => API.LogOut()}>Log Out</a>
                   </li>
                 </ul>
               </div>
