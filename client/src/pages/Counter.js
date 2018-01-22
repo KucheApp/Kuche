@@ -6,22 +6,21 @@ import Navigation from './Navigation';
 import Accordion from "./Accordion";
 import AddFood from './AddFood';
 
+
 const styles = {
   h1: {
     color: "white",
   }
 }
 
-class Counter extends Component {
+const Counter = (props) => {
+  // const counterItems = props.items.filter(item => item.location === "counter");
 
-  render() {
     return (
     <div>
       <div className="container">
         <div className="row">
-          <div className="col-3">
-            {/* <Navigation /> */}
-          </div>
+            <Navigation />
         </div>
       </div>
 
@@ -35,15 +34,20 @@ class Counter extends Component {
           <div className="col-2"></div>
         </div>
       </div>
+
+  
       <AddFood />
-      <Accordion />
-        
+              <Accordion />
+              {/* {counterItems.map(item => {
+          return (
+            <Accordion id={this.id} removeItem={props.removeItem} name={item.name} location={item.location}/>
+          )  
+        })} */}
       <Footer />
     </div>  
    
     );
   }
-}
 
 export default Counter;
 

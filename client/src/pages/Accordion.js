@@ -2,16 +2,34 @@ import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import shortid from 'shortid';
+import API from '../api';
+
+let foodItem = {
+  id: this.id
+};
+
 
 class Accordion extends Component {
+
+  handleDelete = () => {
+    API.DeleteFood(foodItem).then(response => {
+      console.log(response);
+    })
+  }
+
+  componentDidMount() {
+    this.handleDelete();
+  }
+
+
   render() {
     return (
       <div className="accordion row">
         <div className="offset-2 col-8">
           <div className="card">
             <div className="card-header">
-              <button type="button" className="close" aria-label="Close" position="right" onClick={() => this.props.removeItem(this.props.name)}>
-                <span aria-hidden="true">&times;</span>
+              <button type="button" className="close" aria-label="Close" position="right">
+                <span aria-hidden="true" onClick={() => this.props.handleDelete}>&times;</span>
               </button>
               <h5 className="mb-0">
                 <a href={"#hidden" + this.props.id} role="button" aria-expanded="false" aria-controls={"hidden" + this.props.id} data-toggle="collapse">
@@ -33,6 +51,3 @@ class Accordion extends Component {
 }
 
 export default Accordion;
-
-
-// onCLick={() => this.props.removeItem}
