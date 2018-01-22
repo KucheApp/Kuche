@@ -8,6 +8,19 @@ let GetToken = () => {
 
 let SaveToken = (token) => window.localStorage.setItem("access_token", token);
 
+let IfHasToken = () => {
+  if (GetToken() === null) return Promise.resolve(false);
+  return axios.get("/api/username")
+  .then(username => {
+    return true;
+  })
+  .catch(err => {
+    console.log(err);
+    SaveToken("");
+    return false;
+  })
+}
+
 let GetEmail = () => {
   let email = window.localStorage.getItem("saved_email");
   if (email == undefined) return null;
@@ -93,10 +106,12 @@ let DeleteAccount = (email, password, username) => {
   let data = { username };
   return axios({ url, method, auth, headers, data })
   .then(RejectIfErr)
-  .then(() => {
-    SaveEmail("");
-    SaveToken("");
-  })
+  .then(() => LogOut())
+};
+
+let LogOut = () => {
+  SaveEmail("");
+  SaveToken("");
 };
 
 let GetUsername = (email, password) => {
@@ -114,7 +129,7 @@ let GetUsername = (email, password) => {
   return axios({ url, auth, headers })
   .then(RejectIfErr)
   .then(data => data.username);
-}
+};
 
 let Get = (url) => {
   url = "/api" + url;
@@ -174,7 +189,7 @@ let SearchFood = (query) => {
   let url = `https://${nutrition_heroku_name}.herokuapp.com/search?food=${escaped_query}`;
   return axios.get(url)
   .then(response => response.data);
-}
+};
 
 let SearchFoodById = (id) => {
   let url = `https://${nutrition_heroku_name}.herokuapp.com/search?id=${id}`;
@@ -184,7 +199,7 @@ let SearchFoodById = (id) => {
     if (results.length < 1) return null;
     return results[0];
   })
-}
+};
 
 /*
 fooditem schema:
@@ -201,10 +216,12 @@ nutritionId: number [OPTIONAL]
 export default {
   RegisterNewUser, // takes email, password, and username as strings. returns a promise that resolves to a new token, and also saves that token to localstorage.
   ResetToken, // takes email and password as strings. returns a promise that resolves to a new token, and also saves that token to localstorage.
+  IfHasToken, // takes no arguments, returns true if localstorage token is valid, otherwise false.
   GetEmail, // takes no arguments. returns either the localStorage email or null.
   GetUsername, // takes email, password as strings
   UpdateAccount, // takes oldEmail, oldPassword, oldUsername, newEmail, newPassword, newUsername as strings. returns a promise.
   DeleteAccount, // takes email, password, and username as strings. returns a promise.
+  LogOut, // takes no arguments.
   GetFood:    (id) => Get("/food/" + id), // id is a number. returns a promise.
   GetFoodIn:  (location) => Get("/food/in/" + location), // location is a string. returns a promise.
   PostFood:   (food) => Post("/food", food), // food is a fooditem object. returns a promise.

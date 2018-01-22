@@ -10,6 +10,9 @@ const styles = {
     width: '100%',
     textAlign: 'center',
     height: '60px',
+  },
+  footerText: {
+    color: "white"
   }
 }
 
@@ -19,7 +22,7 @@ class Footer extends Component {
       <div>
         <Navigation />
       <footer style={styles.footer} className="container-fluid w-100 bg-secondary text-black">
-        &copy; 2018 | Kuche: Created by <a href="https://github.com/SuperBerny">Brian Patrick</a>, <a href="https://github.com/chelseymarie6"> Chelsey Dolan</a>, and <a href="https://github.com/quells">Kai Wells</a>
+        <p className="footer-text">&copy; 2018 | Kuche: Created by <a href="https://github.com/SuperBerny">Brian Patrick</a>, <a href="https://github.com/chelseymarie6"> Chelsey Dolan</a>, and <a href="https://github.com/quells">Kai Wells</a></p>
       </footer>
       </div>
     );
@@ -27,4 +30,3 @@ class Footer extends Component {
 }
 
 export default Footer;
-

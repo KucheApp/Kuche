@@ -75,16 +75,45 @@ class Landing extends Component {
     }
   };
 
+  componentDidMount() {
+    API.IfHasToken()
+    .then(hasToken => {
+      if (hasToken) {
+        this.setState({goToApp: true});
+      }
+    })
+  }
+
+  handleKeyPress = (event) => {
+    let key = event.key;
+    let target = event.target;
+    switch (key) {
+      case "Enter":
+        switch (target.name) {
+          case "username":
+          case "password":
+            this.handleLogin();
+            break;
+          default:
+            this.handleRegister();
+            break;
+        }
+        break
+      default:
+        return;
+    }
+  };
+
   render() {
     if (this.state.goToApp) {
       return (<Redirect to="/kitchen" />);
     }
     let logInBtn = <LoginButton text="Log In" onClick={this.handleLogin} />;
     let registerBtn = <LoginButton text="Register" onClick={this.handleRegister} />;
-    return (     
-      
+    return (
+
       <div className="Landing">
-        
+
         <header className="Landing-Header">
           <img src={logo} className="Landing-Logo" alt="Kuche Logo" />
         </header>
@@ -98,12 +127,14 @@ class Landing extends Component {
                   icon="envelope" type="text"
                   value={this.state.username}
                   onChange={this.handleInputChange}
+                  onKeyPress={this.handleKeyPress}
                 />
                 <LoginInput
                   name="password" placeholder="Password"
                   icon="lock" type="password"
                   value={this.state.password}
                   onChange={this.handleInputChange}
+                  onKeyPress={this.handleKeyPress}
                 />
                 {logInBtn}
                 {registerBtn}
@@ -117,18 +148,21 @@ class Landing extends Component {
                   icon="envelope" type="text"
                   value={this.state.registerUsername}
                   onChange={this.handleInputChange}
+                  onKeyPress={this.handleKeyPress}
                 />
                 <LoginInput
                   name="registerDisplayName" placeholder="Display Name"
                   icon="user" type="text"
                   value={this.state.registerDisplayName}
                   onChange={this.handleInputChange}
+                  onKeyPress={this.handleKeyPress}
                 />
                 <LoginInput
                   name="registerPassword" placeholder="Password"
                   icon="lock" type="password"
                   value={this.state.registerPassword}
                   onChange={this.handleInputChange}
+                  onKeyPress={this.handleKeyPress}
                 />
                 {registerBtn}
               </div>
@@ -140,10 +174,10 @@ class Landing extends Component {
   };
 };
 
-const LoginInput = ({name, icon, type, value, placeholder, onChange}) => (
+const LoginInput = ({name, icon, type, value, placeholder, onChange, onKeyPress}) => (
   <div className="pageapp-login-input">
     <i className={"login-icon fa fa-" + icon} />
-    <input type={type} name={name} value={value} placeholder={placeholder} onChange={onChange} />
+    <input type={type} name={name} value={value} placeholder={placeholder} onChange={onChange} onKeyPress={onKeyPress} />
   </div>
 );
 
