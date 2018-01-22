@@ -15,6 +15,7 @@ import GroceryList from "./pages/GroceryList";
 import Main from './pages/Main';
 import Navigation from './pages/Navigation';
 import APITest from "./pages/Ajax";
+import Push from './pages/Push';
 
 
 
@@ -26,13 +27,25 @@ class App extends Component {
     username: "",
     token: "",
     items: [{location: 'freezer', name: 'pizza'}, {location: 'freezer', name: 'Chocolate Chips'}, {location: 'pantry', name: 'Peanut Butter'}, {location: "freezer", name: "ice cream"}],
-    id: shortid()
+    id: shortid(),
+    testItems: [],
   }
+
+  addItem = this.addItem.bind(this);
 
   removeItem = (name) => {
     this.setState({
       items: this.state.items.filter((item) => item.name !== name)
     })
+  }
+
+  addItem() {
+    this.setState({
+      testItems: this.state.testItems.concat("new"),
+    }, () => {
+      console.log(this.state.testItems)
+    });
+  
   }
 
   enterApp = (state) => this.setState(state);
@@ -54,6 +67,7 @@ class App extends Component {
     const FreezerWithProps = () => <Freezer items={this.state.items} removeItem={this.removeItem} exitApp={this.exitApp} />;
     const PantryWithProps = () => (<Pantry state={this.state} removeItems={this.removeItem} exitApp={this.exitApp} />);
     const GroceryListWithProps = () => (<GroceryList state={this.state} removeItems={this.removeItem} exitApp={this.exitApp} />);
+    const PushWithProps = () => (<Push state={this.state} addItem={this.addItem} exitApp={this.exitApp}/>);
 
     const main = () => (<Main state={this.state} exitApp={this.exitApp}/>);
 
@@ -69,6 +83,7 @@ class App extends Component {
           <Route path="/grocerylist" component={GroceryListWithProps} />
           <Route path="/kitchen" component={Main} />
           <Route path="/ajax" component={APITest} />
+          <Route path="/push" component={PushWithProps} />;
           <Route path="*" component={NoMatch} />
         </Switch>
       </Router>
