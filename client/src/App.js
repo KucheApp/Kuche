@@ -17,8 +17,6 @@ import Navigation from './pages/Navigation';
 import APITest from "./pages/Ajax";
 import Push from './pages/Push';
 
-
-
 class App extends Component {
    
   state = {
@@ -26,9 +24,8 @@ class App extends Component {
     password: "",
     username: "",
     token: "",
-    items: [{location: 'freezer', name: 'pizza'}, {location: 'freezer', name: 'Chocolate Chips'}, {location: 'pantry', name: 'Peanut Butter'}, {location: "freezer", name: "ice cream"}],
-    id: shortid(),
-    testItems: [],
+    items: [{location: 'freezer', name: 'pizza'}, {location: 'freezer', name: 'Chocolate Chips'}, {location: 'pantry', name: 'Peanut Butter'}, {location: "freezer", name: "ice cream"}, {location: "counter", name: "bread"}],
+    id: shortid()
   }
 
   addItem = this.addItem.bind(this);
@@ -62,7 +59,7 @@ class App extends Component {
   render() {
     const landing = () => (<Landing enterApp={this.enterApp} />);
     
-    const CounterWithProps = () => (<Counter state={this.state} removeItem={this.removeItem} exitApp={this.exitApp} />);
+    const CounterWithProps = () => (<Counter state={this.state.items} removeItem={this.removeItem} exitApp={this.exitApp} />);
     const FridgeWithProps = () => (<Fridge state={this.state} removeItem={this.removeItem} exitApp={this.exitApp} />);
     const FreezerWithProps = () => <Freezer items={this.state.items} removeItem={this.removeItem} exitApp={this.exitApp} />;
     const PantryWithProps = () => (<Pantry state={this.state} removeItems={this.removeItem} exitApp={this.exitApp} />);
