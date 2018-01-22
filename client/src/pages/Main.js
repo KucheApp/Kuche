@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
-import './Jumbotron.css';
 import Footer from './Footer';
-import Carousel from './Carousel';
 import Kitchen from './Kitchen';
 import Navigation from './Navigation';
 

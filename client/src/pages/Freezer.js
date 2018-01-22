@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
-import Footer from '../bootstrap/Footer';
-import Navigation from '../bootstrap/Navigation';
+import Footer from './Footer';
+import Navigation from './Navigation';
 import Accordion from "./Accordion";
+import shortid from "shortid";
 
 const styles = {
   h1: {
@@ -11,9 +12,9 @@ const styles = {
   }
 }
 
-class Freezer extends Component {
+const Freezer = (props) => {
+    const freezerItems = props.items.filter(item => item.location === 'freezer');
 
-  render() {
     return (
     <div>
       <div className="container">
@@ -34,13 +35,17 @@ class Freezer extends Component {
           <div className="col-2"></div>
         </div>
       </div>
-        <Accordion />
-        <Footer />
-
-    </div>  
-   
+      <div>
+        {
+          freezerItems.map(item => {
+            return (
+              <Accordion key={shortid()} id={shortid()} removeItem={props.removeItem} name={item.name} location={item.location}/>
+            )
+          })
+        }
+      </div>
+    </div>
     );
-  }
 }
 
 export default Freezer;

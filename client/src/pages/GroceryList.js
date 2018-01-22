@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
-import Footer from '../bootstrap/Footer';
-import Navigation from '../bootstrap/Navigation';
+import Footer from './Footer';
+import Navigation from './Navigation';
 import Accordion from "./Accordion";
+import API from '../api';
+import shortid from 'shortid';
 
 const styles = {
   h1: {
@@ -11,7 +13,30 @@ const styles = {
   }
 }
 
+let foodItem = {
+  name: "collected from food form",
+  location: "freezer",
+  quanity: 0,
+  purchaseDate: new Date().toLocaleTimeString(),
+  expirationDate: "date",
+}
+
 class GroceryList extends Component {
+
+  state = {
+    items: [],
+  }
+
+  handleUpdateItems = () => {
+    API.GetFoodIn('grocery list').then(response => {
+      console.log(response)
+      this.setState({items: response.fooditems})
+    })
+  }
+
+componentDidMount() {
+  this.handleUpdateItems();
+}
 
   render() {
     return (
@@ -34,8 +59,13 @@ class GroceryList extends Component {
           <div className="col-2"></div>
         </div>
       </div>
-      <Accordion />
-        
+
+      {this.state.items.map(item => {
+        return(
+          <Accordion key={shortid()} id={item.id} name={item.name} location={item.location} />
+        );
+      })}
+
       <Footer />
     </div>  
    

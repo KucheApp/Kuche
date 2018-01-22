@@ -8,6 +8,19 @@ let GetToken = () => {
 
 let SaveToken = (token) => window.localStorage.setItem("access_token", token);
 
+let IfHasToken = () => {
+  if (GetToken() === null) return Promise.resolve(false);
+  return axios.get("/api/username")
+  .then(username => {
+    return true;
+  })
+  .catch(err => {
+    console.log(err);
+    SaveToken("");
+    return false;
+  })
+}
+
 let GetEmail = () => {
   let email = window.localStorage.getItem("saved_email");
   if (email == undefined) return null;
@@ -40,8 +53,9 @@ let RegisterNewUser = (email, password, username) => {
   });
 };
 
-let ResetToken = (username, password) => {
-  SaveEmail(username);
+let ResetToken = (email, password) => {
+  SaveEmail(email);
+  let username = email;
   return axios({
     url: "/api/token",
     auth: { username, password }
@@ -92,10 +106,12 @@ let DeleteAccount = (email, password, username) => {
   let data = { username };
   return axios({ url, method, auth, headers, data })
   .then(RejectIfErr)
-  .then(() => {
-    SaveEmail("");
-    SaveToken("");
-  })
+  .then(() => LogOut())
+};
+
+let LogOut = () => {
+  SaveEmail("");
+  SaveToken("");
 };
 
 let GetUsername = (email, password) => {
@@ -113,7 +129,7 @@ let GetUsername = (email, password) => {
   return axios({ url, auth, headers })
   .then(RejectIfErr)
   .then(data => data.username);
-}
+};
 
 let Get = (url) => {
   url = "/api" + url;
@@ -166,16 +182,51 @@ let Delete = (url) => {
   .then(RejectIfErr);
 };
 
+let nutrition_heroku_name = "fathomless-chamber-12891";
+
+let SearchFood = (query) => {
+  let escaped_query = encodeURIComponent(query);
+  let url = `https://${nutrition_heroku_name}.herokuapp.com/search?food=${escaped_query}`;
+  return axios.get(url)
+  .then(response => response.data);
+};
+
+let SearchFoodById = (id) => {
+  let url = `https://${nutrition_heroku_name}.herokuapp.com/search?id=${id}`;
+  return axios.get(url)
+  .then(response => response.data)
+  .then(results => {
+    if (results.length < 1) return null;
+    return results[0];
+  })
+};
+
+/*
+fooditem schema:
+id: number [REQUIRED]
+name: string [REQUIRED]
+location: string ("counter", "fridge", "groceries", etc) [REQUIRED]
+quantity: number [REQUIRED]
+quanityUnits: string ("lbs", "cans", "boxes") [OPTIONAL]
+purchased: date [OPTIONAL]
+expires: date [OPTIONAL]
+nutritionId: number [OPTIONAL]
+*/
+
 export default {
-  RegisterNewUser,
-  ResetToken,
-  GetEmail,
-  GetUsername,
-  UpdateAccount,
-  DeleteAccount,
-  GetFood:    (id) => Get("/food/" + id),
-  GetFoodIn:  (location) => Get("/food/in/" + location),
-  PostFood:   (food) => Post("/food", food),
-  UpdateFood: (food) => Put("/food/" + food.id, food),
-  DeleteFood: (food) => Delete("/food/" + food.id),
+  RegisterNewUser, // takes email, password, and username as strings. returns a promise that resolves to a new token, and also saves that token to localstorage.
+  ResetToken, // takes email and password as strings. returns a promise that resolves to a new token, and also saves that token to localstorage.
+  IfHasToken, // takes no arguments, returns true if localstorage token is valid, otherwise false.
+  GetEmail, // takes no arguments. returns either the localStorage email or null.
+  GetUsername, // takes email, password as strings
+  UpdateAccount, // takes oldEmail, oldPassword, oldUsername, newEmail, newPassword, newUsername as strings. returns a promise.
+  DeleteAccount, // takes email, password, and username as strings. returns a promise.
+  LogOut, // takes no arguments.
+  GetFood:    (id) => Get("/food/" + id), // id is a number. returns a promise.
+  GetFoodIn:  (location) => Get("/food/in/" + location), // location is a string. returns a promise.
+  PostFood:   (food) => Post("/food", food), // food is a fooditem object. returns a promise.
+  UpdateFood: (food) => Put("/food/" + food.id, food), // food is a fooditem object. returns a promise.
+  DeleteFood: (food) => Delete("/food/" + food.id), // food is a fooditem object. returns a promise.
+  SearchFood, // takes a query string. returns a promise that resolves to a list of possible items with nutrition information.
+  SearchFoodById, // takes an id as number or string. returns a promise that resolves to a list of a single item with nutrition information.
 }

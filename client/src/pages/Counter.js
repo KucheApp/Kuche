@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
-import Footer from '../bootstrap/Footer';
-import Navigation from '../bootstrap/Navigation';
+import Footer from './Footer';
+import Navigation from './Navigation';
 import Accordion from "./Accordion";
+import AddFood from './AddFood';
+
 
 const styles = {
   h1: {
@@ -11,16 +13,14 @@ const styles = {
   }
 }
 
-class Counter extends Component {
+const Counter = (props) => {
+  // const counterItems = props.items.filter(item => item.location === "counter");
 
-  render() {
     return (
     <div>
       <div className="container">
         <div className="row">
-          <div className="col-3">
             <Navigation />
-          </div>
         </div>
       </div>
 
@@ -34,13 +34,21 @@ class Counter extends Component {
           <div className="col-2"></div>
         </div>
       </div>
-      <Accordion />
-        
+
+  
+      <AddFood />
+              <Accordion />
+              {/* {counterItems.map(item => {
+          return (
+            <Accordion id={this.id} removeItem={props.removeItem} name={item.name} location={item.location}/>
+          )  
+        })} */}
       <Footer />
     </div>  
    
     );
   }
-}
 
 export default Counter;
+
+
