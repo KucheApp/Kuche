@@ -40,8 +40,9 @@ let RegisterNewUser = (email, password, username) => {
   });
 };
 
-let ResetToken = (username, password) => {
-  SaveEmail(username);
+let ResetToken = (email, password) => {
+  SaveEmail(email);
+  let username = email;
   return axios({
     url: "/api/token",
     auth: { username, password }
@@ -166,12 +167,23 @@ let Delete = (url) => {
   .then(RejectIfErr);
 };
 
+let nutrition_heroku_name = "fathomless-chamber-12891";
+
 let SearchFood = (query) => {
-  let heroku_name = "fathomless-chamber-12891"
   let escaped_query = encodeURIComponent(query);
-  let url = `https://${heroku_name}.herokuapp.com/search?food=${escaped_query}`;
+  let url = `https://${nutrition_heroku_name}.herokuapp.com/search?food=${escaped_query}`;
   return axios.get(url)
   .then(response => response.data);
+}
+
+let SearchFoodById = (id) => {
+  let url = `https://${nutrition_heroku_name}.herokuapp.com/search?id=${id}`;
+  return axios.get(url)
+  .then(response => response.data)
+  .then(results => {
+    if (results.length < 1) return null;
+    return results[0];
+  })
 }
 
 /*
@@ -183,19 +195,21 @@ quantity: number [REQUIRED]
 quanityUnits: string ("lbs", "cans", "boxes") [OPTIONAL]
 purchased: date [OPTIONAL]
 expires: date [OPTIONAL]
+nutritionId: number [OPTIONAL]
 */
 
 export default {
-  RegisterNewUser,
-  ResetToken,
-  GetEmail,
-  GetUsername,
-  UpdateAccount,
-  DeleteAccount,
-  GetFood:    (id) => Get("/food/" + id), // id is a number
-  GetFoodIn:  (location) => Get("/food/in/" + location), // location is a string
-  PostFood:   (food) => Post("/food", food), // food is a fooditem object
-  UpdateFood: (food) => Put("/food/" + food.id, food), // food is a fooditem object
-  DeleteFood: (food) => Delete("/food/" + food.id), // food is a fooditem object
-  SearchFood,
+  RegisterNewUser, // takes email, password, and username as strings. returns a promise that resolves to a new token, and also saves that token to localstorage.
+  ResetToken, // takes email and password as strings. returns a promise that resolves to a new token, and also saves that token to localstorage.
+  GetEmail, // takes no arguments. returns either the localStorage email or null.
+  GetUsername, // takes email, password as strings
+  UpdateAccount, // takes oldEmail, oldPassword, oldUsername, newEmail, newPassword, newUsername as strings. returns a promise.
+  DeleteAccount, // takes email, password, and username as strings. returns a promise.
+  GetFood:    (id) => Get("/food/" + id), // id is a number. returns a promise.
+  GetFoodIn:  (location) => Get("/food/in/" + location), // location is a string. returns a promise.
+  PostFood:   (food) => Post("/food", food), // food is a fooditem object. returns a promise.
+  UpdateFood: (food) => Put("/food/" + food.id, food), // food is a fooditem object. returns a promise.
+  DeleteFood: (food) => Delete("/food/" + food.id), // food is a fooditem object. returns a promise.
+  SearchFood, // takes a query string. returns a promise that resolves to a list of possible items with nutrition information.
+  SearchFoodById, // takes an id as number or string. returns a promise that resolves to a list of a single item with nutrition information.
 }
