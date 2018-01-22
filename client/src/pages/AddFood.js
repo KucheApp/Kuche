@@ -3,23 +3,34 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import API from "../api";
 import Accordion from './Accordion';
+import Card from "./Card";
 
 
 
-const AddFood = (props) => (
-  
-  <div className="container">
-      <form>
-         <div className="form-group row">
-            <label for="input" className="col-sm-2 col-form-label">Text</label>
-            <div className="col-sm-10">
-                <input type="text" className="form-control" id="input" placeholder="Add food" />
-                <button type="submit" className="btn-primary">Add</button>
-            </div>
-         </div>
-      </form>
-   </div>
-);
+class AddFood extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {isToggleOn: false};
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }));
+    }
+
+    render() {
+        let button = (<button onClick={this.handleClick} type="submit" className="btn-primary">Add Food</button >);
+
+        return (
+          <div>
+            {this.state.isToggleOn ? <Card /> : <div>{button}</div>}
+        </div>
+        )
+    }
+}
+
 
 
 export default AddFood;
