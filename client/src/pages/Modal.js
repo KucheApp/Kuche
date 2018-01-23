@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Collapse, CardBody, Card } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
+
+import { Button, CardBody, Card, Col, Collapse, Container, Form, FormGroup, FormText, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row } from 'reactstrap';
+
 import Footer from './Footer';
 import Navigation from './Navigation';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
 
 class ModalAdd extends Component {
   constructor(props) {
@@ -24,11 +25,96 @@ class ModalAdd extends Component {
   render() {
     return (
       <div>
-        <Button color="light" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <Button color="light" onClick={this.toggle}>{this.props.buttonLabel}Add Food</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add Food</ModalHeader>
           <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <Form>
+                <FormGroup>
+                <Label for="exampleEmail">Plain Text (Static)</Label>
+                <Input plaintext>Some plain text/ static value</Input>
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleEmail">Email</Label>
+                <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                </FormGroup>
+                <FormGroup>
+                <Label for="examplePassword">Password</Label>
+                <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleUrl">Url</Label>
+                <Input type="url" name="url" id="exampleUrl" placeholder="url placeholder" />
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleNumber">Number</Label>
+                <Input type="number" name="number" id="exampleNumber" placeholder="number placeholder" />
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleDatetime">Datetime</Label>
+                <Input type="datetime" name="datetime" id="exampleDatetime" placeholder="datetime placeholder" />
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleDate">Date</Label>
+                <Input type="date" name="date" id="exampleDate" placeholder="date placeholder" />
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleTime">Time</Label>
+                <Input type="time" name="time" id="exampleTime" placeholder="time placeholder" />
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleColor">Color</Label>
+                <Input type="color" name="color" id="exampleColor" placeholder="color placeholder" />
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleSearch">Search</Label>
+                <Input type="search" name="search" id="exampleSearch" placeholder="search placeholder" />
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleSelect">Select</Label>
+                <Input type="select" name="select" id="exampleSelect">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </Input>
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleSelectMulti">Select Multiple</Label>
+                <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </Input>
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleText">Text Area</Label>
+                <Input type="textarea" name="text" id="exampleText" />
+                </FormGroup>
+                <FormGroup>
+                <Label for="exampleFile">File</Label>
+                <Input type="file" name="file" id="exampleFile" />
+                <FormText color="muted">
+                    This is some placeholder block-level help text for the above input.
+                    It's a bit lighter and easily wraps to a new line.
+                </FormText>
+                </FormGroup>
+                <FormGroup check>
+                <Label check>
+                    <Input type="radio" />{' '}
+                    Option one is this and that—be sure to include why it's great
+                </Label>
+                </FormGroup>
+                <FormGroup check>
+                <Label check>
+                    <Input type="checkbox" />{' '}
+                    Check me out
+                </Label>
+                </FormGroup>
+            </Form>
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
