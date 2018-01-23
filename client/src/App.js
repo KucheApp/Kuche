@@ -24,17 +24,16 @@ class App extends Component {
     password: "",
     username: "",
     token: "",
-    items: [{location: 'freezer', name: 'pizza'}, {location: 'freezer', name: 'Chocolate Chips'}, {location: 'pantry', name: 'Peanut Butter'}, {location: "freezer", name: "ice cream"}, {location: "counter", name: "bread"}],
     id: shortid()
   }
 
   addItem = this.addItem.bind(this);
 
-  removeItem = (name) => {
-    this.setState({
-      items: this.state.items.filter((item) => item.name !== name)
-    })
-  }
+  // removeItem = (name) => {
+  //   this.setState({
+  //     items: this.state.items.filter((item) => item.name !== name)
+  //   })
+  // }
 
   addItem() {
     this.setState({

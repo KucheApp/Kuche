@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Footer from './Footer';
 import Navigation from './Navigation';
 import Accordion from "./Accordion";
+import SuperCategory from './SuperCategory';
 
 const styles = {
   h1: {
@@ -32,9 +33,11 @@ class Fridge extends Component {
             <p>Your go-to kitchen storage</p>
           </div>
           <div className="col-2"></div>
+          <div>
+            <SuperCategory location="Fridge" />
+          </div>
         </div>
       </div>
-        <Accordion />
         <Footer />
 
     </div>  
