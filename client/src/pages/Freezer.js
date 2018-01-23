@@ -12,8 +12,10 @@ const styles = {
   }
 }
 
+const freezerItems=[];
+
 const Freezer = (props) => {
-    const freezerItems = props.items.filter(item => item.location === 'freezer');
+    // const freezerItems = props.items.filter(item => item.location === 'freezer');
 
     return (
     <div>
@@ -39,7 +41,7 @@ const Freezer = (props) => {
         {
           freezerItems.map(item => {
             return (
-              <Accordion key={shortid()} id={shortid()} removeItem={props.removeItem} name={item.name} location={item.location}/>
+              <Accordion key={shortid()} id={shortid()} removeItem={props.removeItem} foodItem={item} />
             )
           })
         }

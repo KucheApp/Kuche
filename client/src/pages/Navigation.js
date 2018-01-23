@@ -41,22 +41,22 @@ class Navigation extends Component {
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <NavLink to="/kitchen"><a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a> </NavLink>
+                    <NavLink to="/kitchen" className="nav-link">Home</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/counter"><a className="nav-link" href="#">Counter</a></NavLink>
+                    <NavLink to="/counter" className="nav-link">Counter</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/fridge"><a className="nav-link" href="#">Fridge</a></NavLink>
+                    <NavLink to="/fridge" className="nav-link">Fridge</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/freezer"><a className="nav-link" href="#">Freezer</a></NavLink>
+                    <NavLink to="/freezer" className="nav-link">Freezer</NavLink>
                   </li>
                   <li className="nav-item">
-                   <NavLink to="/pantry"><a className="nav-link" href="#">Pantry</a></NavLink>
+                   <NavLink to="/pantry" className="nav-link">Pantry</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/grocerylist"><a className="nav-link" href="#">Grocery List</a></NavLink>
+                    <NavLink to="/grocerylist" className="nav-link">Grocery List</NavLink>
                   </li>
                   <li className="nav-item right">
                     <a href="javascript:undefined" className="nav-link" onClick={() => API.LogOut()}>Log Out</a>

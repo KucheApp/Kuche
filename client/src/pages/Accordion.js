@@ -4,22 +4,15 @@ import { Container, Row, Col } from 'reactstrap';
 import shortid from 'shortid';
 import API from '../api';
 
-let foodItem = {
-  id: this.id
-};
-
 
 class Accordion extends Component {
 
   handleDelete = () => {
-    API.DeleteFood(foodItem).then(response => {
+    API.DeleteFood(this.props.foodItem).then(response => {
       console.log(response);
     })
   }
 
-  componentDidMount() {
-    this.handleDelete();
-  }
 
 
   render() {
@@ -33,14 +26,14 @@ class Accordion extends Component {
               </button>
               <h5 className="mb-0">
                 <a href={"#hidden" + this.props.id} role="button" aria-expanded="false" aria-controls={"hidden" + this.props.id} data-toggle="collapse">
-                  {this.props.name}
+                  {this.props.foodItem.name}
                 </a>
               </h5>
             </div>
 
             <div className="collapse hide" id={"hidden" + this.props.id}>
               <div className="card-body">
-                {this.props.location}
+                {this.props.foodItem.location}
               </div>
             </div>
           </div>

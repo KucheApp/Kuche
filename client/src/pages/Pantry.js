@@ -64,7 +64,7 @@ class Pantry extends Component {
       </div>
         {this.state.items.map(item => {
           return(
-            <Accordion key={shortid()} id={item.id} name={item.name} location={item.location} />
+            <Accordion key={shortid()} id={item.id} foodItem={item} />
           );
         })}
         <Footer />
