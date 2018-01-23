@@ -17,7 +17,7 @@ class Card extends Component {
     }
 
     render(){
-        let buttonCancel = (<button onClick={this.handleCloseClick} type="button" class="btn btn-light">Cancel</button>);
+        
         return (
             <div className="container">
                 <div className="card">
@@ -41,8 +41,8 @@ class Card extends Component {
                             </select>
                         </div>
                         <div className="form-group row">
-                        <button type="button" class="btn btn-secondary" onClick={this.handleCloseClick}>Submit</button>
-                        {this.state.isCardOpen ? <Card /> : <div>{buttonCancel}</div>}
+                        <button type="button" class="btn btn-secondary">Submit</button>
+                        <button onClick={this.handleCloseClick} type="button" class="btn btn-light">Cancel</button>
 
                         </div>
                     </form>
