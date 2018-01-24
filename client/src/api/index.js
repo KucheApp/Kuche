@@ -11,8 +11,10 @@ let SaveToken = (token) => window.localStorage.setItem("access_token", token);
 let IfHasToken = () => {
   if (GetToken() === null) return Promise.resolve(false);
   return axios.get("/api/username")
-  .then(username => {
-    return true;
+  .then(response => {
+    console.log(response)
+    return false
+    // if (response)
   })
   .catch(err => {
     console.log(err);
@@ -110,25 +112,7 @@ let DeleteAccount = (email, password, username) => {
 };
 
 let LogOut = () => {
-  SaveEmail("");
   SaveToken("");
-};
-
-let GetUsername = (email, password) => {
-  let url = "/api/username";
-  let auth = {
-    username: email,
-    password: password
-  };
-  let token = GetToken();
-  if (token === null) {
-    // logout
-    return Promise.reject();
-  }
-  let headers = { "x-access-token": token };
-  return axios({ url, auth, headers })
-  .then(RejectIfErr)
-  .then(data => data.username);
 };
 
 let Get = (url) => {
@@ -214,11 +198,12 @@ nutritionId: number [OPTIONAL]
 */
 
 export default {
+  GetToken,
   RegisterNewUser, // takes email, password, and username as strings. returns a promise that resolves to a new token, and also saves that token to localstorage.
   ResetToken, // takes email and password as strings. returns a promise that resolves to a new token, and also saves that token to localstorage.
   IfHasToken, // takes no arguments, returns true if localstorage token is valid, otherwise false.
   GetEmail, // takes no arguments. returns either the localStorage email or null.
-  GetUsername, // takes email, password as strings
+  GetUsername: () => Get("/username"), // takes no arguments. uses saved token to get user's display name.
   UpdateAccount, // takes oldEmail, oldPassword, oldUsername, newEmail, newPassword, newUsername as strings. returns a promise.
   DeleteAccount, // takes email, password, and username as strings. returns a promise.
   LogOut, // takes no arguments.
