@@ -213,6 +213,7 @@ export default {
   PostFood:   (food) => Post("/food", food), // food is a fooditem object. returns a promise.
   UpdateFood: (food) => Put("/food/" + food.id, food), // food is a fooditem object. returns a promise.
   DeleteFood: (food) => Delete("/food/" + food.id), // food is a fooditem object. returns a promise.
+  GetFoodExpiringSoon: () => Get("/food/expiring/soon"), // returns a promise that resolves to an object with a fooditems field.
   SearchFood, // takes a query string. returns a promise that resolves to a list of possible items with nutrition information.
   SearchFoodById, // takes an id as number or string. returns a promise that resolves to a list of a single item with nutrition information.
 }
