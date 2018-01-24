@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Footer from './Footer';
 import Navigation from './Navigation';
 import Accordion from "./Accordion";
+import SuperCategory from './SuperCategory';
 import API from '../api';
 import shortid from 'shortid';
 import Push from './Push';
@@ -43,32 +44,16 @@ class Pantry extends Component {
 
   render() {
     return (
-    <div>
+      <div>
       <div className="container">
         <div className="row">
           <div className="col-3">
             <Navigation />
-            
           </div>
         </div>
       </div>
 
-      <div className="container">
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col-8">
-            <h1 style={styles.h1}>Pantry</h1>
-            <p>Your storage for dry goods and spices</p>
-            <Push />
-          </div>
-          <div className="col-2"></div>
-        </div>
-      </div>
-        {this.state.items.map(item => {
-          return(
-            <Accordion key={shortid()} id={item.id} foodItem={item} />
-          );
-        })}
+        <SuperCategory location="Pantry" />
         <Footer />
 
     </div>  

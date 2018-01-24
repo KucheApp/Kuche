@@ -47,7 +47,7 @@ class SuperCategory extends Component {
          <div className="container">
             <div className="row">
                <div className="col-2"></div>
-               <div className="col-8">
+               <div className="col-8 justify-content-center">
                   <h1 style={styles.h1}>{this.props.location}</h1>
                   <ModalAdd />
                </div>
