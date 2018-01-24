@@ -27,6 +27,10 @@ const styles = {
 }
 
 class Navigation extends Component {
+  handleLogOut = () => {
+    API.LogOut()
+  };
+
   render() {
     return (
       <div>
@@ -58,7 +62,7 @@ class Navigation extends Component {
                 <NavLink to="/grocerylist" className="nav-link font-weight-bold">Grocery List</NavLink>
               </li>
               <li className="nav-item right">
-                <a href="javascript:undefined" className="nav-link font-weight-bold" onClick={this.handleLogOut}>Log Out</a>
+                <Link to="/" onClick={this.handleLogOut} className="nav-link font-weight-bold">Log Out</Link>
               </li>
             </ul>
           </div>
