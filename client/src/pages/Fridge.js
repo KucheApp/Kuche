@@ -32,7 +32,7 @@ class Fridge extends Component {
             <h1 style={styles.h1}>Fridge</h1>
             <p>Your go-to kitchen storage</p>
           </div>
-          <div className="col-2"></div>
+          <div className="col-2 justify-content-center"></div>
           <div>
             <SuperCategory location="Fridge" />
           </div>

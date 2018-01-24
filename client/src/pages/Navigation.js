@@ -10,7 +10,7 @@ const styles = {
     width: '100%',
     // height: '5%',
     // backgroundColor: 'black',
-    opacity: 0.6,
+    opacity: 0.9,
   },
   form: {
     width: '100%',
@@ -30,7 +30,7 @@ class Navigation extends Component {
   render() {
       return (
         <div>
-            <nav style={styles.navigation} className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            <nav style={styles.navigation} className="navbar fixed-top navbar-expand-lg navbar-light bg-secondary">
 
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -70,6 +70,3 @@ class Navigation extends Component {
   }
 
 export default Navigation;
-
-//<nav style={styles.navigation} className="navbar justify-content-center navbar-light bg-light">
-{/* <form style={styles.form} className="form-inline justify-content-center"> */}

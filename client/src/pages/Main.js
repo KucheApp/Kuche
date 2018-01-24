@@ -23,17 +23,15 @@ class Main extends Component {
   render() {
     return (
       <div>
-      <div style={styles.jumbotron} className="jumbotron">
-        <div className="container-fluid">
-          <h2 style={styles.text} className="text-center">Kitchen</h2>
-        </div>
-     </div>
+
      <div className="container">
+      <div className="row">
+        <Navigation />
+      </div>
       <div className="row justify-content-center">
         <Kitchen />
       </div>
      </div>
-        <Navigation />
         <Footer />
   
       </div>

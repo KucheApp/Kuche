@@ -9,6 +9,9 @@ import shortid from "shortid";
 const styles = {
   h1: {
     color: "white",
+  },
+  jumbotron: {
+    opcatity: 0.0,
   }
 }
 
@@ -26,7 +29,7 @@ const Freezer = (props) => {
           </div>
         </div>
       </div>
-
+      <div style={styles.jumbotron} className="jumbotron"></div>	
       <div className="container">
         <div className="row">
           <div className="col-2"></div>
