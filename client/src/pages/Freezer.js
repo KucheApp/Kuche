@@ -28,7 +28,7 @@ const Freezer = (props) => {
           </div>
         </div>
       </div>
-
+      <div style={styles.jumbotron} className="jumbotron"></div>	
       <div className="container">
         <div className="row"></div>
         <div className="row">

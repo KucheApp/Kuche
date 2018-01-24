@@ -10,7 +10,7 @@ const styles = {
     width: '100%',
     // height: '5%',
     // backgroundColor: 'black',
-    opacity: 0.6,
+    opacity: 0.9,
   },
   form: {
     width: '100%',
@@ -70,6 +70,3 @@ class Navigation extends Component {
   }
 
 export default Navigation;
-
-//<nav style={styles.navigation} className="navbar justify-content-center navbar-light bg-light">
-{/* <form style={styles.form} className="form-inline justify-content-center"> */}
