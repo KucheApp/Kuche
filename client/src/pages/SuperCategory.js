@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Accordion from "./Accordion";
+import ModalAdd from './Modal';
 import API from '../api';
 import shortid from 'shortid';
 import Push from './Push';
@@ -7,6 +8,8 @@ import Push from './Push';
 const styles = {
    h1: {
      color: "white",
+     marginTop: "6rem",
+     marginBottom: "3rem",
    }
  }
 
@@ -45,8 +48,8 @@ class SuperCategory extends Component {
             <div className="row">
                <div className="col-2"></div>
                <div className="col-8">
-                  <h1 style={styles.h1}>I am {this.props.location} Show me what you got!</h1>
-                  <a href="javascript:undefined" onClick={this.handlePostFood}>Add banananana</a>
+                  <h1 style={styles.h1}>{this.props.location}</h1>
+                  <ModalAdd />
                </div>
                <div className="col-2"></div>
             </div>

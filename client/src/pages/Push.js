@@ -4,7 +4,7 @@ import API from '../api'
 
 let foodItem = {
    name: "banana",
-   location: "pantry",
+   location: "counter",
    quantity: 1
 }
 
@@ -26,6 +26,14 @@ class Push extends Component {
       );
    }
 }
+
+
+//mapping over items
+// {this.state.items.map(item => {
+//    return(
+//      <Accordion key={shortid()} id={item.id} name={item.name} location={item.location} />
+//    );
+//  })}
 
 
 export default Push;

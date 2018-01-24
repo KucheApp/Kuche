@@ -59,7 +59,7 @@ class Navigation extends Component {
                   <li className="nav-item">
                     <NavLink to="/grocerylist" className="nav-link">Grocery List</NavLink>
                   </li>
-                  <li className="nav-item right">
+                  <li className="nav-item right font-weight-bold">
                     <a href="javascript:undefined" className="nav-link" onClick={() => API.LogOut()}>Log Out</a>
                   </li>
                 </ul>

@@ -4,13 +4,25 @@ import { Button, CardBody, Card, Col, Collapse, Container, Form, FormGroup, Form
 
 import Footer from './Footer';
 import Navigation from './Navigation';
+import API from "../api";
 
+let styles = {
+    required: {
+        color: "red",
+    }
+}
 
 class ModalAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      foodName: "",
+      foodCategory: "",
+      foodQuantity: 1,
+      foodUnits: "",
+      foodDatePurs: null,
+      foodDateExp: null
     };
 
     this.toggle = this.toggle.bind(this);
@@ -20,6 +32,34 @@ class ModalAdd extends Component {
     this.setState({
       modal: !this.state.modal
     });
+  }
+
+  handleInputChange = event => {
+      let {id, value} = event.target;
+      this.setState({
+          [id]: value
+      });
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    
+    let {foodName, foodCategory, foodQuantity, foodUnits, foodDatePurs, foodDateExp} = this.state;
+
+    let foodItem = {
+        name: foodName,
+        location: foodCategory,
+        quantity: foodQuantity,
+        quantityUnits: foodUnits,
+        purchased: foodDatePurs,
+        expires: foodDateExp
+    }
+    API.PostFood(foodItem);
+}
+
+  componentDidMount() {
+      this.toggle();
+
   }
 
   render() {
@@ -32,13 +72,13 @@ class ModalAdd extends Component {
             <Form>
 
                 <FormGroup>
-                    <Label for="foodName">Name: </Label>
-                    <Input type="email" name="food" placeholder="add a food" />
+                    <Label for="foodName">Name<span style= {styles.required}>*</span></Label>
+                    <Input value={this.state.foodName} onChange={this.handleInputChange} type="text" name="food" id="foodName" placeholder="add a food" />
                 </FormGroup>
  
                 <FormGroup>
-                    <Label for="exampleSelect">Category</Label>
-                    <Input type="select" name="selectCategory" id="exampleSelect">
+                    <Label for="foodCategory">Category<span style= {styles.required}>*</span></Label>
+                    <Input value={this.state.foodCategory} onChange={this.handleInputChange} type="select" name="selectCategory" id="foodCategory">
                         <option>Counter</option>
                         <option>Fridge</option>
                         <option>Freezer</option>
@@ -47,13 +87,14 @@ class ModalAdd extends Component {
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="exampleNumber">Quantity</Label>
-                    <Input type="number" name="number" id="exampleNumber" placeholder="quantity" />
+                    <Label for="foodQuantity">Quantity<span style= {styles.required}>*</span></Label>
+                    <Input value={this.state.foodQuantity} onChange={this.handleInputChange} type="number" name="number" id="foodQuantity" placeholder="quantity" />
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="exampleSelect">Units</Label>
-                    <Input type="select" name="select" id="">
+                    <Label for="foodUnits">Units</Label>
+                    <Input value={this.state.foodUnits} onChange={this.handleInputChange} type="select" name="select" id="foodUnits">
+                        <option></option>
                         <option>pound</option>
                         <option>quart</option>
                         <option>gallon</option>
@@ -63,28 +104,19 @@ class ModalAdd extends Component {
                         <option>tbsp</option>
                         <option>tsp</option>
                         <option>package</option>
-
+                        <option>bunch</option>
+                        <option>box</option>
                     </Input>
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="exampleDate">Date Purchased</Label>
-                    <Input type="date" name="date" id="exampleDate" placeholder="date purchased" />
+                    <Label for="foodDatePurs">Date Purchased</Label>
+                    <Input value={this.state.foodDatePurs} onChange={this.handleInputChange} type="date" name="date" id="foodDatePurs" placeholder="date purchased" />
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="exampleDate">Date Expires</Label>
-                    <Input type="date" name="date" id="exampleDate" placeholder="date expires" />
-                </FormGroup>
-
-
-               
-                <FormGroup>
-                    <Label for="exampleFile">Choose a File</Label>
-                    <Input type="file" name="file" id="exampleFile" />
-                    <FormText color="muted">
-                        Should we have an option to upload anything?
-                </FormText>
+                    <Label for="foodDateExp">Date Expires</Label>
+                    <Input value={this.state.foodDateExp} onChange={this.handleInputChange} type="date" name="date" id="foodDateExp" placeholder="date expires" />
                 </FormGroup>
 
             </Form>
