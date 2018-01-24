@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Container, Row, Card, CardTitle, CardText, Col } from 'reactstrap';
 
 //Category Images
 import FreezerImg from '../imgs/freezer.png';
@@ -17,7 +18,12 @@ const styles = {
   pushDown: {
     opacity: "0.0",
     height: "0px"
+  },
+  expire: {
+    marginTop: "2rem",
+    marginBottom: "2rem"
   }
+  
 }
 
 const page = "Kitchen";
@@ -45,6 +51,14 @@ class Kitchen extends Component {
                 <KitchenLink to="/Counter" imgSrc={CounterImg} altText="Counter" />
               </div>
             </div>
+            <Container>
+              <Row>
+                <Card style={styles.expire} body inverse color="danger">
+                  <CardTitle>Items Expiring Soon!</CardTitle>
+                  <CardText>The following items are expiring soon: </CardText>
+                </Card>
+              </Row>
+            </Container>
          </div>
       );
    }
