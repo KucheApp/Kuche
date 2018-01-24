@@ -23,7 +23,7 @@ const styles = {
 const page = "Kitchen";
 
 let KitchenLink = ({to, imgSrc, altText}) => (
-  <div style={styles.column} className="col-4 p-2">
+  <div  className="col-4 p-2">
     <div className="card">
       <Link to={to}>
         <img className="card-img-top" src={imgSrc} alt={altText} />

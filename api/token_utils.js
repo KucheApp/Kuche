@@ -11,11 +11,11 @@ module.exports = function(app) {
   function verifyToken(token) {
     var decoded = jwt.decode(token, app.get("jwtSecret"));
 
-    if (process.env.NODE_ENV !== "development") {
-      // if in dev environment, allow tokens issued elsewhere
-      console.log(process.env.NODE_ENV)
-      if (_tokenVault[token] === undefined) throw new Error(SPOOFED_TOKEN);
-    }
+    // if (process.env.NODE_ENV !== "development") {
+    //   // if in dev environment, allow tokens issued elsewhere
+    //   console.log(process.env.NODE_ENV)
+    //   if (_tokenVault[token] === undefined) throw new Error(SPOOFED_TOKEN);
+    // }
     if (decoded.exp <= Date.now()) {
       delete _tokenVault[decoded];
       throw new Error(EXPIRED_TOKEN);

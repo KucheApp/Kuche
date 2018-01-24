@@ -63,10 +63,9 @@ class ModalAdd extends Component {
     event.preventDefault();
 }
 
-  componentDidMount() {
-      this.toggle();
-
-  }
+  // componentDidMount() {
+  //     this.toggle();
+  // }
 
   render() {
     return (
