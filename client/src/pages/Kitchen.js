@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 //Category Images
-import FreezerImg from '../imgs/freezer1sq.png';
-import FridgeImg from '../imgs/fridge1sq.png';
-import PantryImg from '../imgs/pantry1sq.png';
-import CounterImg from '../imgs/countertop1sq.png';
+import FreezerImg from '../imgs/freezer.png';
+import FridgeImg from '../imgs/fridge.png';
+import PantryImg from '../imgs/pantry.png';
+import CounterImg from '../imgs/countertop.png';
 
 const styles = {
    column : {
-      minHeight: '175px',
-      maxHeight: '250px',
-      minWidth: '175px',
-      maxWidth: '250px',
+      minHeight: '350px',
+      maxHeight: '500px',
+      minWidth: '350px',
+      maxWidth: '500px',
   },
   pushDown: {
     opacity: "0.0",
