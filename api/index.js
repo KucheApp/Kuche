@@ -1,6 +1,8 @@
 var express = require("express");
 var auth = require("basic-auth");
 var moment = require("moment");
+var Sequelize = require("sequelize");
+var Op = Sequelize.Op;
 
 var uu = require("./user_utils");
 var cu = require("./crypto_utils");
@@ -187,6 +189,33 @@ module.exports = function(app) {
     function(req, res) {
       let query = {where: {UserId: req.user.dataValues.id}};
       query.where.location = req.params.location;
+
+      FoodItem.findAll(query)
+      .then(fooditems => {
+        fooditems = fooditems.map(FoodItemPublic)
+        res.json({
+          error: false,
+          fooditems: fooditems
+        });
+      })
+      .catch(err => {
+        res.json({
+          error: true,
+          errorMsg: err.message
+        })
+      })
+    }
+  );
+
+  router.get("/food/expiring/soon",
+    jwtauth,
+    forbiddenIfNoUser,
+    function(req, res) {
+      let query = {where: {UserId: req.user.dataValues.id}};
+      query.where.expires = {
+        [Op.ne]: null,
+        [Op.lt]: moment().add(7, "days").valueOf()
+      };
 
       FoodItem.findAll(query)
       .then(fooditems => {
