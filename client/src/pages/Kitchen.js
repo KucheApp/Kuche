@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container, Row, Card, CardTitle, CardText, Col } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
 import API from "../api";
 
@@ -10,15 +11,20 @@ import CounterImg from '../imgs/countertop.png';
 
 const styles = {
    column : {
-      minHeight: '175px',
-      maxHeight: '250px',
-      minWidth: '175px',
-      maxWidth: '250px',
+      minHeight: '350px',
+      maxHeight: '500px',
+      minWidth: '350px',
+      maxWidth: '500px',
   },
   pushDown: {
     opacity: "0.0",
     height: "0px"
+  },
+  expire: {
+    marginTop: "2rem",
+    marginBottom: "2rem"
   }
+  
 }
 
 const page = "Kitchen";
@@ -68,16 +74,17 @@ class Kitchen extends Component {
               <KitchenLink to="/Pantry" imgSrc={PantryImg} altText="Pantry" />
               <KitchenLink to="/Counter" imgSrc={CounterImg} altText="Counter" />
             </div>
-            <div className="row m-0 p-1 justify-content-center">
-              <h2>Food Expiring Soon</h2>
-              {
-
-              }
-            </div>
-          </div>
-       </div>
-    );
-  }
+            <Container>
+              <Row>
+                <Card style={styles.expire} body inverse color="danger">
+                  <CardTitle>Items Expiring Soon!</CardTitle>
+                  <CardText>The following items are expiring soon: </CardText>
+                </Card>
+              </Row>
+            </Container>
+         </div>
+      );
+   }
 }
 
 export default Kitchen;

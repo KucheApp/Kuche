@@ -9,6 +9,9 @@ import API from "../api";
 let styles = {
     required: {
         color: "red",
+    },
+    button: {
+        marginBottom: "3rem"
     }
 }
 
@@ -70,7 +73,7 @@ class ModalAdd extends Component {
   render() {
     return (
       <div>
-        <Button className="text-center" color="light" onClick={this.toggle}>{this.props.buttonLabel}Add Food</Button>
+        <Button style={styles.button} className="text-center" color="light" onClick={this.toggle}>{this.props.buttonLabel}Add Food</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add Food</ModalHeader>
           <ModalBody>
@@ -111,6 +114,7 @@ class ModalAdd extends Component {
                         <option>package</option>
                         <option>bunch</option>
                         <option>box</option>
+                        <option>bag</option>
                     </Input>
                 </FormGroup>
 

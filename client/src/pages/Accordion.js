@@ -4,7 +4,6 @@ import { Container, Row, Col } from 'reactstrap';
 import shortid from 'shortid';
 import API from '../api';
 
-
 class Accordion extends Component {
 
   handleDelete = () => {
@@ -12,8 +11,6 @@ class Accordion extends Component {
       console.log(response);
     })
   }
-
-
 
   render() {
     return (
