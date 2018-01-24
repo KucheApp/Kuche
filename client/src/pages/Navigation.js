@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 
 import API from "../api";
+import logo from "../imgs/kuche.png";
 
 const styles = {
   navigation: {
@@ -21,27 +22,40 @@ const styles = {
     marginRight: '5px',
   },
   img: {
-    width: "30",
-    height: "30"
+    height: "30px"
   }
 }
 
 class Navigation extends Component {
+  state = {
+    shouldLogOut: false
+  }
+
+  handleLogOut = () => {
+    API.LogOut();
+    this.setState({shouldLogOut: true})
+  }
+
   render() {
+    if (this.state.shouldLogOut) {
+      return (<Redirect to="/" />);
+    } else {
       return (
         <div>
-            <nav style={styles.navigation} className="navbar fixed-top navbar-expand-lg navbar-light bg-light mb-4">
-
+            <nav style={styles.navigation} className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
-              <a className="navbar-brand" href="#">Kuche
-                <img src="./imgs/2.jpg" style={styles.img} alt="" />
-              </a>
+              <Link to="/kitchen" className="navbar-brand">
+                <img src={logo} style={styles.img} alt="Kuche Logo" />
+              </Link>
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                   <li className="nav-item">
                     <NavLink to="/kitchen" className="nav-link">Home</NavLink>
+                  </li>
+                  <li className="nav-item">
+                   <NavLink to="/pantry" className="nav-link">Pantry</NavLink>
                   </li>
                   <li className="nav-item">
                     <NavLink to="/counter" className="nav-link">Counter</NavLink>
@@ -53,13 +67,10 @@ class Navigation extends Component {
                     <NavLink to="/freezer" className="nav-link">Freezer</NavLink>
                   </li>
                   <li className="nav-item">
-                   <NavLink to="/pantry" className="nav-link">Pantry</NavLink>
-                  </li>
-                  <li className="nav-item">
                     <NavLink to="/grocerylist" className="nav-link">Grocery List</NavLink>
                   </li>
                   <li className="nav-item right">
-                    <a href="javascript:undefined" className="nav-link" onClick={() => API.LogOut()}>Log Out</a>
+                    <a href="javascript:undefined" className="nav-link" onClick={this.handleLogOut}>Log Out</a>
                   </li>
                 </ul>
               </div>
@@ -68,5 +79,6 @@ class Navigation extends Component {
       );
     }
   }
+}
 
 export default Navigation;
