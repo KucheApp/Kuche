@@ -37,7 +37,7 @@ class SuperCategory extends Component {
       API.GetFoodIn(this.props.location)
       .then(response => {
          console.log(response)
-         this.setState({items: response.foodItems})
+         this.setState({items: response.fooditems})
       })
       .catch(err => {
         this.setState({shouldLogOut: true})
@@ -59,8 +59,14 @@ class SuperCategory extends Component {
                <div className="col-8 justify-content-center">
                   <h1 style={styles.h1}>{this.props.location}</h1>
                   <ModalAdd location={this.props.location} />
+                  {this.state.items.map(item => {
+                       return(
+                        <Accordion key={shortid()} id={item.id} foodItem={item} />
+                       );
+                  })}
                </div>
                <div className="col-2"></div>
+               
             </div>
          </div>
       );
