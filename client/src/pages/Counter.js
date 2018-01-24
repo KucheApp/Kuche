@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
 import Footer from './Footer';
 import Navigation from './Navigation';
 import Accordion from "./Accordion";
 // import AddFood from './AddFood';
 import ModalAdd from "./Modal";
+import SuperCategory from './SuperCategory';
+import API from '../api';
+import shortid from 'shortid';
 
 
 const styles = {
@@ -16,14 +17,20 @@ const styles = {
   }
 }
 
-const Counter = (props) => {
-  // const counterItems = props.items.filter(item => item.location === "counter");
+class Counter extends Component {
 
+  state={
+    items: [],
+  }
+ 
+  render(){
     return (
-    <div>
+      <div>
       <div className="container">
         <div className="row">
+          <div className="col-3">
             <Navigation />
+          </div>
         </div>
       </div>
 
@@ -31,21 +38,21 @@ const Counter = (props) => {
         <div className="row">
           <div className="col-2"></div>
           <div className="col-8">
-            <h1 style={styles.h1}>Counter</h1>
-            <p>Where your fruit ripens and commonly used items find their home</p>
+            <h1 style={styles.h1}>Fridge</h1>
+            <p>Your go-to kitchen storage</p>
+            <SuperCategory location="Counter" />
           </div>
-          <div className="col-2"></div>
+          <div className="col-2 justify-content-center"></div>
+          <div>
+          </div>
         </div>
       </div>
+        <Footer />
 
-      <ModalAdd />
-
-      <Footer />
     </div>  
    
     );
   }
+}
 
 export default Counter;
-
-

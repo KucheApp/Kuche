@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
 import Footer from './Footer';
 import Navigation from './Navigation';
 import Accordion from "./Accordion";
-import SuperCategory from './SuperCategory';
+// import AddFood from './AddFood';
+import ModalAdd from "./Modal";
+import API from '../api';
+import shortid from 'shortid';
+
 
 const styles = {
   h1: {
@@ -14,16 +16,18 @@ const styles = {
   }
 }
 
-class Fridge extends Component {
+class Counter extends Component {
 
-  render() {
+  state={
+    items: [],
+  }
+ 
+  render(){
     return (
     <div>
       <div className="container">
         <div className="row">
-          <div className="col-3">
             <Navigation />
-          </div>
         </div>
       </div>
 
@@ -31,19 +35,22 @@ class Fridge extends Component {
         <div className="row">
           <div className="col-2"></div>
           <div className="col-8">
-            <SuperCategory location="Fridge" />
+            <h1 style={styles.h1}>Counter</h1>
+            <p>Where your fruit ripens and commonly used items find their home</p>
           </div>
-          <div className="col-2 justify-content-center"></div>
-          <div>
-          </div>
+          <div className="col-2"></div>
         </div>
       </div>
-        <Footer />
 
+      <ModalAdd />
+
+      <Footer />
     </div>  
    
     );
   }
 }
 
-export default Fridge;
+export default Counter;
+
+

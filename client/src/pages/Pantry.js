@@ -10,7 +10,7 @@ import Push from './Push';
 
 const styles = {
   h1: {
-    color: "white",
+    color: "lightgrey",
     marginTop: "6rem",
     marginBottom: "3rem",
   }
