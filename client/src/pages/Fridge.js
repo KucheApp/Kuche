@@ -9,6 +9,8 @@ import SuperCategory from './SuperCategory';
 const styles = {
   h1: {
     color: "white",
+    marginTop: "6rem",
+    marginBottom: "3rem",
   }
 }
 

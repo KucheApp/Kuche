@@ -4,12 +4,15 @@ import { Container, Row, Col } from 'reactstrap';
 import Footer from './Footer';
 import Navigation from './Navigation';
 import Accordion from "./Accordion";
-import AddFood from './AddFood';
+// import AddFood from './AddFood';
+import ModalAdd from "./Modal";
 
 
 const styles = {
   h1: {
     color: "white",
+    marginTop: "6rem",
+    marginBottom: "3rem",
   }
 }
 
@@ -35,14 +38,8 @@ const Counter = (props) => {
         </div>
       </div>
 
-  
-      <AddFood />
-              <Accordion />
-              {/* {counterItems.map(item => {
-          return (
-            <Accordion id={this.id} removeItem={props.removeItem} name={item.name} location={item.location}/>
-          )  
-        })} */}
+      <ModalAdd />
+
       <Footer />
     </div>  
    

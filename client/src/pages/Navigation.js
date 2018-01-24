@@ -30,7 +30,7 @@ class Navigation extends Component {
   render() {
       return (
         <div>
-            <nav style={styles.navigation} className="navbar fixed-top navbar-expand-lg navbar-light bg-secondary">
+            <nav style={styles.navigation} className="navbar fixed-top navbar-expand-lg navbar-light bg-light mb-4">
 
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>

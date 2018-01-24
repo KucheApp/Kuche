@@ -3,21 +3,14 @@ import axios from 'axios';
 import API from "../api";
 import AddFood from "./AddFood";
 
+import { Button, Fade } from "reactstrap";
+
 
 class Card extends Component {
 
-    state= {
-        cardOpen: false,
-    }
-
-    handleCloseClick = this.handleCloseClick.bind(this);
-        
-    handleCloseClick() {
-        this.setState({isCardOpen: true});
-    }
 
     render(){
-        let buttonCancel = (<button onClick={this.handleCloseClick} type="button" class="btn btn-light">Cancel</button>);
+        
         return (
             <div className="container">
                 <div className="card">
@@ -41,8 +34,8 @@ class Card extends Component {
                             </select>
                         </div>
                         <div className="form-group row">
-                        <button type="button" class="btn btn-secondary" onClick={this.handleCloseClick}>Submit</button>
-                        {this.state.isCardOpen ? <Card /> : <div>{buttonCancel}</div>}
+                        <button type="button" class="btn btn-secondary">Submit</button>
+                        <button type="button" class="btn btn-light">Cancel</button>
 
                         </div>
                     </form>

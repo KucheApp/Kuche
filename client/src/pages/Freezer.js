@@ -9,9 +9,8 @@ import shortid from "shortid";
 const styles = {
   h1: {
     color: "white",
-  },
-  jumbotron: {
-    opcatity: 0.0,
+    marginTop: "6rem",
+    marginBottom: "3rem",
   }
 }
 
@@ -31,11 +30,12 @@ const Freezer = (props) => {
       </div>
       <div style={styles.jumbotron} className="jumbotron"></div>	
       <div className="container">
+        <div className="row"></div>
         <div className="row">
           <div className="col-2"></div>
           <div className="col-8">
             <h1 style={styles.h1}>Freezer</h1>
-            <p>Where you </p>
+            <p>Store frozen food such as meats, vegetables, and sweets.</p>
           </div>
           <div className="col-2"></div>
         </div>

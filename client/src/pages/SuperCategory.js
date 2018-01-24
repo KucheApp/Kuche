@@ -10,8 +10,6 @@ const styles = {
    }
  }
 
-
-
 class SuperCategory extends Component {
    state = {
       items: [],
