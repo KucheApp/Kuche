@@ -24,7 +24,7 @@ class ModalAdd extends Component {
       foodCategory: this.props.location,
       foodQuantity: 1,
       foodUnits: "",
-      foodDatePurs: undefined,
+      foodDatePurs: Date.now(),
       foodDateExp: undefined
     };
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Container, Row, Card, CardTitle, CardText, Col } from 'reactstrap';
+import { Link, Redirect } from 'react-router-dom';
+import API from "../api";
 
 //Category Images
 import FreezerImg from '../imgs/freezer.png';
@@ -29,7 +30,7 @@ const styles = {
 const page = "Kitchen";
 
 let KitchenLink = ({to, imgSrc, altText}) => (
-  <div  className="col-4 p-2">
+  <div className="col-4 p-2">
     <div className="card">
       <Link to={to}>
         <img className="card-img-top" src={imgSrc} alt={altText} />
@@ -39,17 +40,39 @@ let KitchenLink = ({to, imgSrc, altText}) => (
 );
 
 class Kitchen extends Component {
-   render() {
-      return(
-        <div>
-          <div style={styles.pushDown} className="jumbotron"></div>
-            <div className="container m-0 p-0">
-              <div className="row m-0 p-1 justify-content-center">
-                <KitchenLink to="/Fridge" imgSrc={FridgeImg} altText="Fridge" />
-                <KitchenLink to="/Freezer" imgSrc={FreezerImg} altText="Freezer" />
-                <KitchenLink to="/Pantry" imgSrc={PantryImg} altText="Pantry" />
-                <KitchenLink to="/Counter" imgSrc={CounterImg} altText="Counter" />
-              </div>
+  state = {
+    expiringSoon: [],
+    shouldLogOut: false
+  };
+
+  handleUpdateItems = () => {
+    API.GetFoodExpiringSoon()
+    .then(data => {
+      console.log(data);
+      this.setState({expiringSoon: data.fooditems});
+    })
+    .catch(err => {
+      this.setState({shouldLogOut: true});
+    })
+  }
+
+  componentDidMount() {
+    this.handleUpdateItems();
+  }
+
+  render() {
+    if (this.state.shouldLogOut) {
+      return (<Redirect to="/" />);
+    }
+    return(
+      <div>
+        <div style={styles.pushDown} className="jumbotron"></div>
+          <div className="container m-0 p-0">
+            <div className="row m-0 p-1 justify-content-center">
+              <KitchenLink to="/Fridge" imgSrc={FridgeImg} altText="Fridge" />
+              <KitchenLink to="/Freezer" imgSrc={FreezerImg} altText="Freezer" />
+              <KitchenLink to="/Pantry" imgSrc={PantryImg} altText="Pantry" />
+              <KitchenLink to="/Counter" imgSrc={CounterImg} altText="Counter" />
             </div>
             <Container>
               <Row>

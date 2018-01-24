@@ -75,14 +75,24 @@ class Landing extends Component {
     }
   };
 
-  // componentDidMount() {
-  //   API.IfHasToken()
-  //   .then(hasToken => {
-  //     if (hasToken) {
-  //       this.setState({goToApp: true});
-  //     }
-  //   })
-  // }
+  autoLoadCredentials = () => {
+    let savedEmail = API.GetEmail();
+    if (savedEmail !== null) {
+      this.setState({username: savedEmail})
+    }
+    let savedToken = API.GetToken();
+    if (savedToken !== null) {
+      API.GetUsername()
+      .then(username => {
+        this.setState({goToApp: true});
+        this.props.enterApp({
+          username: username,
+          token: savedToken
+        });
+      })
+      .catch(err => console.log)
+    }
+  }
 
   handleKeyPress = (event) => {
     let key = event.key;
@@ -102,6 +112,10 @@ class Landing extends Component {
       default:
         return;
     }
+  };
+
+  componentDidMount() {
+    this.autoLoadCredentials();
   };
 
   render() {
