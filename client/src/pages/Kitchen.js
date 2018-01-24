@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 //Category Images
-import FreezerImg from '../imgs/freezer1sq.png';
-import FridgeImg from '../imgs/fridge1sq.png';
-import PantryImg from '../imgs/pantry1sq.png';
-import CounterImg from '../imgs/countertop1sq.png';
+import FreezerImg from '../imgs/freezer.png';
+import FridgeImg from '../imgs/fridge.png';
+import PantryImg from '../imgs/pantry.png';
+import CounterImg from '../imgs/countertop.png';
 
 const styles = {
    column : {
@@ -23,7 +23,7 @@ const styles = {
 const page = "Kitchen";
 
 let KitchenLink = ({to, imgSrc, altText}) => (
-  <div style={styles.column} className="col-4 p-2">
+  <div  className="col-4 p-2">
     <div className="card">
       <Link to={to}>
         <img className="card-img-top" src={imgSrc} alt={altText} />

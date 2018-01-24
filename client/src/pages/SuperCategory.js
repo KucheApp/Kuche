@@ -5,6 +5,8 @@ import API from '../api';
 import shortid from 'shortid';
 import Push from './Push';
 
+import { Redirect } from "react-router-dom";
+
 const styles = {
    h1: {
      color: "white",
@@ -16,6 +18,7 @@ const styles = {
 class SuperCategory extends Component {
    state = {
       items: [],
+      shouldLogOut: false
    }
 
    handlePostFood = () => {
@@ -35,7 +38,10 @@ class SuperCategory extends Component {
       .then(response => {
          console.log(response)
          this.setState({items: response.foodItems})
-      });
+      })
+      .catch(err => {
+        this.setState({shouldLogOut: true})
+      })
    }
 
    componentDidMount() {
@@ -43,13 +49,16 @@ class SuperCategory extends Component {
    }
 
    render() {
+     if (this.state.shouldLogOut) {
+       return (<Redirect to="/" />);
+     }
       return(
          <div className="container">
             <div className="row">
                <div className="col-2"></div>
                <div className="col-8 justify-content-center">
                   <h1 style={styles.h1}>{this.props.location}</h1>
-                  <ModalAdd />
+                  <ModalAdd location={this.props.location} />
                </div>
                <div className="col-2"></div>
             </div>

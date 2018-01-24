@@ -18,11 +18,11 @@ class ModalAdd extends Component {
     this.state = {
       modal: false,
       foodName: "",
-      foodCategory: "",
+      foodCategory: this.props.location,
       foodQuantity: 1,
       foodUnits: "",
-      foodDatePurs: null,
-      foodDateExp: null
+      foodDatePurs: Date.now(),
+      foodDateExp: undefined
     };
 
     this.toggle = this.toggle.bind(this);
@@ -42,8 +42,7 @@ class ModalAdd extends Component {
   }
 
   handleSubmit = event => {
-    event.preventDefault();
-    
+
     let {foodName, foodCategory, foodQuantity, foodUnits, foodDatePurs, foodDateExp} = this.state;
 
     let foodItem = {
@@ -53,14 +52,20 @@ class ModalAdd extends Component {
         quantityUnits: foodUnits,
         purchased: foodDatePurs,
         expires: foodDateExp
-    }
-    API.PostFood(foodItem);
+    };
+    API.PostFood(foodItem)
+    .then(newFood => {
+      this.toggle();
+      console.log(newFood);
+      // todo: add to list
+    })
+    .catch(console.log)
+    event.preventDefault();
 }
 
-  componentDidMount() {
-      this.toggle();
-
-  }
+  // componentDidMount() {
+  //     this.toggle();
+  // }
 
   render() {
     return (
@@ -75,7 +80,7 @@ class ModalAdd extends Component {
                     <Label for="foodName">Name<span style= {styles.required}>*</span></Label>
                     <Input value={this.state.foodName} onChange={this.handleInputChange} type="text" name="food" id="foodName" placeholder="add a food" />
                 </FormGroup>
- 
+
                 <FormGroup>
                     <Label for="foodCategory">Category<span style= {styles.required}>*</span></Label>
                     <Input value={this.state.foodCategory} onChange={this.handleInputChange} type="select" name="selectCategory" id="foodCategory">
@@ -122,7 +127,7 @@ class ModalAdd extends Component {
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Submit</Button>{' '}
+            <Button color="primary" onClick={this.handleSubmit}>Submit</Button>{' '}
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>

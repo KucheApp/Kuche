@@ -113,6 +113,7 @@ let DeleteAccount = (email, password, username) => {
 
 let LogOut = () => {
   SaveToken("");
+  return Promise.resolve();
 };
 
 let Get = (url) => {

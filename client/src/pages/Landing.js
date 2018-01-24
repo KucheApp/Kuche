@@ -57,17 +57,17 @@ class Landing extends Component {
         rDisplayName.length >  0 &&
         rPassword.length    >= 8
       ) {
-        API.RegisterNewUser(rUsername, rPassword, rDisplayName)
-        .then(token => {
-          this.setState({goToApp: true});
-          this.props.enterApp({
-            email: rUsername,
-            password: rPassword,
-            username: rDisplayName,
-            token: token
-          });
-        })
-      }
+            API.RegisterNewUser(rUsername, rPassword, rDisplayName)
+            .then(token => {
+              this.setState({goToApp: true});
+              this.props.enterApp({
+                email: rUsername,
+                password: rPassword,
+                username: rDisplayName,
+                token: token
+              });
+            })
+          }
     } else {
       this.setState({
         registerOpen: true
@@ -75,25 +75,22 @@ class Landing extends Component {
     }
   };
 
-  componentDidMount() {
+  autoLoadCredentials = () => {
     let savedEmail = API.GetEmail();
     if (savedEmail !== null) {
       this.setState({username: savedEmail})
     }
-
     let savedToken = API.GetToken();
     if (savedToken !== null) {
       API.GetUsername()
       .then(username => {
         this.setState({goToApp: true});
         this.props.enterApp({
-          email: savedEmail,
           username: username,
           token: savedToken
-        })
+        });
       })
-      .catch(err => {
-      })
+      .catch(err => console.log)
     }
   }
 
@@ -115,6 +112,10 @@ class Landing extends Component {
       default:
         return;
     }
+  };
+
+  componentDidMount() {
+    this.autoLoadCredentials();
   };
 
   render() {
