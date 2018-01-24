@@ -34,19 +34,7 @@ class Counter extends Component {
         </div>
       </div>
 
-      <div className="container">
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col-8">
-            <h1 style={styles.h1}>Fridge</h1>
-            <p>Your go-to kitchen storage</p>
-            <SuperCategory location="Counter" />
-          </div>
-          <div className="col-2 justify-content-center"></div>
-          <div>
-          </div>
-        </div>
-      </div>
+        <SuperCategory location="Counter" />
         <Footer />
 
     </div>  

@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Navigation from './Navigation';
 import Accordion from "./Accordion";
 import ModalAdd from './Modal';
+import SuperCategory from './SuperCategory';
 import API from '../api';
 import shortid from 'shortid';
 
@@ -46,24 +47,15 @@ componentDidMount() {
       <div>
       <div className="container">
         <div className="row">
+          <div className="col-3">
             <Navigation />
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col-8">
-            <h1 style={styles.h1}>Grocery List</h1>
-            <p>Where your fruit ripens and commonly used items find their home</p>
           </div>
-          <div className="col-2"></div>
         </div>
       </div>
 
-      <ModalAdd />
+        <SuperCategory location="Grocery List" />
+        <Footer />
 
-      <Footer />
     </div>  
    
     );
