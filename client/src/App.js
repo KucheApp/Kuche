@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import shortid from 'shortid';
 
-// import "./App.css";
+import API from "./api";
 
 import Landing from "./pages/Landing";
-
 import NoMatch from "./pages/NoMatch";
 import Counter from "./pages/Counter";
 import Fridge from "./pages/Fridge";
@@ -24,39 +23,24 @@ class App extends Component {
     password: "",
     username: "",
     token: "",
-    id: shortid()
-  }
-
-  addItem = this.addItem.bind(this);
-
-  // removeItem = (name) => {
-  //   this.setState({
-  //     items: this.state.items.filter((item) => item.name !== name)
-  //   })
-  // }
-
-  addItem() {
-    this.setState({
-      testItems: this.state.testItems.concat("new"),
-    }, () => {
-      console.log(this.state.testItems)
-    });
-  
+    shouldExitApp: false
   }
 
   enterApp = (state) => this.setState(state);
 
   exitApp = () => {
+    API.LogOut();
     this.setState({
       email: "",
       password: "",
       username: "",
-      token: ""
+      token: "",
+      shouldExitApp: true
     });
   }
 
   render() {
-    const landing = () => (<Landing enterApp={this.enterApp} />);
+    const Landing = () => (<Landing enterApp={this.enterApp} />);
     const CounterWithProps = () => (<Counter state={this.state} removeItem={this.removeItem} exitApp={this.exitApp} />);
     const FridgeWithProps = () => (<Fridge state={this.state} removeItem={this.removeItem} exitApp={this.exitApp} />);
     const FreezerWithProps = () => <Freezer items={this.state.items} removeItem={this.removeItem} exitApp={this.exitApp} />;
@@ -66,10 +50,15 @@ class App extends Component {
 
     const main = () => (<Main state={this.state} exitApp={this.exitApp}/>);
 
+    if (this.state.shouldExitApp) {
+      this.setState({shouldExitApp: false})
+      return (<Redirect to="/" />);
+    }
+
     return (
       <Router className="router">
         <Switch>
-          <Route exact path="/" component={landing} />
+          <Route exact path="/" component={Landing} />
 
           <Route path="/counter" component={CounterWithProps} />
           <Route path="/fridge" component={FridgeWithProps} />
@@ -79,6 +68,7 @@ class App extends Component {
           <Route path="/kitchen" component={Main} />
           <Route path="/ajax" component={APITest} />
           <Route path="/push" component={PushWithProps} />;
+
           <Route path="*" component={NoMatch} />
         </Switch>
       </Router>
