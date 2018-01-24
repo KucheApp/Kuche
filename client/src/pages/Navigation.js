@@ -11,6 +11,7 @@ const styles = {
     // height: '5%',
     // backgroundColor: 'black',
     opacity: 0.97,
+    fontWeight: "bold",
   },
   form: {
     width: '100%',
@@ -43,22 +44,22 @@ class Navigation extends Component {
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <NavLink to="/kitchen" className="nav-link font-weight-bold">Home</NavLink>
+                    <NavLink to="/kitchen" className="nav-link">Home</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/counter" className="nav-link font-weight-bold">Counter</NavLink>
+                    <NavLink to="/counter" className="nav-link">Counter</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/fridge" className="nav-link font-weight-bold">Fridge</NavLink>
+                    <NavLink to="/fridge" className="nav-link">Fridge</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/freezer" className="nav-link font-weight-bold">Freezer</NavLink>
+                    <NavLink to="/freezer" className="nav-link">Freezer</NavLink>
                   </li>
                   <li className="nav-item">
-                   <NavLink to="/pantry" className="nav-link font-weight-bold">Pantry</NavLink>
+                   <NavLink to="/pantry" className="nav-link">Pantry</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/grocerylist" className="nav-link font-weight-bold">Grocery List</NavLink>
+                    <NavLink to="/grocerylist" className="nav-link">Grocery List</NavLink>
                   </li>
                   <li className="nav-item right font-weight-bold">
                     <a href="javascript:undefined" className="nav-link" onClick={() => API.LogOut()}>Log Out</a>
