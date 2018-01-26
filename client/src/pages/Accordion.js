@@ -5,6 +5,18 @@ import shortid from 'shortid';
 import API from '../api';
 
 class Accordion extends Component {
+  state ={
+    foodSearchResults: [],
+    foodSearch: "banana"
+  }
+
+  componentDidMount() {
+    API.SearchFood(this.state.foodSearch)
+    .then(results => {
+    console.log(results);
+    this.setState({ foodSearchResults:results });
+  })
+  }
 
   handleDelete = () => {
     console.log(this.props);
@@ -31,6 +43,13 @@ class Accordion extends Component {
 
             <div className="collapse hide" id={"hidden" + this.props.id}>
               <div className="card-body">
+                <p>Food: {this.props.foodItem.name}</p>
+                <p>Quanity: {this.props.foodItem.quantity}</p>
+                <p>Units: {this.props.foodItem.quantityUnits}</p>
+                <p>Date Purchased: {this.props.foodItem.purchased}</p>
+                <p>Date Expires: {this.props.foodItem.expires}</p>
+                <p>Nutrition Information: {this.state.foodSearchResults.map(result => {result.name} )} </p>
+                <p>Recipe Suggestions: {this.props.foodItem.name}</p>
                 {this.props.foodItem.location}
               </div>
             </div>
