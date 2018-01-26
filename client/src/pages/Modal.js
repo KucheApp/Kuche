@@ -60,7 +60,7 @@ class ModalAdd extends Component {
     .then(newFood => {
       this.toggle();
       console.log(newFood);
-      // todo: add to list
+      this.props.handleNewFood(newFood);
     })
     .catch(console.log)
     event.preventDefault();

@@ -44,6 +44,12 @@ class SuperCategory extends Component {
       })
    }
 
+   handleNewFood = (newFood) => {
+     let fooditems = this.state.items;
+     fooditems.push(newFood);
+     this.handleUpdateItems();
+   }
+
    componentDidMount() {
       this.handleUpdateItems();
    }
@@ -58,7 +64,7 @@ class SuperCategory extends Component {
                <div className="col-2"></div>
                <div className="col-8 justify-content-center">
                   <h1 style={styles.h1}>{this.props.location}</h1>
-                  <ModalAdd location={this.props.location} />
+                  <ModalAdd location={this.props.location} handleNewFood={this.handleNewFood} />
                   {this.state.items.map(item => {
                        return(
                         <Accordion key={shortid()} id={item.id} foodItem={item} />
@@ -66,7 +72,6 @@ class SuperCategory extends Component {
                   })}
                </div>
                <div className="col-2"></div>
-               
             </div>
          </div>
       );

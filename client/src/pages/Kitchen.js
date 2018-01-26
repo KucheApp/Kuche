@@ -26,17 +26,27 @@ const styles = {
   expire: {
     marginTop: "2rem",
     marginBottom: "2rem"
+  },
+  linktext: {
+    position: "absolute",
+    width: "100%",
+    bottom: "0px",
+    left: 0,
+    color: "white",
+    fontSize: "40px",
+    background: "rgba(0, 0, 0, 0.5)",
+    borderRadius: "0px 0px 3px 3px"
   }
-  
 }
 
 const page = "Kitchen";
 
 let KitchenLink = ({to, imgSrc, altText}) => (
-  <div className="col-4 p-2">
+  <div className="col-6 col-md-3 p-2">
     <div className="card">
       <Link to={to}>
         <img className="card-img-top" src={imgSrc} alt={altText} />
+        <span style={styles.linktext}>{altText}</span>
       </Link>
     </div>
   </div>
@@ -92,9 +102,8 @@ class Kitchen extends Component {
                 </Row>
               </Container>
             ): <div></div>}
-            
          </div>
-         </div>
+        </div>
       );
    }
 }
