@@ -6,9 +6,10 @@ import logo from "../imgs/kuche.png";
 
 const styles = {
   navigation: {
-    // position: 'fixed',
-    // top: '110px',
-    width: '100%',
+    // display: "flex",
+    // minHeight: "100vh",
+    // flexDirection: "column",
+    // width: '100%',
     // height: '5%',
     // backgroundColor: 'black',
     opacity: 0.97,

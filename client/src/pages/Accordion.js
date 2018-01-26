@@ -5,17 +5,18 @@ import shortid from 'shortid';
 import API from '../api';
 
 class Accordion extends Component {
+
   state ={
     foodSearchResults: [],
-    foodSearch: "banana"
+    foodSearch: ""
   }
 
   componentDidMount() {
-    API.SearchFood(this.state.foodSearch)
+    API.SearchFood(this.props.foodItem.name)
     .then(results => {
-    console.log(results);
-    this.setState({ foodSearchResults:results });
-  })
+        console.log(results);
+        this.setState({ foodSearchResults:results });
+    })
   }
 
   handleDelete = () => {
@@ -50,7 +51,7 @@ class Accordion extends Component {
                 <p>Date Expires: {this.props.foodItem.expires}</p>
                 <p>Nutrition Information: {this.state.foodSearchResults.map(result => {result.name} )} </p>
                 <p>Recipe Suggestions: {this.props.foodItem.name}</p>
-                {this.props.foodItem.location}
+               
               </div>
             </div>
           </div>
