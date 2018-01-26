@@ -7,14 +7,14 @@ import API from '../api';
 class Accordion extends Component {
   state ={
     foodSearchResults: [],
-    foodSearch: "banana"
+    foodSearch: ""
   }
 
   componentDidMount() {
     API.SearchFood(this.state.foodSearch)
     .then(results => {
     console.log(results);
-    this.setState({ foodSearchResults:results });
+    this.setState({ foodSearchResults: results });
   })
   }
 
