@@ -3,6 +3,8 @@ import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import shortid from 'shortid';
 import API from '../api';
+import Moment from 'react-moment';
+ 
 
 const styles = {
   insideCard: {
@@ -59,15 +61,22 @@ class Accordion extends Component {
 
             <div className="collapse hide" id={"hidden" + this.props.id}>
               <div style={styles.insideCard} className="card-body">
-                <p>Food: {this.props.foodItem.name}</p>
-                <p>Quanity: {this.props.foodItem.quantity}</p>
-                <p>Units: {this.props.foodItem.quantityUnits}</p>
-                <p>Date Purchased: {this.props.foodItem.purchased}</p>
-                <p>Date Expires: {this.props.foodItem.expires}</p>
-                {/* <p>Nutrition Information: {this.state.foodSearchResults.map(result => {result.name} )} </p> */}
+                <h6>Food: {this.props.foodItem.name}</h6>
+                <h6>Quanity: {this.props.foodItem.quantity}</h6>
+                <h6>Units: {this.props.foodItem.quantityUnits}</h6>
+                <h6>Date Purchased: <Moment format="MM/DD/YYYY">{this.props.foodItem.purchased}</Moment></h6>
+                <h6>Date Expires: <Moment format="MM/DD/YYYY">{this.props.foodItem.expires}</Moment></h6>
+                {/* <h6>Nutrition Information: {this.state.foodSearchResults.map(result => {result.name} )} </h6> */}
                
                 {this.state.recipes.length > 0 ? (
-                     <p>Recipe Suggestions: <a href = {this.state.recipes[0].href} target="_blank">{this.state.recipes[0].title}</a> </p>
+                     
+                     <div>
+                       <h6>Recipe Suggestions:  </h6>
+                        <a href = {this.state.recipes[0].href} target="_blank">{this.state.recipes[0].title}</a>
+                        <a href = {this.state.recipes[1].href} target="_blank">{this.state.recipes[1].title}</a>
+                        <a href = {this.state.recipes[2].href} target="_blank">{this.state.recipes[2].title}</a>
+                        <a href = {this.state.recipes[3].href} target="_blank">{this.state.recipes[3].title}</a>
+                     </div>
                 ) : (
                     <div></div>
                 )}
