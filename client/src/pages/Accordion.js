@@ -4,6 +4,12 @@ import { Container, Row, Col } from 'reactstrap';
 import shortid from 'shortid';
 import API from '../api';
 
+const styles = {
+  insideCard: {
+    textAlign: 'left',
+  }
+}
+
 class Accordion extends Component {
 
   state ={
@@ -43,7 +49,7 @@ class Accordion extends Component {
             </div>
 
             <div className="collapse hide" id={"hidden" + this.props.id}>
-              <div className="card-body">
+              <div style={styles.insideCard} className="card-body">
                 <p>Food: {this.props.foodItem.name}</p>
                 <p>Quanity: {this.props.foodItem.quantity}</p>
                 <p>Units: {this.props.foodItem.quantityUnits}</p>
