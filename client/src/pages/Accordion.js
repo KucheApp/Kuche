@@ -7,6 +7,7 @@ import API from '../api';
 class Accordion extends Component {
 
   handleDelete = () => {
+    console.log(this.props);
     API.DeleteFood(this.props.foodItem).then(response => {
       console.log(response);
     })

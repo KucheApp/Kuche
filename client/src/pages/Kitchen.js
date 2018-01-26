@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Container, Row, Card, CardTitle, CardText, Col } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
 import API from "../api";
+import Accordion from "./Accordion";
+import shortid from "shortid";
+
 
 //Category Images
 import FreezerImg from '../imgs/freezer.png';
@@ -74,14 +77,23 @@ class Kitchen extends Component {
               <KitchenLink to="/Pantry" imgSrc={PantryImg} altText="Pantry" />
               <KitchenLink to="/Counter" imgSrc={CounterImg} altText="Counter" />
             </div>
-            <Container>
-              <Row>
-                <Card style={styles.expire} body inverse color="danger">
-                  <CardTitle>Items Expiring Soon!</CardTitle>
-                  <CardText>The following items are expiring soon: </CardText>
-                </Card>
-              </Row>
-            </Container>
+            {this.state.expiringSoon.length > 0? (
+                <Container>
+                <Row>
+                  <Card style={styles.expire} body inverse color="danger">
+                    <CardTitle>Items Expiring Soon!</CardTitle>
+                    <CardText>The following items are expiring soon: </CardText>
+                    {this.state.expiringSoon.map(item => {
+                         return(
+                          <Accordion key={shortid()} id={item.id} foodItem={item} />
+                         );
+                    })}
+                  </Card>
+                </Row>
+              </Container>
+            ): <div></div>}
+            
+         </div>
          </div>
       );
    }
