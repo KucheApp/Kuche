@@ -14,15 +14,22 @@ class Accordion extends Component {
 
   state ={
     foodSearchResults: [],
-    foodSearch: ""
+    foodSearch: "",
+    recipes: []
   }
 
   componentDidMount() {
-    API.SearchFood(this.props.foodItem.name)
-    .then(results => {
-    console.log(results);
-    this.setState({ foodSearchResults: results });
-  })
+  //   API.SearchFood(this.props.foodItem.name)
+  //   .then(results => {
+  //   console.log(results);
+  //   this.setState({ foodSearchResults: results });
+  // }),
+      API.getRecipes(this.props.foodItem.name)
+      .then(res => {
+        console.log(res);
+        this.setState({ recipes: res});
+      })
+      .catch(err => console.log(err));
   }
 
   handleDelete = () => {
@@ -31,6 +38,8 @@ class Accordion extends Component {
       console.log(response);
     })
   }
+
+
 
   render() {
     return (
@@ -55,9 +64,13 @@ class Accordion extends Component {
                 <p>Units: {this.props.foodItem.quantityUnits}</p>
                 <p>Date Purchased: {this.props.foodItem.purchased}</p>
                 <p>Date Expires: {this.props.foodItem.expires}</p>
-                <p>Nutrition Information: {this.state.foodSearchResults.map(result => {result.name} )} </p>
-                <p>Recipe Suggestions: {this.props.foodItem.name}</p>
+                {/* <p>Nutrition Information: {this.state.foodSearchResults.map(result => {result.name} )} </p> */}
                
+                {this.state.recipes.length > 0 ? (
+                     <p>Recipe Suggestions: <a href = {this.state.recipes[0].href} target="_blank">{this.state.recipes[0].title}</a> </p>
+                ) : (
+                    <div></div>
+                )}
               </div>
             </div>
           </div>
