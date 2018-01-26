@@ -82,10 +82,10 @@ class Kitchen extends Component {
         <div style={styles.pushDown} className="jumbotron"></div>
           <div className="container m-0 p-0">
             <div className="row m-0 p-1 justify-content-center">
-              <KitchenLink to="/Pantry"  imgSrc={PantryImg}  altText="Pantry" />
-              <KitchenLink to="/Counter" imgSrc={CounterImg} altText="Counter" />
-              <KitchenLink to="/Fridge"  imgSrc={FridgeImg}  altText="Fridge" />
-              <KitchenLink to="/Freezer" imgSrc={FreezerImg} altText="Freezer" />
+              <KitchenLink to="/pantry"  imgSrc={PantryImg}  altText="Pantry" />
+              <KitchenLink to="/counter" imgSrc={CounterImg} altText="Counter" />
+              <KitchenLink to="/fridge"  imgSrc={FridgeImg}  altText="Fridge" />
+              <KitchenLink to="/freezer" imgSrc={FreezerImg} altText="Freezer" />
             </div>
             {this.state.expiringSoon.length > 0? (
               <Container>
