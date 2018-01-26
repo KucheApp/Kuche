@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
+import shortid from 'shortid';
+import API from '../api';
+
+import Navigation from './Navigation';
 import Accordion from "./Accordion";
 import ModalAdd from './Modal';
-import API from '../api';
-import shortid from 'shortid';
-import Push from './Push';
+import Footer from './Footer';
 
-import { Redirect } from "react-router-dom";
 
 const styles = {
    h1: {
@@ -54,28 +56,32 @@ class SuperCategory extends Component {
       this.handleUpdateItems();
    }
 
-   render() {
-     if (this.state.shouldLogOut) {
-       return (<Redirect to="/" />);
-     }
-      return(
-         <div className="container">
-            <div className="row">
-               <div className="col-2"></div>
-               <div className="col-8 justify-content-center">
-                  <h1 style={styles.h1}>{this.props.location}</h1>
-                  <ModalAdd location={this.props.location} handleNewFood={this.handleNewFood} />
-                  {this.state.items.map(item => {
-                       return(
-                        <Accordion key={shortid()} id={item.id} foodItem={item} />
-                       );
-                  })}
-               </div>
-               <div className="col-2"></div>
-            </div>
-         </div>
-      );
-   }
+  render() {
+    if (this.state.shouldLogOut) {
+     return (<Redirect to="/" />);
+    }
+    return(
+      <div>
+        <div className="container">
+          <div className="row">
+            <Navigation />
+          </div>
+
+          <div className="row">
+             <div className="col-2"></div>
+             <div className="col-8 justify-content-center">
+                <h1 style={styles.h1}>{this.props.location}</h1>
+                <ModalAdd location={this.props.location} handleNewFood={this.handleNewFood} />
+                {this.state.items.map(item => {
+                  return(<Accordion key={shortid()} id={item.id} foodItem={item} />);
+                })}
+             </div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default SuperCategory;

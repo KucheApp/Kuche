@@ -7,15 +7,11 @@ import shortid from 'shortid';
 import Landing from "./pages/Landing";
 
 import NoMatch from "./pages/NoMatch";
-import Counter from "./pages/Counter";
-import Fridge from "./pages/Fridge";
-import Freezer from "./pages/Freezer";
-import Pantry from "./pages/Pantry";
-import GroceryList from "./pages/GroceryList";
 import Main from './pages/Main';
 import Navigation from './pages/Navigation';
 import APITest from "./pages/Ajax";
 import Push from './pages/Push';
+import SuperCategory from "./pages/SuperCategory";
 
 class App extends Component {
 
@@ -23,8 +19,7 @@ class App extends Component {
     email: "",
     password: "",
     username: "",
-    token: "",
-    id: shortid()
+    token: ""
   }
 
   addItem = this.addItem.bind(this);
@@ -41,7 +36,7 @@ class App extends Component {
     }, () => {
       console.log(this.state.testItems)
     });
-  
+
   }
 
   enterApp = (state) => this.setState(state);
@@ -57,28 +52,26 @@ class App extends Component {
 
   render() {
     const landing = () => (<Landing enterApp={this.enterApp} />);
-    const CounterWithProps = () => (<Counter state={this.state} removeItem={this.removeItem} exitApp={this.exitApp} />);
-    const FridgeWithProps = () => (<Fridge state={this.state} removeItem={this.removeItem} exitApp={this.exitApp} />);
-    const FreezerWithProps = () => <Freezer items={this.state.items} removeItem={this.removeItem} exitApp={this.exitApp} />;
-    const PantryWithProps = () => (<Pantry state={this.state} removeItems={this.removeItem} exitApp={this.exitApp} />);
-    const GroceryListWithProps = () => (<GroceryList state={this.state} removeItems={this.removeItem} exitApp={this.exitApp} />);
-    const PushWithProps = () => (<Push state={this.state} addItem={this.addItem} exitApp={this.exitApp}/>);
-
     const main = () => (<Main state={this.state} exitApp={this.exitApp}/>);
+
+    const pantry    = () => (<SuperCategory location="Pantry" />);
+    const counter   = () => (<SuperCategory location="Counter" />);
+    const fridge    = () => (<SuperCategory location="Fridge" />);
+    const freezer   = () => (<SuperCategory location="Freezer" />);
+    const groceries = () => (<SuperCategory location="Grocery List" />);
 
     return (
       <Router className="router">
         <Switch>
           <Route exact path="/" component={landing} />
 
-          <Route path="/counter" component={CounterWithProps} />
-          <Route path="/fridge" component={FridgeWithProps} />
-          <Route path="/freezer" component={FreezerWithProps} />
-          <Route path="/pantry" component={PantryWithProps} />
-          <Route path="/grocerylist" component={GroceryListWithProps} />
           <Route path="/kitchen" component={Main} />
-          <Route path="/ajax" component={APITest} />
-          <Route path="/push" component={PushWithProps} />;
+          <Route path="/pantry" component={pantry} />
+          <Route path="/counter" component={counter} />
+          <Route path="/fridge" component={fridge} />
+          <Route path="/freezer" component={freezer} />
+          <Route path="/grocerylist" component={groceries} />
+
           <Route path="*" component={NoMatch} />
         </Switch>
       </Router>
