@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Input } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, Button, Form, FormGroup, Input } from "reactstrap";
 import shortid from 'shortid';
 import API from '../api';
 
@@ -21,7 +21,11 @@ let GroceryListItem = (props) => {
         <button type="button" className="close" aria-label="Close" position="right" onClick={props.handleDeleteItem}>
           <span>&times;</span>
         </button>
-        <h5 className="mb-0">{props.item.quantity + " " + props.item.name}</h5>
+        <h5 className="mb-0">
+          <a href="javascript:undefined" onClick={props.handleClickItem}>
+            {props.item.quantity + " " + props.item.name}
+          </a>
+        </h5>
       </div>
     </div>
   );
@@ -31,7 +35,10 @@ class GroceryList extends Component {
   state = {
     addFoodInput: "",
     items: [],
-    shouldLogOut: false
+    shouldLogOut: false,
+    moveItemModalOpen: false,
+    moveItem: undefined,
+    moveItemDestination: "Counter"
   }
 
   handleInputChange = (event) => {
@@ -86,6 +93,12 @@ class GroceryList extends Component {
     })
   }
 
+  handleClickItem = (moveItem) => {
+    this.setState({
+      moveItem: moveItem
+    }, () => this.toggleMoveModal());
+  }
+
   handleUpdateItems = () => {
     API.GetFoodIn(this.props.location)
     .then(response => {
@@ -114,6 +127,37 @@ class GroceryList extends Component {
     }
   };
 
+  toggleMoveModal = () => {
+    let newMoveItem = this.state.moveItem;
+    if (this.state.moveItemModalOpen) {
+      newMoveItem = undefined;
+    }
+    this.setState({
+      moveItemModalOpen: !this.state.moveItemModalOpen,
+      moveItem: newMoveItem
+    });
+  }
+
+  handleMoveItemDestinationChange = (event) => {
+    this.setState({ moveItemDestination: event.target.value });
+  }
+
+  handleMoveItem = () => {
+    if (this.state.moveItem !== undefined) {
+      let moveItem = this.state.moveItem;
+      moveItem.location = this.state.moveItemDestination;
+      API.UpdateFood(moveItem)
+      .then(() => {
+        this.handleUpdateItems()
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState({shouldLogOut: true})
+      })
+    }
+    this.toggleMoveModal();
+  }
+
   componentDidMount() {
     this.handleUpdateItems();
   }
@@ -136,10 +180,29 @@ class GroceryList extends Component {
                     <Button className="col-2 offset-1" onClick={this.handleAddItem}>Add</Button>
                   </FormGroup>
                 </div>
-                {this.state.items.map(item => (<GroceryListItem key={shortid()} item={item} handleDeleteItem={() => this.handleDeleteItem(item)} />))}
+                {this.state.items.map(item => (
+                  <GroceryListItem key={shortid()} item={item} handleClickItem={() => this.handleClickItem(item)} handleDeleteItem={() => this.handleDeleteItem(item)} />
+                ))}
              </div>
           </div>
         </div>
+
+        <Modal isOpen={this.state.moveItemModalOpen}>
+          <ModalHeader toggle={this.toggleMoveModal}>Purchased Item</ModalHeader>
+          <ModalBody>
+            <FormGroup className="form-inline">
+              Move my {this.state.moveItem !== undefined ? this.state.moveItem.name : "food"} to the &nbsp;
+              <Input type="select" value={this.state.moveItemDestination} onChange={this.handleMoveItemDestinationChange}>
+                <option>Pantry</option>
+                <option>Counter</option>
+                <option>Fridge</option>
+                <option>Freezer</option>
+              </Input>
+            </FormGroup>
+            <Button color="primary" onClick={this.handleMoveItem}>Move It</Button>
+          </ModalBody>
+        </Modal>
+
         <Footer />
       </div>
     );
