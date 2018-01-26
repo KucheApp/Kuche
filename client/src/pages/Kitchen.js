@@ -82,13 +82,13 @@ class Kitchen extends Component {
         <div style={styles.pushDown} className="jumbotron"></div>
           <div className="container m-0 p-0">
             <div className="row m-0 p-1 justify-content-center">
-              <KitchenLink to="/Fridge" imgSrc={FridgeImg} altText="Fridge" />
-              <KitchenLink to="/Freezer" imgSrc={FreezerImg} altText="Freezer" />
-              <KitchenLink to="/Pantry" imgSrc={PantryImg} altText="Pantry" />
+              <KitchenLink to="/Pantry"  imgSrc={PantryImg}  altText="Pantry" />
               <KitchenLink to="/Counter" imgSrc={CounterImg} altText="Counter" />
+              <KitchenLink to="/Fridge"  imgSrc={FridgeImg}  altText="Fridge" />
+              <KitchenLink to="/Freezer" imgSrc={FreezerImg} altText="Freezer" />
             </div>
             {this.state.expiringSoon.length > 0? (
-                <Container>
+              <Container>
                 <Row>
                   <Card style={styles.expire} body inverse color="danger">
                     <CardTitle>Items Expiring Soon!</CardTitle>
@@ -101,7 +101,16 @@ class Kitchen extends Component {
                   </Card>
                 </Row>
               </Container>
-            ): <div></div>}
+            ):(
+              <Container>
+                <Row>
+                  <Card style={styles.expire} body inverse color="success">
+                    <CardTitle>No Food is Expiring Soon!</CardTitle>
+                    <CardText style={{color: "white"}}>Looks like all of your food is fresh. Nice!</CardText>
+                  </Card>
+                </Row>
+              </Container>
+            )}
          </div>
         </div>
       );
