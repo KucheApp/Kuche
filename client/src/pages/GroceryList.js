@@ -146,6 +146,7 @@ class GroceryList extends Component {
     if (this.state.moveItem !== undefined) {
       let moveItem = this.state.moveItem;
       moveItem.location = this.state.moveItemDestination;
+      moveItem.purchased = Date.now();
       API.UpdateFood(moveItem)
       .then(() => {
         this.handleUpdateItems()
