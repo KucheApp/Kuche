@@ -26,6 +26,7 @@
     "nodemon": "^1.13.3"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "basic-auth": "^2.0.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",

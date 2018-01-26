@@ -7,9 +7,9 @@ import shortid from "shortid";
 
 
 //Category Images
-import FreezerImg from '../imgs/freezer.png';
+import FreezerImg from '../imgs/freezer.jpg';
 import FridgeImg from '../imgs/fridge.png';
-import PantryImg from '../imgs/pantry.png';
+import PantryImg from '../imgs/pantry.jpg';
 import CounterImg from '../imgs/countertop.png';
 
 const styles = {

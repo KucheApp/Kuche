@@ -4,6 +4,8 @@ var moment = require("moment");
 var Sequelize = require("sequelize");
 var Op = Sequelize.Op;
 
+var axios = require("axios");
+
 var uu = require("./user_utils");
 var cu = require("./crypto_utils");
 var models = require("../models");
@@ -326,6 +328,14 @@ module.exports = function(app) {
       })
     }
   );
+
+  router.get("/recipes", (req, res) => {
+    axios
+      .get("http://www.recipepuppy.com/api/", { params: req.query })
+      .then(({ data: { results } }) => res.json(results))
+      .catch(err => res.status(422).json(err));
+  });
+  
 
   return router;
 }
