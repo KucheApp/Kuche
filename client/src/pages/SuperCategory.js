@@ -3,19 +3,11 @@ import { Redirect } from "react-router-dom";
 import shortid from 'shortid';
 import API from '../api';
 
+import styles from './PageStyles';
 import Navigation from './Navigation';
 import Accordion from "./Accordion";
 import ModalAdd from './Modal';
 import Footer from './Footer';
-
-
-const styles = {
-   h1: {
-     color: "white",
-     marginTop: "6rem",
-     marginBottom: "3rem",
-   }
- }
 
 class SuperCategory extends Component {
    state = {

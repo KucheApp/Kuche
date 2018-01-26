@@ -5,13 +5,10 @@ import shortid from 'shortid';
 // import "./App.css";
 
 import Landing from "./pages/Landing";
-
 import NoMatch from "./pages/NoMatch";
 import Main from './pages/Main';
-import Navigation from './pages/Navigation';
-import APITest from "./pages/Ajax";
-import Push from './pages/Push';
 import SuperCategory from "./pages/SuperCategory";
+import GroceryList from "./pages/GroceryList";
 
 class App extends Component {
 
@@ -58,7 +55,7 @@ class App extends Component {
     const counter   = () => (<SuperCategory location="Counter" />);
     const fridge    = () => (<SuperCategory location="Fridge" />);
     const freezer   = () => (<SuperCategory location="Freezer" />);
-    const groceries = () => (<SuperCategory location="Grocery List" />);
+    const groceries = () => (<GroceryList   location="Grocery List" />);
 
     return (
       <Router className="router">
