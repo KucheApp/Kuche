@@ -61,9 +61,13 @@ class Accordion extends Component {
 
             <div className="collapse hide" id={"hidden" + this.props.id}>
               <div style={styles.insideCard} className="card-body">
-                <h6>Food: {this.props.foodItem.name}</h6>
-                <h6>Quanity: {this.props.foodItem.quantity}</h6>
-                <h6>Units: {this.props.foodItem.quantityUnits}</h6>
+                {/* <h6>{this.props.foodItem.name}</h6> */}
+                <Row>
+                  <Col><h6>Quanity: {this.props.foodItem.quantity}</h6></Col>
+                  <Col><h6>Units: {this.props.foodItem.quantityUnits}</h6></Col>
+                </Row>
+                
+                
                 <h6>Date Purchased: <Moment format="MM/DD/YYYY">{this.props.foodItem.purchased}</Moment></h6>
                 <h6>Date Expires: <Moment format="MM/DD/YYYY">{this.props.foodItem.expires}</Moment></h6>
                 {/* <h6>Nutrition Information: {this.state.foodSearchResults.map(result => {result.name} )} </h6> */}
