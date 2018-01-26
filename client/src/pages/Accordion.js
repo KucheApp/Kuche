@@ -14,9 +14,9 @@ class Accordion extends Component {
   componentDidMount() {
     API.SearchFood(this.props.foodItem.name)
     .then(results => {
-        console.log(results);
-        this.setState({ foodSearchResults:results });
-    })
+    console.log(results);
+    this.setState({ foodSearchResults: results });
+  })
   }
 
   handleDelete = () => {
