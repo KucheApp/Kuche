@@ -12,8 +12,7 @@ app.use(express.static("client/build"));
 app.use("/api", require("./api")(app));
 
 var cu = require("./api/crypto_utils");
-// var randomSecret = cu.hashSync(Date.now().toString());
-var randomSecret = "secret";
+var randomSecret = cu.hashSync(Date.now().toString());
 app.set("jwtSecret", process.env.JWT_SECRET || randomSecret);
 
 var db_options = {};
