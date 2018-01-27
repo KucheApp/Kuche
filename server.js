@@ -8,8 +8,8 @@ const port = process.env.PORT || 3001;
 app.use(bp.urlencoded({extended: false}));
 app.use(bp.json());
 
-app.use(express.static("client/build"));
 app.use("/api", require("./api")(app));
+app.use("/", express.static("client/build"));
 
 var cu = require("./api/crypto_utils");
 var randomSecret = cu.hashSync(Date.now().toString());
