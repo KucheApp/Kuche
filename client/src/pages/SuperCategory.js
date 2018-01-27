@@ -33,6 +33,16 @@ class SuperCategory extends Component {
      this.handleUpdateItems();
    }
 
+   handleUpdateFood = (toUpdate) => {
+     API.UpdateFood(toUpdate)
+     .then(() => {
+       this.handleUpdateItems();
+     })
+     .catch(err => {
+       this.setState({shouldLogOut: true})
+     })
+   }
+
    handleDeleteFood = (toDelete) => {
      API.DeleteFood(toDelete)
      .then(() => {
@@ -40,7 +50,9 @@ class SuperCategory extends Component {
        items = items.filter(i => i.id !== toDelete.id);
        this.setState({items: items}, () => this.handleUpdateItems());
      })
-     .catch(console.log)
+     .catch(err => {
+       this.setState({shouldLogOut: true})
+     })
    }
 
    componentDidMount() {
@@ -63,7 +75,7 @@ class SuperCategory extends Component {
                 <h1 style={styles.h1}>{this.props.location}</h1>
                 <ModalAdd location={this.props.location} handleNewFood={this.handleNewFood} />
                 {this.state.items.map(item => {
-                  return(<Accordion key={shortid()} foodItem={item} handleDelete={this.handleDeleteFood} />);
+                  return(<Accordion key={shortid()} foodItem={item} handleUpdate={this.handleUpdateFood} handleDelete={this.handleDeleteFood} />);
                 })}
              </Col>
           </Row>
