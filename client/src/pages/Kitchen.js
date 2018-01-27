@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Card, CardTitle, CardText, Col } from 'reactstrap';
+import { Container, Row, Card, CardTitle, CardText } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
 import API from "../api";
 import Accordion from "./Accordion";
@@ -39,16 +39,14 @@ const styles = {
   }
 }
 
-const page = "Kitchen";
-
 let KitchenLink = ({to, imgSrc, altText}) => (
   <div className="col-6 col-md-3 p-2">
-    <div className="card">
+    <Card>
       <Link to={to}>
         <img className="card-img-top" src={imgSrc} alt={altText} />
         <span style={styles.linktext}>{altText}</span>
       </Link>
-    </div>
+    </Card>
   </div>
 );
 

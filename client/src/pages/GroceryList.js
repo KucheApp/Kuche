@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, Button, Form, FormGroup, Input } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, Button, FormGroup, InputGroup, InputGroupAddon, Input, Container, Row, Col } from "reactstrap";
 import shortid from 'shortid';
 import API from '../api';
 
 import styles from './PageStyles';
-import SuperCategory from "./SuperCategory";
 import Navigation from './Navigation';
-import Accordion from "./Accordion";
 import Footer from './Footer';
 
 let gli = {
@@ -60,7 +58,7 @@ class GroceryList extends Component {
         item = item[0].trim();
         count = count[0].trim();
         newItem.name = item;
-        newItem.quantity = parseInt(count);
+        newItem.quantity = parseInt(count, 10);
       }
     } catch (err) {
       newItem.name = this.state.addFoodInput.trim();
@@ -166,27 +164,24 @@ class GroceryList extends Component {
   render() {
     return (
       <div>
-        <div className="container">
-          <div className="row">
-            <Navigation />
-          </div>
+        <Container>
+          <Row><Navigation /></Row>
 
-          <div className="row">
-             <div className="col-0 col-xs-1 col-md-2"></div>
-             <div className="col-12 col-xs-10 col-md-8 justify-content-center">
+          <Row>
+             <Col xs={{size: 10, offset: 1}} md={{size: 8, offset: 2}}>
                 <h1 style={styles.h1}>{this.props.location}</h1>
-                <div className="container form">
-                  <FormGroup className="row">
-                    <Input type="text" name="addFoodInput" className="col-9" placeholder="Add Food" value={this.state.addFoodInput} onChange={this.handleInputChange} onKeyPress={this.handleKeyPress} />
-                    <Button className="col-2 offset-1" onClick={this.handleAddItem}>Add</Button>
-                  </FormGroup>
-                </div>
+                <InputGroup>
+                  <Input name="addFoodInput" placeholder="Add Item" value={this.state.addFoodInput} onChange={this.handleInputChange} onKeyPress={this.handleKeyPress} />
+                  <InputGroupAddon addontype="append">
+                    <Button onClick={this.handleAddItem}>Add</Button>
+                  </InputGroupAddon>
+                </InputGroup>
                 {this.state.items.map(item => (
                   <GroceryListItem key={shortid()} item={item} handleClickItem={() => this.handleClickItem(item)} handleDeleteItem={() => this.handleDeleteItem(item)} />
                 ))}
-             </div>
-          </div>
-        </div>
+             </Col>
+          </Row>
+        </Container>
 
         <Modal isOpen={this.state.moveItemModalOpen}>
           <ModalHeader toggle={this.toggleMoveModal}>Purchased Item</ModalHeader>

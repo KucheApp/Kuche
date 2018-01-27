@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import shortid from 'shortid';
-
-// import "./App.css";
 
 import Landing from "./pages/Landing";
 import NoMatch from "./pages/NoMatch";
@@ -12,45 +9,7 @@ import GroceryList from "./pages/GroceryList";
 
 class App extends Component {
 
-  state = {
-    email: "",
-    password: "",
-    username: "",
-    token: ""
-  }
-
-  addItem = this.addItem.bind(this);
-
-  // removeItem = (name) => {
-  //   this.setState({
-  //     items: this.state.items.filter((item) => item.name !== name)
-  //   })
-  // }
-
-  addItem() {
-    this.setState({
-      testItems: this.state.testItems.concat("new"),
-    }, () => {
-      console.log(this.state.testItems)
-    });
-
-  }
-
-  enterApp = (state) => this.setState(state);
-
-  exitApp = () => {
-    this.setState({
-      email: "",
-      password: "",
-      username: "",
-      token: ""
-    });
-  }
-
   render() {
-    const landing = () => (<Landing enterApp={this.enterApp} />);
-    const main = () => (<Main state={this.state} exitApp={this.exitApp}/>);
-
     const pantry    = () => (<SuperCategory location="Pantry" />);
     const counter   = () => (<SuperCategory location="Counter" />);
     const fridge    = () => (<SuperCategory location="Fridge" />);
@@ -60,7 +19,7 @@ class App extends Component {
     return (
       <Router className="router">
         <Switch>
-          <Route exact path="/" component={landing} />
+          <Route exact path="/" component={Landing} />
 
           <Route path="/kitchen" component={Main} />
           <Route path="/pantry" component={pantry} />

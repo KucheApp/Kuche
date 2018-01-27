@@ -167,24 +167,22 @@ let Delete = (url) => {
   .then(RejectIfErr);
 };
 
-let nutrition_heroku_name = "fathomless-chamber-12891";
-
-let SearchFood = (query) => {
-  let escaped_query = encodeURIComponent(query);
-  let url = `https://${nutrition_heroku_name}.herokuapp.com/search?food=${escaped_query}`;
-  return axios.get(url)
-  .then(response => response.data);
-};
-
-let SearchFoodById = (id) => {
-  let url = `https://${nutrition_heroku_name}.herokuapp.com/search?id=${id}`;
-  return axios.get(url)
-  .then(response => response.data)
-  .then(results => {
-    if (results.length < 1) return null;
-    return results[0];
-  })
-};
+// let nutrition_heroku_name = "fathomless-chamber-12891";
+// let SearchFood = (query) => {
+//   let escaped_query = encodeURIComponent(query);
+//   let url = `https://${nutrition_heroku_name}.herokuapp.com/search?food=${escaped_query}`;
+//   return axios.get(url)
+//   .then(response => response.data);
+// };
+// let SearchFoodById = (id) => {
+//   let url = `https://${nutrition_heroku_name}.herokuapp.com/search?id=${id}`;
+//   return axios.get(url)
+//   .then(response => response.data)
+//   .then(results => {
+//     if (results.length < 1) return null;
+//     return results[0];
+//   })
+// };
 
 /*
 fooditem schema:
@@ -214,8 +212,8 @@ export default {
   UpdateFood: (food) => Put("/food/" + food.id, food), // food is a fooditem object. returns a promise.
   DeleteFood: (food) => Delete("/food/" + food.id), // food is a fooditem object. returns a promise.
   GetFoodExpiringSoon: () => Get("/food/expiring/soon"), // returns a promise that resolves to an object with a fooditems field.
-  SearchFood, // takes a query string. returns a promise that resolves to a list of possible items with nutrition information.
-  SearchFoodById, // takes an id as number or string. returns a promise that resolves to a list of a single item with nutrition information.
+  // SearchFood, // takes a query string. returns a promise that resolves to a list of possible items with nutrition information.
+  // SearchFoodById, // takes an id as number or string. returns a promise that resolves to a list of a single item with nutrition information.
 
   getRecipes: (query) => {
     return axios.get("/api/recipes", { params: { q: query}})

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
+import { Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-import { Button, CardBody, Card, Col, Collapse, Container, Form, FormGroup, FormText, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row } from 'reactstrap';
-
-import Footer from './Footer';
-import Navigation from './Navigation';
 import API from "../api";
 
 let styles = {

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
-import shortid from 'shortid';
+import { Row, Col } from 'reactstrap';
 import API from '../api';
 import Moment from 'react-moment';
- 
+
 
 const styles = {
   insideCard: {
@@ -66,14 +64,11 @@ class Accordion extends Component {
                   <Col><h6>Quanity: {this.props.foodItem.quantity}</h6></Col>
                   <Col><h6>Units: {this.props.foodItem.quantityUnits}</h6></Col>
                 </Row>
-                
-                
+
                 <h6>Date Purchased: <Moment format="MM/DD/YYYY">{this.props.foodItem.purchased}</Moment></h6>
                 <h6>Date Expires: <Moment format="MM/DD/YYYY">{this.props.foodItem.expires}</Moment></h6>
-                {/* <h6>Nutrition Information: {this.state.foodSearchResults.map(result => {result.name} )} </h6> */}
-               
+
                 {this.state.recipes.length > 0 ? (
-                     
                      <div>
                        <h6>Recipe Suggestions:  </h6>
                         <a href = {this.state.recipes[0].href} target="_blank">{this.state.recipes[0].title}</a>

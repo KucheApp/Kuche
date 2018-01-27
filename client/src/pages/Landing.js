@@ -36,12 +36,6 @@ class Landing extends Component {
         API.GetUsername(this.state.username, this.state.password)
         .then(username => {
           this.setState({goToApp: true});
-          this.props.enterApp({
-            email: this.state.username,
-            password: this.state.password,
-            username: username,
-            token: token
-          });
         })
       })
     }
@@ -60,12 +54,6 @@ class Landing extends Component {
             API.RegisterNewUser(rUsername, rPassword, rDisplayName)
             .then(token => {
               this.setState({goToApp: true});
-              this.props.enterApp({
-                email: rUsername,
-                password: rPassword,
-                username: rDisplayName,
-                token: token
-              });
             })
           }
     } else {
@@ -85,10 +73,6 @@ class Landing extends Component {
       API.GetUsername()
       .then(username => {
         this.setState({goToApp: true});
-        this.props.enterApp({
-          username: username,
-          token: savedToken
-        });
       })
       .catch(err => console.log)
     }
@@ -158,7 +142,7 @@ class Landing extends Component {
               <div>
                 {logInBtn}
                 <LoginInput
-                  name="registerUsername" placeholder="Username"
+                  name="registerUsername" placeholder="Email"
                   icon="envelope" type="text"
                   value={this.state.registerUsername}
                   onChange={this.handleInputChange}
