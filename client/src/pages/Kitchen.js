@@ -59,11 +59,20 @@ class Kitchen extends Component {
   handleUpdateItems = () => {
     API.GetFoodExpiringSoon()
     .then(data => {
-      console.log(data);
+      // console.log(data);
       this.setState({expiringSoon: data.fooditems});
     })
     .catch(err => {
       this.setState({shouldLogOut: true});
+    })
+  }
+
+  handleDeleteItem = (toDelete) => {
+    API.DeleteFood(toDelete)
+    .then(() => {
+      let { expiringSoon } = this.state;
+      expiringSoon = expiringSoon.filter(i => i.id !== toDelete.id);
+      this.setState({expiringSoon: expiringSoon}, () => this.handleUpdateItems);
     })
   }
 
@@ -90,11 +99,9 @@ class Kitchen extends Component {
                 <Row>
                   <Card style={styles.expire} body inverse color="danger">
                     <CardTitle>Items Expiring Soon!</CardTitle>
-                    <CardText>The following items are expiring soon: </CardText>
+                    <CardText className="text-white">The following items are expiring soon: </CardText>
                     {this.state.expiringSoon.map(item => {
-                         return(
-                          <Accordion key={shortid()} id={item.id} foodItem={item} />
-                         );
+                      return (<Accordion key={shortid()} foodItem={item} handleDelete={this.handleDeleteItem} />);
                     })}
                   </Card>
                 </Row>

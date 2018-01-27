@@ -13,15 +13,16 @@ let gli = {
 }
 
 let GroceryListItem = (props) => {
+  let { item } = props;
   return (
     <div className="card" style={gli}>
       <div className="card-header">
-        <button type="button" className="close" aria-label="Close" position="right" onClick={props.handleDeleteItem}>
+        <button type="button" className="close" aria-label="Close" position="right" onClick={() => props.handleDeleteItem(item)}>
           <span>&times;</span>
         </button>
         <h5 className="mb-0">
-          <a href="javascript:undefined" onClick={props.handleClickItem}>
-            {props.item.quantity + " " + props.item.name}
+          <a href="javascript:undefined" onClick={() => props.handleClickItem(item)}>
+            {item.quantity + " " + item.name}
           </a>
         </h5>
       </div>
@@ -81,7 +82,7 @@ class GroceryList extends Component {
   handleDeleteItem = (deleteItem) => {
     API.DeleteFood(deleteItem)
     .then(response => {
-      console.log(response)
+      // console.log(response)
       let items = this.state.items.filter(item => item.id !== deleteItem.id);
       this.setState({items: items});
     })
@@ -168,7 +169,7 @@ class GroceryList extends Component {
           <Row><Navigation /></Row>
 
           <Row>
-             <Col xs={{size: 10, offset: 1}} md={{size: 8, offset: 2}}>
+             <Col xs={{size: 12, offset: 0}} sm={{size: 10, offset: 1}} md={{size: 8, offset: 2}}>
                 <h1 style={styles.h1}>{this.props.location}</h1>
                 <InputGroup>
                   <Input name="addFoodInput" placeholder="Add Item" value={this.state.addFoodInput} onChange={this.handleInputChange} onKeyPress={this.handleKeyPress} />
@@ -177,7 +178,7 @@ class GroceryList extends Component {
                   </InputGroupAddon>
                 </InputGroup>
                 {this.state.items.map(item => (
-                  <GroceryListItem key={shortid()} item={item} handleClickItem={() => this.handleClickItem(item)} handleDeleteItem={() => this.handleDeleteItem(item)} />
+                  <GroceryListItem key={shortid()} item={item} handleClickItem={this.handleClickItem} handleDeleteItem={this.handleDeleteItem} />
                 ))}
              </Col>
           </Row>

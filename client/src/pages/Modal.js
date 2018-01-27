@@ -56,7 +56,7 @@ class ModalAdd extends Component {
     API.PostFood(foodItem)
     .then(newFood => {
       this.toggle();
-      console.log(newFood);
+      // console.log(newFood);
       this.props.handleNewFood(newFood);
     })
     .catch(console.log)
@@ -84,10 +84,10 @@ class ModalAdd extends Component {
                 <FormGroup>
                     <Label for="foodCategory">Category<span style= {styles.required}>*</span></Label>
                     <Input value={this.state.foodCategory} onChange={this.handleInputChange} type="select" name="selectCategory" id="foodCategory">
-                        <option>Counter</option>
-                        <option>Fridge</option>
-                        <option>Freezer</option>
-                        <option>Pantry</option>
+                      <option>Pantry</option>
+                      <option>Counter</option>
+                      <option>Fridge</option>
+                      <option>Freezer</option>
                     </Input>
                 </FormGroup>
 

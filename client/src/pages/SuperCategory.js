@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
+import { Container, Row, Col } from 'reactstrap';
 import shortid from 'shortid';
 import API from '../api';
 
@@ -15,22 +16,10 @@ class SuperCategory extends Component {
       shouldLogOut: false
    }
 
-   handlePostFood = () => {
-      let foodItem = {
-         name: "banana",
-         location: this.props.location,
-         quantity: 1
-      }
-
-      API.PostFood(foodItem).then(response => {
-         console.log(response);
-      });
-   }
-
    handleUpdateItems = () => {
       API.GetFoodIn(this.props.location)
       .then(response => {
-         console.log(response)
+         // console.log(response)
          this.setState({items: response.fooditems})
       })
       .catch(err => {
@@ -44,6 +33,16 @@ class SuperCategory extends Component {
      this.handleUpdateItems();
    }
 
+   handleDeleteFood = (toDelete) => {
+     API.DeleteFood(toDelete)
+     .then(() => {
+       let { items } = this.state;
+       items = items.filter(i => i.id !== toDelete.id);
+       this.setState({items: items}, () => this.handleUpdateItems());
+     })
+     .catch(console.log)
+   }
+
    componentDidMount() {
       this.handleUpdateItems();
    }
@@ -54,22 +53,21 @@ class SuperCategory extends Component {
     }
     return(
       <div>
-        <div className="container">
-          <div className="row">
+        <Container>
+          <Row>
             <Navigation />
-          </div>
+          </Row>
 
-          <div className="row">
-             <div className="col-2"></div>
-             <div className="col-8 justify-content-center">
+          <Row>
+             <Col xs={{size: 12, offset: 0}} sm={{size: 10, offset: 1}} md={{size: 8, offset: 2}}>
                 <h1 style={styles.h1}>{this.props.location}</h1>
                 <ModalAdd location={this.props.location} handleNewFood={this.handleNewFood} />
                 {this.state.items.map(item => {
-                  return(<Accordion key={shortid()} id={item.id} foodItem={item} />);
+                  return(<Accordion key={shortid()} foodItem={item} handleDelete={this.handleDeleteFood} />);
                 })}
-             </div>
-          </div>
-        </div>
+             </Col>
+          </Row>
+        </Container>
         <Footer />
       </div>
     );
