@@ -94,19 +94,19 @@ class Accordion extends Component {
       }
     }
     return (
-      <div className="card">
+      <div className="card mt-2 mb-2">
         <div className="card-header">
           <button type="button" className="close" aria-label="Close" position="right" onClick={() => this.props.handleDelete(this.state.foodItem)}>
             <span aria-hidden="true">&times;</span>
           </button>
           <h5 className="mb-0">
-            <a href={"#hidden" + this.state.id} role="button" aria-expanded="false" aria-controls={"hidden" + this.state.id} data-toggle="collapse" className={color}>
+            <a href={"#hidden" + this.state.foodItem.id} role="button" aria-expanded="false" aria-controls={"hidden" + this.state.foodItem.id} data-toggle="collapse" className={color}>
               {this.state.foodItem.name}
             </a>
           </h5>
         </div>
 
-        <div className="collapse hide" id={"hidden" + this.state.id}>
+        <div className="collapse hide" id={"hidden" + this.state.foodItem.id}>
           <div style={styles.insideCard} className="card-body">
             <Row>
               <Col>
