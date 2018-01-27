@@ -5,39 +5,13 @@ import API from "../api";
 import Accordion from "./Accordion";
 import shortid from "shortid";
 
-
-//Category Images
+// Category Images
 import FreezerImg from '../imgs/freezer.jpg';
 import FridgeImg from '../imgs/fridge.png';
 import PantryImg from '../imgs/pantry.jpg';
 import CounterImg from '../imgs/countertop.png';
 
-const styles = {
-   column : {
-      minHeight: '350px',
-      maxHeight: '500px',
-      minWidth: '350px',
-      maxWidth: '500px',
-  },
-  pushDown: {
-    opacity: "0.0",
-    height: "0px"
-  },
-  expire: {
-    marginTop: "2rem",
-    marginBottom: "2rem"
-  },
-  linktext: {
-    position: "absolute",
-    width: "100%",
-    bottom: "0px",
-    left: 0,
-    color: "white",
-    fontSize: "40px",
-    background: "rgba(0, 0, 0, 0.5)",
-    borderRadius: "0px 0px 3px 3px"
-  }
-}
+import styles from "./PageStyles";
 
 let KitchenLink = ({to, imgSrc, altText}) => (
   <div className="col-6 col-md-3 p-2">

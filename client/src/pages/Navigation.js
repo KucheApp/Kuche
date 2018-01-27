@@ -62,6 +62,9 @@ class Navigation extends Component {
               <li className="nav-item">
                 <NavLink to="/grocerylist" className="nav-link font-weight-bold">Grocery List</NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink to="/account" className="nav-link font-weight-bold">Account</NavLink>
+              </li>
               <li className="nav-item right">
                 <Link to="/" onClick={this.handleLogOut} className="nav-link font-weight-bold">Log Out</Link>
               </li>
