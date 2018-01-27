@@ -109,7 +109,7 @@ class Accordion extends Component {
         <div className="collapse hide" id={"hidden" + this.state.foodItem.id}>
           <div style={styles.insideCard} className="card-body">
             <Row>
-              <Col>
+              <Col xs="12" md="6">
                 {this.state.edit_quantity ? (
                   <InputGroup>
                     <Input type="number" name="quantity" value={this.state.temp_quantity} onChange={this.handleInputChange} />
@@ -119,7 +119,7 @@ class Accordion extends Component {
                   <Button color="link" name="quantity" onClick={this.toggleEdit}>Quantity: {this.state.foodItem.quantity}</Button>
                 )}
               </Col>
-              <Col>
+              <Col xs="12" md="6">
                 {this.state.edit_quantityUnits ? (
                   <InputGroup>
                     <Input type="select" name="quantityUnits" value={this.state.temp_quantityUnits} onChange={this.handleInputChange}>
@@ -136,6 +136,7 @@ class Accordion extends Component {
                       <option>bunch</option>
                       <option>box</option>
                       <option>bag</option>
+                      <option>can</option>
                     </Input>
                     <InputGroupAddon addontype="append"><Button name="quantityUnits" onClick={this.toggleEdit}>Done</Button></InputGroupAddon>
                   </InputGroup>
@@ -151,12 +152,12 @@ class Accordion extends Component {
               </Col>
             </Row>
 
-            <h6>Date Purchased: <Moment format="MM/DD/YYYY">{this.state.foodItem.purchased}</Moment></h6>
-            <h6>Date Expires: <Moment format="MM/DD/YYYY">{this.state.foodItem.expires}</Moment></h6>
+            <h6 style={{color: "black"}}>Date Purchased: <Moment format="MM/DD/YYYY">{this.state.foodItem.purchased}</Moment></h6>
+            <h6 style={{color: "black"}}>Date Expires: <Moment format="MM/DD/YYYY">{this.state.foodItem.expires}</Moment></h6>
 
             {this.state.recipes.length > 0 ? (
               <div>
-               <h6>Recipe Suggestions:</h6>
+               <h6 style={{color: "black"}}>Recipe Suggestions:</h6>
                {this.state.recipes.slice(0, 4).map(recipe => {
                  return (<a href={recipe.href} key={shortid()} target="_blank">{recipe.title}</a>)
                })}

@@ -112,6 +112,7 @@ class ModalAdd extends Component {
                         <option>bunch</option>
                         <option>box</option>
                         <option>bag</option>
+                        <option>can</option>
                     </Input>
                 </FormGroup>
 
